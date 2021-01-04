@@ -1,5 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+// eslint-disable-next-line object-curly-newline
 import { Button, Container, Grid, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -12,29 +13,38 @@ function Login() {
   const classes = useStyles();
 
   return (
-    <Container className={classes.container} maxWidth="xs">
+    <Container className={classes.container} maxWidth="md">
       <form action="">
-        <Grid container spacing={3}>
+        <Grid
+          container
+          spacing={2}
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: '100vh' }}
+        >
           <Grid item xs={12}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <TextField variant="outlined" label="Usuario" fullWidth />
+                <TextField variant="outlined" label="Usuario" />
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  fullWidth
                   label="Password"
                   name="password"
                   type="password"
                   variant="outlined"
                 />
               </Grid>
+              <Grid item xs={12}>
+                <Button
+                  color="primary"
+                  type="submit"
+                  variant="contained"
+                >
+                  Log In
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Button color="primary" fullWidth type="submit" variant="contained">
-              Log In
-            </Button>
           </Grid>
         </Grid>
       </form>
