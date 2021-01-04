@@ -1,6 +1,9 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const chalk = require('chalk');
+
+const { log } = console;
 
 // Environment variables configuration
 dotenv.config();
@@ -11,7 +14,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  () => console.log('Connected to db'),
+  () => log(chalk.blue('Connected to MongoDB Atlas!\n')),
 );
 
 const app = express();
@@ -21,5 +24,4 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Configure listening port
-// eslint-disable-next-line no-console
-app.listen(3000, () => console.log('Server up!'));
+app.listen(3000, () => log(chalk.blue('\nServer running!')));
