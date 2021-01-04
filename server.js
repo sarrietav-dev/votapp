@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
+const loginRoute = require('./routes/login');
 
 const { log } = console;
 
@@ -22,6 +23,9 @@ const app = express();
 // Configure express to recieve JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Route middleware.
+app.use('/api/login', loginRoute);
 
 // Configure listening port
 app.listen(5000, () => log(chalk.blue('\nServer running!')));
