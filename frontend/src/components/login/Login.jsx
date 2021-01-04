@@ -12,9 +12,11 @@ const useStyles = makeStyles((theme) => ({
 function Login() {
   const classes = useStyles();
 
+  const handleSubmit = () => {};
+
   return (
     <Container className={classes.container} maxWidth="md">
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <Grid
           container
           spacing={2}
@@ -36,11 +38,7 @@ function Login() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <Button
-                  color="primary"
-                  type="submit"
-                  variant="contained"
-                >
+                <Button color="primary" type="submit" variant="contained">
                   Log In
                 </Button>
               </Grid>
