@@ -24,4 +24,4 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Configure listening port
-app.listen(3000, () => log(chalk.blue('\nServer running!')));
+app.listen(5000, () => log(chalk.blue('\nServer running!')));
