@@ -22,14 +22,14 @@ function Login({ setToken }) {
 
     const response = await axios({
       method: 'POST',
-      url: 'http://localhost:5000/api/login',
+      url: 'http://localhost:5000/api/login/',
       data: {
         email,
         password,
       },
     });
 
-    setToken(response.headers['auth-token']);
+    setToken(response.data.token);
   };
 
   return (
