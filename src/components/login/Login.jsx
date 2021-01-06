@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 // eslint-disable-next-line object-curly-newline
 import { Button, Container, Grid, makeStyles } from '@material-ui/core';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -10,16 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const loginUser = async (credentials) => {
-  const response = await axios({
-    method: 'POST',
-    url: 'http://localhost:5000/api/login',
-    data: credentials,
-  });
-  return response.data.headers['auth-token'];
-};
-
-function Login() {
+function Login({ setToken }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,7 +20,16 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = loginUser({ email, password });
+    const response = await axios({
+      method: 'POST',
+      url: 'http://localhost:5000/api/login',
+      data: {
+        email,
+        password,
+      },
+    });
+
+    setToken(response.headers['auth-token']);
   };
 
   return (
@@ -71,5 +72,9 @@ function Login() {
     </Container>
   );
 }
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired,
+};
 
 export default Login;
