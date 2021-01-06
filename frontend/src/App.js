@@ -5,6 +5,7 @@ import './App.css';
 import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import Login from './components/login/Login';
+import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
   const setToken = (token) => token;
@@ -16,9 +17,10 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path="/login">
-            <Login setToken={token} />
+            <Login setToken={setToken} />
             {token}
           </Route>
+          <Route component={Dashboard} path="/dashboard" />
         </Switch>
       </BrowserRouter>
     </div>
