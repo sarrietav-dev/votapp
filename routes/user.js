@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
   if (emailExist) return res.status(400).send({ error: 'Email exists' });
 
   // Hash password
-  const salt = await bcrypt.genSalt();
+  const salt = await bcrypt.genSalt(25);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
   const user = new User({
