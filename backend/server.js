@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
+const cors = require('cors');
 const loginRoute = require('./routes/login');
 
 const { log } = console;
@@ -19,6 +20,8 @@ mongoose.connect(
 );
 
 const app = express();
+
+app.use(cors());
 
 // Configure express to recieve JSON
 app.use(express.urlencoded({ extended: true }));
