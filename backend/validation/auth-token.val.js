@@ -1,0 +1,1 @@
+// TODO: Make a middleware that checks if an user is authenticated
