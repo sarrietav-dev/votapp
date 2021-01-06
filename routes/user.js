@@ -3,11 +3,9 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const registerValidation = require('../validation/register.val');
 
-// Get all users
-router.get('/', (req, res) => {});
+// TODO: Make get '/' route to get all the users.
 
-// Get an user
-router.get('/:id', (req, res) => {});
+// TODO: Make get '/:id' route to get one user.
 
 // Create an user
 router.post('/', async (req, res) => {
