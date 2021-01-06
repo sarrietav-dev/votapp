@@ -32,7 +32,6 @@ router.post('/', async (req, res) => {
 
   try {
     await user.save();
-    // TODO: Delete user for security reasons.
     return res.status(200).send({ message: 'User created', user });
   } catch (err) {
     return res.status(400).send({ error: err });
