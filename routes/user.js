@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Joi = require('@hapi/joi');
 const User = require('../models/User');
+const registerValidation = require('../validation/register.val');
 
 // Get all users
 router.get('/', (req, res) => {});
@@ -8,11 +9,15 @@ router.get('/', (req, res) => {});
 // Get an user
 router.get('/:id', (req, res) => {});
 
-
 // Create an user
 router.post('/', async (req, res) => {
-  const { error } = schema.validate(req.body);
-  if (error) return res.status(400).json({ error });
+  // General validation
+  const { error } = registerValidation(req.body);
+  if (error) return res.status(400).send({ error: error.details[0].message });
+
+  // Email repeatition validation
+  const emailExist = await User.findOne({ email: req.body.email });
+  if (emailExist) return res.status(400).send({ error: 'Email exists' });
 
   const user = new User({
     name: req.body.name,
@@ -24,9 +29,9 @@ router.post('/', async (req, res) => {
   });
 
   try {
-    const savedUser = await user.save();
-    res.status(200).json({ message: 'User created' });
+    await user.save();
+    return res.status(200).send({ message: 'User created' });
   } catch (err) {
-    res.status(400).json({ error: err });
+    return res.status(400).send({ error: err });
   }
 });
