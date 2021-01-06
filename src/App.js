@@ -2,6 +2,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/jsx-filename-extension */
 import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router';
 import Login from './components/login/Login';
 
 function App() {
@@ -11,8 +12,14 @@ function App() {
 
   return (
     <div className="App">
-      <Login setToken={token} />
-      {token}
+      <BrowserRouter>
+        <Switch>
+          <Route path="/login">
+            <Login setToken={token} />
+            {token}
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
