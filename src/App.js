@@ -2,7 +2,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/jsx-filename-extension */
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router';
+import { Route, Switch } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import Login from './components/login/Login';
 
 function App() {
