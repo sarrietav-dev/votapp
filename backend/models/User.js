@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
   },
   birthdate: {
     type: Date,
+    default: Date.now,
   },
   phoneNumber: {
     type: String,
@@ -28,6 +29,7 @@ const userSchema = new mongoose.Schema({
   },
   gender: {
     type: Boolean,
+    default: true,
   },
 });
 
