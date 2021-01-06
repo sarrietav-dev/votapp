@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 // eslint-disable-next-line object-curly-newline
 import { Button, Container, Grid, makeStyles } from '@material-ui/core';
@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const classes = useStyles();
 
   const handleSubmit = () => {};
@@ -27,7 +30,11 @@ function Login() {
           <Grid item xs={12}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <TextField variant="outlined" label="Usuario" />
+                <TextField
+                  variant="outlined"
+                  label="Email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -35,6 +42,7 @@ function Login() {
                   name="password"
                   type="password"
                   variant="outlined"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
