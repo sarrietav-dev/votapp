@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
-    min: 6,
+    min: 4,
     max: 255,
   },
   email: {
@@ -21,7 +21,6 @@ const userSchema = new mongoose.Schema({
   },
   birthdate: {
     type: Date,
-    required: true,
   },
   phoneNumber: {
     type: String,
@@ -29,7 +28,6 @@ const userSchema = new mongoose.Schema({
   },
   gender: {
     type: Boolean,
-    required: true,
   },
 });
 
