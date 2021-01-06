@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { Button, Container, Grid, makeStyles } from '@material-ui/core';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -16,6 +17,7 @@ function Login({ setToken }) {
   const [password, setPassword] = useState('');
 
   const classes = useStyles();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +32,7 @@ function Login({ setToken }) {
     });
 
     setToken(response.data.token);
+    history.push('/dashboard');
   };
 
   return (
