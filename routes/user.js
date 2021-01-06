@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const Joi = require('@hapi/joi');
 const User = require('../models/User');
 const registerValidation = require('../validation/register.val');
 
