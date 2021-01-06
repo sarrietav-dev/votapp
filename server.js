@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const chalk = require('chalk');
 const cors = require('cors');
 const loginRoute = require('./routes/login');
+const userRoute = require('./routes/user');
 
 const { log } = console;
 
@@ -16,7 +17,7 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  () => log(chalk.blue('Connected to MongoDB Atlas!\n')),
+  () => log(chalk.blue('Connected to MongoDB Atlas!\n'))
 );
 
 const app = express();
@@ -29,6 +30,7 @@ app.use(express.json());
 
 // Route middleware.
 app.use('/api/login', loginRoute);
+app.use('/api/users', userRoute);
 
 // Configure listening port
 app.listen(5000, () => log(chalk.blue('\nServer running!')));
