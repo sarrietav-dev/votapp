@@ -20,7 +20,9 @@ function App() {
             <Login setToken={setToken} />
             {token}
           </Route>
-          <Route component={Dashboard} path="/dashboard" />
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
         </Switch>
       </BrowserRouter>
     </div>
