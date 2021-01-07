@@ -1,5 +1,10 @@
 import React from 'react';
+import Navbar from '../Navbar';
 
-const Dashboard = () => <h1>This is the dashboard</h1>;
+const Dashboard = () => (
+  <div className="dashboard-wrapper">
+    <Navbar />
+  </div>
+);
 
 export default Dashboard;
