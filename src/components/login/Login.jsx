@@ -3,7 +3,6 @@ import TextField from '@material-ui/core/TextField';
 // eslint-disable-next-line object-curly-newline
 import { Button, Container, Grid, makeStyles } from '@material-ui/core';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { setAuthToken } from '../../actions/auth-token.action';
@@ -79,9 +78,5 @@ function Login() {
     </Container>
   );
 }
-
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};
 
 export default Login;
