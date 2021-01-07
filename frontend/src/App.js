@@ -8,17 +8,12 @@ import Login from './components/login/Login';
 import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
-  const setToken = (token) => token;
-
-  const token = setToken();
-
   return (
     <div className="App">
       <BrowserRouter>
         <Switch>
           <Route path="/login">
-            <Login setToken={setToken} />
-            {token}
+            <Login />
           </Route>
           <Route path="/dashboard">
             <Dashboard />
