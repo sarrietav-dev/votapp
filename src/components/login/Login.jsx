@@ -5,6 +5,8 @@ import { Button, Container, Grid, makeStyles } from '@material-ui/core';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setAuthToken } from '../../actions/auth-token.action';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -12,12 +14,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Login({ setToken }) {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const classes = useStyles();
   const history = useHistory();
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +35,7 @@ function Login({ setToken }) {
       },
     });
 
-    setToken(response.data.token);
+    dispatch(setAuthToken(response.data.token));
     history.push('/dashboard');
   };
 
