@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import Login from './components/login/Login';
 import Dashboard from './components/dashboard/Dashboard';
+import AuthRoute from './components/AuthRoute';
 
 function App() {
   return (
@@ -15,9 +16,9 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/dashboard">
+          <AuthRoute path="/">
             <Dashboard />
-          </Route>
+          </AuthRoute>
         </Switch>
       </BrowserRouter>
     </div>

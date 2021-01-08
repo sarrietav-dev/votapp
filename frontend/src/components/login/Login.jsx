@@ -34,8 +34,10 @@ function Login() {
       },
     });
 
-    dispatch(setAuthToken(response.data.token));
-    history.push('/dashboard');
+    if (response.status === 200) {
+      dispatch(setAuthToken(response.data.token));
+      history.push('/');
+    }
   };
 
   return (
