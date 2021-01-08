@@ -21,13 +21,13 @@ function Login() {
   const history = useHistory();
 
   const dispatch = useDispatch();
+  const authToken = useSelector((state) => state.authToken);
 
   useEffect(() => {
-    const authToken = useSelector((state) => state.authToken);
     if (authToken !== '') {
       history.push('/');
     }
-  }, []);
+  }, [authToken]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
