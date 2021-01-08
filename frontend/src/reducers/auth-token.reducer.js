@@ -1,12 +1,14 @@
+/* eslint-disable no-undef */
 import { SET_AUTH_TOKEN } from '../actions/types.actions';
 
 const defaultState = {
-  authToken: '',
+  authToken: localStorage.getItem('GET_AUTH_TOKEN') || '',
 };
 
 export default (state = defaultState, action) => {
   switch (action.type) {
     case SET_AUTH_TOKEN:
+      localStorage.setItem('GET_AUTH_TOKEN', action.payload);
       return {
         ...state,
         authToken: action.payload,
