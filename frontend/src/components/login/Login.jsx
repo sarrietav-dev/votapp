@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 // eslint-disable-next-line object-curly-newline
 import { Button, Container, Grid, makeStyles } from '@material-ui/core';
 import axios from 'axios';
 import { useHistory } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setAuthToken } from '../../actions/auth-token.action';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +21,13 @@ function Login() {
   const history = useHistory();
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const authToken = useSelector((state) => state.authToken);
+    if (authToken !== '') {
+      history.push('/');
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
