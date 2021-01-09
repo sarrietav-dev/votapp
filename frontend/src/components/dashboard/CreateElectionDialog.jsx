@@ -18,10 +18,10 @@ const CreateElectionDialog = () => {
   const isOpen = useSelector((state) => state.fab.isOpen); // <--- Issue
 
   const handleClose = () => dispatch(closeDialog());
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = axios({
+    const response = await axios({
       method: 'POST',
       url: 'http://localhost:5000/api/elections',
       data: {
