@@ -5,6 +5,7 @@ const chalk = require('chalk');
 const cors = require('cors');
 const loginRoute = require('./routes/login.routes');
 const userRoute = require('./routes/user.routes');
+const electionRoute = require('./routes/election.routes');
 
 const { log } = console;
 
@@ -31,6 +32,7 @@ app.use(express.json());
 // Route middleware.
 app.use('/api/login', loginRoute);
 app.use('/api/users', userRoute);
+app.use('/api/elections', electionRoute);
 
 // Configure listening port
 app.listen(5000, () => log(chalk.blue('\nServer running!')));
