@@ -27,6 +27,15 @@ const CreateElectionDialog = () => {
           fullWidth
           variant="filled"
         />
+        <TextField
+          autoFocus
+          margin="dense"
+          id="election-position"
+          label="Position"
+          type="text"
+          fullWidth
+          variant="filled"
+        />
       </DialogContent>
       <DialogActions>
         <Button color="primary">Cancel</Button>
