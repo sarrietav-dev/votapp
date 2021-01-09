@@ -4,7 +4,7 @@ const defaultState = {
   isOpen: false,
 };
 
-const fabReducer = (state = defaultState, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
     case OPEN_DIALOG:
       return {
@@ -20,5 +20,3 @@ const fabReducer = (state = defaultState, action) => {
       return state;
   }
 };
-
-export default fabReducer;
