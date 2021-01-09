@@ -14,8 +14,10 @@ const CreateElectionDialog = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.fab.isOpen); // <--- Issue
 
+  const handleClose = () => dispatch(closeDialog());
+
   return (
-    <Dialog open={isOpen} onClose={() => dispatch(closeDialog())}>
+    <Dialog open={isOpen} onClose={handleClose}>
       <DialogTitle>Create election</DialogTitle>
       <DialogContent>
         <TextField
@@ -38,7 +40,9 @@ const CreateElectionDialog = () => {
         />
       </DialogContent>
       <DialogActions>
-        <Button color="primary">Cancel</Button>
+        <Button color="primary" onClick={handleClose}>
+          Cancel
+        </Button>
         <Button color="primary">Create</Button>
       </DialogActions>
     </Dialog>
