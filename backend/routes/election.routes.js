@@ -13,9 +13,9 @@ router.post('/', async (req, res) => {
 
   try {
     await election.save();
-    res.sendStatus(200);
+    return res.sendStatus(200);
   } catch (err) {
-    res.status(400).json({ err });
+    return res.status(400).json({ err });
   }
 });
 
