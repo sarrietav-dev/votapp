@@ -17,11 +17,14 @@ const CreateElectionDialog = () => {
   const isOpen = useSelector((state) => state.fab.isOpen); // <--- Issue
 
   const handleClose = () => dispatch(closeDialog());
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <Dialog open={isOpen} onClose={handleClose}>
       <DialogTitle>Create election</DialogTitle>
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <DialogContent>
           <TextField
             autoFocus
@@ -48,7 +51,9 @@ const CreateElectionDialog = () => {
           <Button color="primary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button color="primary">Create</Button>
+          <Button color="primary" type="submit">
+            Create
+          </Button>
         </DialogActions>
       </form>
     </Dialog>
