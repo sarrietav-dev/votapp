@@ -1,6 +1,7 @@
 import React from 'react';
 import { Fab, makeStyles } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
+import CreateElectionDialog from './CreateElectionDialog';
 
 const useStyles = makeStyles(() => ({
   fab: {
@@ -16,10 +17,15 @@ const useStyles = makeStyles(() => ({
 const FabButton = () => {
   const classes = useStyles();
 
+  const handleClick = () => {};
+
+  const handleClose = () => {};
+
   return (
-    <Fab color="secondary" aria-label="add" className={classes.fab}>
+    <Fab color="secondary" aria-label="add" className={classes.fab} onClick={handleClick}>
       <AddIcon />
     </Fab>
+    <CreateElectionDialog />
   );
 };
 
