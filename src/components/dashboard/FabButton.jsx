@@ -1,7 +1,7 @@
 import React from 'react';
 import { Fab, makeStyles } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import useDispatch from 'react-redux';
+import { useDispatch } from 'react-redux';
 import CreateElectionDialog from './CreateElectionDialog';
 import { openDialog } from '../../actions/fab.actions';
 
