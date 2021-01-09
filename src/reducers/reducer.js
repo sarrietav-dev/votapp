@@ -3,8 +3,8 @@ import authReducer from './auth-token.reducer';
 import fabReducer from './fab.reducer';
 
 const rootReducer = combineReducers({
-  authReducer,
-  fabReducer,
+  auth: authReducer,
+  fab: fabReducer,
 });
 
 export default rootReducer;
