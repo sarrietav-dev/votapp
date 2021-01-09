@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Button,
   Dialog,
@@ -8,26 +7,34 @@ import {
   DialogTitle,
   TextField,
 } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeDialog } from '../../actions/fab.actions';
 
-const CreateElectionDialog = () => (
-  <Dialog open={} onClose={}>
-    <DialogTitle>Create election</DialogTitle>
-    <DialogContent>
-      <TextField
-        autoFocus
-        margin="dense"
-        id="election-title"
-        label="Title"
-        type="text"
-        fullWidth
-        variant="filled"
-      />
-    </DialogContent>
-    <DialogActions>
-      <Button color="primary">Cancel</Button>
-      <Button color="primary">Create</Button>
-    </DialogActions>
-  </Dialog>
-);
+const CreateElectionDialog = () => {
+  const dispatch = useDispatch();
+  return (
+    <Dialog
+      open={useSelector((state) => state.isOpen)}
+      onClose={() => dispatch(closeDialog())}
+    >
+      <DialogTitle>Create election</DialogTitle>
+      <DialogContent>
+        <TextField
+          autoFocus
+          margin="dense"
+          id="election-title"
+          label="Title"
+          type="text"
+          fullWidth
+          variant="filled"
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button color="primary">Cancel</Button>
+        <Button color="primary">Create</Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
 
 export default CreateElectionDialog;
