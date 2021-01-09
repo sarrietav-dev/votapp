@@ -6,6 +6,8 @@ router.post('/', async (req, res) => {
   const { error } = electionValidation(req.body);
   if (error) return res.status(400).json({ error: error.details[0].message });
 
+  // TODO: Check if the requester is an admin.
+
   const election = new Election({
     title: req.body.title,
     position: req.body.position,
