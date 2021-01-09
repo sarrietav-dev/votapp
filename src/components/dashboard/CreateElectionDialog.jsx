@@ -12,7 +12,7 @@ import { closeDialog } from '../../actions/fab.actions';
 
 const CreateElectionDialog = () => {
   const dispatch = useDispatch();
-  const isOpen = useSelector((state) => state.isOpen);
+  const isOpen = useSelector((state) => state.fab.isOpen); // <--- Issue
 
   return (
     <Dialog open={isOpen} onClose={() => dispatch(closeDialog())}>
