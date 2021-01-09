@@ -8,6 +8,7 @@ import {
   TextField,
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 import { closeDialog } from '../../actions/fab.actions';
 
 const CreateElectionDialog = () => {
@@ -19,6 +20,20 @@ const CreateElectionDialog = () => {
   const handleClose = () => dispatch(closeDialog());
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const response = axios({
+      method: 'POST',
+      url: 'http://localhost:5000/api/elections',
+      data: {
+        title,
+        position,
+      },
+      // eslint-disable-next-line no-console
+    }).catch((err) => console.log(err));
+
+    if (response.status === 200) {
+      handleClose();
+    }
   };
 
   return (
