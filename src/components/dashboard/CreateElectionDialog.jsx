@@ -12,11 +12,10 @@ import { closeDialog } from '../../actions/fab.actions';
 
 const CreateElectionDialog = () => {
   const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.isOpen);
+
   return (
-    <Dialog
-      open={useSelector((state) => state.isOpen)}
-      onClose={() => dispatch(closeDialog())}
-    >
+    <Dialog open={isOpen} onClose={() => dispatch(closeDialog())}>
       <DialogTitle>Create election</DialogTitle>
       <DialogContent>
         <TextField
