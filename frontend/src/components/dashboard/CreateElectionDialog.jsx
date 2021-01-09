@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Dialog,
@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeDialog } from '../../actions/fab.actions';
 
 const CreateElectionDialog = () => {
+  const [title, setTitle] = useState('');
+  const [position, setPosition] = useState('');
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.fab.isOpen); // <--- Issue
 
@@ -19,32 +21,36 @@ const CreateElectionDialog = () => {
   return (
     <Dialog open={isOpen} onClose={handleClose}>
       <DialogTitle>Create election</DialogTitle>
-      <DialogContent>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="election-title"
-          label="Title"
-          type="text"
-          fullWidth
-          variant="filled"
-        />
-        <TextField
-          autoFocus
-          margin="dense"
-          id="election-position"
-          label="Position"
-          type="text"
-          fullWidth
-          variant="filled"
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button color="primary" onClick={handleClose}>
-          Cancel
-        </Button>
-        <Button color="primary">Create</Button>
-      </DialogActions>
+      <form action="">
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="election-title"
+            label="Title"
+            type="text"
+            fullWidth
+            variant="filled"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="election-position"
+            label="Position"
+            type="text"
+            fullWidth
+            variant="filled"
+            onChange={(e) => setPosition(e.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button color="primary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button color="primary">Create</Button>
+        </DialogActions>
+      </form>
     </Dialog>
   );
 };
