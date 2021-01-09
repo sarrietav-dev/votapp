@@ -3,8 +3,8 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 const cors = require('cors');
-const loginRoute = require('./routes/login');
-const userRoute = require('./routes/user');
+const loginRoute = require('./routes/login.routes');
+const userRoute = require('./routes/user.routes');
 
 const { log } = console;
 
