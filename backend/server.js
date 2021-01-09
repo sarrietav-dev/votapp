@@ -31,6 +31,7 @@ app.use(express.json());
 
 // Route middleware.
 app.use('/api/login', loginRoute);
+// TODO: Check if the user is authenticated for the routes below.
 app.use('/api/users', userRoute);
 app.use('/api/elections', electionRoute);
 
