@@ -6,7 +6,7 @@ const electionSchema = new mongoose.Schema({
     min: 5,
     required: true,
   },
-  cargo: {
+  position: {
     type: String,
     min: 5,
     required: true,
