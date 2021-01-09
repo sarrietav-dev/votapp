@@ -21,4 +21,13 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/', async (req, res) => {
+  try {
+    const elections = await Election.find({});
+    return res.status(200).send(elections);
+  } catch (err) {
+    return res.status(400).json({ err });
+  }
+});
+
 module.exports = router;
