@@ -9,8 +9,8 @@ import {
   TextField,
 } from '@material-ui/core';
 
-const CreateElectionDialog = ({ open, onClose }) => (
-  <Dialog open={open} onClose={onClose}>
+const CreateElectionDialog = () => (
+  <Dialog open={} onClose={}>
     <DialogTitle>Create election</DialogTitle>
     <DialogContent>
       <TextField
@@ -29,10 +29,5 @@ const CreateElectionDialog = ({ open, onClose }) => (
     </DialogActions>
   </Dialog>
 );
-
-CreateElectionDialog.propTypes = {
-  open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
 
 export default CreateElectionDialog;
