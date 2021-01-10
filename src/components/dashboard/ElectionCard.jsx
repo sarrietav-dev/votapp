@@ -9,6 +9,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
   card: {
@@ -38,6 +39,11 @@ const ElectionCard = ({ title, position }) => {
       </CardActions>
     </Card>
   );
+};
+
+ElectionCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
 };
 
 export default ElectionCard;
