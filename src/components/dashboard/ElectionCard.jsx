@@ -27,7 +27,7 @@ const ElectionCard = () => (
         <EditIcon />
       </IconButton>
     </CardActions>
-  </Card>;
+  </Card>
 );
 
 export default ElectionCard;
