@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 
-const ElectionCard = () => {
+const ElectionCard = () => (
   <Card>
     <CardActionArea>
       <CardContent>
@@ -28,6 +28,6 @@ const ElectionCard = () => {
       </IconButton>
     </CardActions>
   </Card>;
-};
+);
 
 export default ElectionCard;
