@@ -7,9 +7,9 @@ import FabButton from './FabButton';
 const Dashboard = () => (
   <div className="dashboard-wrapper">
     <Navbar />
-    <ElectionCard />
     <FabButton />
     <CreateElectionDialog />
+    <ElectionCard />
   </div>
 );
 
