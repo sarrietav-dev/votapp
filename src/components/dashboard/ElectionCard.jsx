@@ -13,25 +13,22 @@ import EditIcon from '@material-ui/icons/Edit';
 const useStyles = makeStyles({
   card: {
     width: 275,
+    margin: 25,
   },
   editButton: {
     marginLeft: 'auto',
   },
 });
 
-const ElectionCard = () => {
+const ElectionCard = ({ title, position }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card} variant="outlined">
+    <Card className={classes.card}>
       <CardActionArea>
         <CardContent>
-          <Typography>Election</Typography>
-          <Typography>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-            nulla, ullam numquam minima architecto maiores similique, atque
-            voluptas
-          </Typography>
+          <Typography variant="h5">{title}</Typography>
+          <Typography>{position}</Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
