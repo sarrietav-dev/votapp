@@ -6,16 +6,13 @@ import Navbar from '../Navbar';
 import CreateElectionDialog from './CreateElectionDialog';
 import ElectionCard from './ElectionCard';
 import FabButton from './FabButton';
-import { setElections } from '../../store/actions/election.actions';
+import { fetchElectionsThunk } from '../../store/actions/thunks/elections.thunk';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    await axios
-      .get('http://localhost:5000/api/elections/')
-      .then((response) => dispatch(setElections(response.data)))
-      .catch((err) => console.log(err));
+    dispatch(fetchElectionsThunk());
   }, []);
 
   const elections = useSelector((state) => state.election.elections);
