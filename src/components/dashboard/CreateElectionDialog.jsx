@@ -32,10 +32,8 @@ const CreateElectionDialog = () => {
       // eslint-disable-next-line no-console
     })
       .then((response) => {
-        if (response.status === 200) {
-          dispatch(setOneElection(response.data));
-          handleClose();
-        }
+        dispatch(setOneElection(response.data));
+        handleClose();
       })
       .catch((err) => console.log(err));
   };
