@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 // eslint-disable-next-line object-curly-newline
 import { Button, Container, Grid, makeStyles } from '@material-ui/core';
-import axios from 'axios';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import setAuthToken from '../../store/actions/auth-token.actions';
+import loginThunk from '../../store/actions/thunks/login.thunks';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -32,19 +31,9 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await axios({
-      method: 'POST',
-      url: 'http://localhost:5000/api/login/',
-      data: {
-        email,
-        password,
-      },
-    });
+    dispatch(loginThunk(email, password));
 
-    if (response.status === 200) {
-      dispatch(setAuthToken(response.data.token));
-      history.push('/');
-    }
+    history.push('/');
   };
 
   return (
