@@ -33,7 +33,15 @@ const CreateElectionDialog = () => {
     }).catch((err) => console.log(err));
 
     if (response.status === 200) {
-      dispatch(setOneElection({ title, position }));
+      dispatch(
+        setOneElection({
+          _id: response.data.id,
+          title,
+          position,
+          votes: [],
+          registeredVotes: [],
+        }),
+      );
       handleClose();
     }
   };
