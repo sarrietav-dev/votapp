@@ -15,7 +15,9 @@ const Dashboard = () => {
       <Navbar />
       <FabButton />
       <CreateElectionDialog />
-      <ElectionCard election={elections} />
+      {elections.map((election) => (
+        <ElectionCard title={election.title} position={election.position} />
+      ))}
     </div>
   );
 };
