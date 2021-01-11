@@ -1,12 +1,25 @@
 import axios from 'axios';
-import { setElections } from '../election.actions';
+import { setElections, setOneElection } from '../election.actions';
 
 export const getAllElections = () => async (dispatch) => {
   await axios
     .get('http://localhost:5000/api/elections/')
     .then((response) => dispatch(setElections(response.data)))
-    // eslint-disable-next-line no-console
     .catch((err) => console.log(err));
 };
 
-export const saveElection = () => () => {};
+export const saveElection = (title, position) => async (dispatch) => {
+  await axios({
+    method: 'POST',
+    url: 'http://localhost:5000/api/elections',
+    data: {
+      title,
+      position,
+    },
+    // eslint-disable-next-line no-console
+  })
+    .then((response) => {
+      dispatch(setOneElection(response.data));
+    })
+    .catch((err) => console.log(err));
+};
