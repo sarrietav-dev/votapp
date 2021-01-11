@@ -16,7 +16,6 @@ export const saveElection = (title, position) => async (dispatch) => {
       title,
       position,
     },
-    // eslint-disable-next-line no-console
   })
     .then((response) => {
       dispatch(setOneElection(response.data));
