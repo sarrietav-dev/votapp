@@ -5,14 +5,14 @@ import Navbar from '../Navbar';
 import CreateElectionDialog from './CreateElectionDialog';
 import ElectionCard from './ElectionCard';
 import FabButton from './FabButton';
-import setElection from '../../actions/election.actions';
+import { setElections } from '../../actions/election.actions';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(async () => {
     const response = await axios.get('http://localhost:5000/api/elections/');
-    dispatch(setElection(response.data));
+    dispatch(setElections(response.data));
   }, []);
 
   const elections = useSelector((state) => state.election.elections);
