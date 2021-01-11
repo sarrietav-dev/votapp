@@ -1,4 +1,4 @@
-import { CLOSE_DIALOG, OPEN_DIALOG } from '../../actions/types.actions';
+import { CLOSE_DIALOG, OPEN_DIALOG } from '../actions/types.actions';
 
 const defaultState = {
   isOpen: false,

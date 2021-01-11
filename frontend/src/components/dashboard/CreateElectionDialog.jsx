@@ -9,8 +9,8 @@ import {
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { closeDialog } from '../../actions/fab.actions';
-import { setOneElection } from '../../actions/election.actions';
+import { closeDialog } from '../../store/actions/fab.actions';
+import { setOneElection } from '../../store/actions/election.actions';
 
 const CreateElectionDialog = () => {
   const [title, setTitle] = useState('');
