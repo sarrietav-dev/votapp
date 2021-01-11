@@ -31,9 +31,12 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    dispatch(loginThunk(email, password));
-
-    history.push('/');
+    try {
+      dispatch(loginThunk(email, password));
+      history.push('/');
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
