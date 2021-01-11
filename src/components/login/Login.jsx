@@ -5,7 +5,7 @@ import { Button, Container, Grid, makeStyles } from '@material-ui/core';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import setAuthToken from '../../actions/auth-token.actions';
+import setAuthToken from '../../store/actions/auth-token.actions';
 
 const useStyles = makeStyles((theme) => ({
   container: {
