@@ -1,11 +1,10 @@
 import axios from 'axios';
 import { fetchElections, setOneElection } from '../election.actions';
 
-export const getAllElections = () => async (dispatch) => {
+export const fetchElectionsThunk = () => async (dispatch) => {
   await axios
     .get('http://localhost:5000/api/elections/')
-    .then((response) => dispatch(fetchElections(response.data)))
-    .catch((err) => console.log(err));
+    .then((response) => dispatch(fetchElections(response.data)));
 };
 
 export const saveElection = (title, position) => async (dispatch) => {
@@ -16,9 +15,7 @@ export const saveElection = (title, position) => async (dispatch) => {
       title,
       position,
     },
-  })
-    .then((response) => {
-      dispatch(setOneElection(response.data));
-    })
-    .catch((err) => console.log(err));
+  }).then((response) => {
+    dispatch(setOneElection(response.data));
+  });
 };
