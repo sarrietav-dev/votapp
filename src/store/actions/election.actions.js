@@ -1,7 +1,7 @@
-import { SET_ELECTIONS, SET_ONE_ELECTION } from './types.actions';
+import { FETCH_ELECTIONS, SET_ONE_ELECTION } from './types.actions';
 
-export const setElections = (data) => ({
-  type: SET_ELECTIONS,
+export const fetchElections = (data) => ({
+  type: FETCH_ELECTIONS,
   payload: data,
 });
 

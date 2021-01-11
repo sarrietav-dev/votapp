@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { setElections, setOneElection } from '../election.actions';
+import { fetchElections, setOneElection } from '../election.actions';
 
 export const getAllElections = () => async (dispatch) => {
   await axios
     .get('http://localhost:5000/api/elections/')
-    .then((response) => dispatch(setElections(response.data)))
+    .then((response) => dispatch(fetchElections(response.data)))
     .catch((err) => console.log(err));
 };
 
