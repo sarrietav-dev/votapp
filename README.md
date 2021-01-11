@@ -1,6 +1,7 @@
 # votapp
 
 ### How to deploy on your machine
+
 1. Clone this repo.
 2. Install **npm**.
 3. Run `npm install` on both backend and frontend folders. (Recommended: Install `nodemon`)
