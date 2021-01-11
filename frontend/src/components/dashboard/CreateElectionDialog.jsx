@@ -10,6 +10,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { closeDialog } from '../../actions/fab.actions';
+import { setOneElection } from '../../actions/election.actions';
 
 const CreateElectionDialog = () => {
   const [title, setTitle] = useState('');
@@ -32,6 +33,7 @@ const CreateElectionDialog = () => {
     }).catch((err) => console.log(err));
 
     if (response.status === 200) {
+      dispatch(setOneElection({ title, position }));
       handleClose();
     }
   };
