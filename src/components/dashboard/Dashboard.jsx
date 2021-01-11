@@ -7,8 +7,6 @@ import ElectionCard from './ElectionCard';
 import FabButton from './FabButton';
 import setElection from '../../actions/election.actions';
 
-// TODO: Map Election Cards.
-
 const Dashboard = () => {
   const dispatch = useDispatch();
 
