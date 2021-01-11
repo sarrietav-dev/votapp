@@ -11,8 +11,10 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    const response = await axios.get('http://localhost:5000/api/elections/');
-    dispatch(setElections(response.data));
+    await axios
+      .get('http://localhost:5000/api/elections/')
+      .then((response) => dispatch(setElections(response.data)))
+      .catch((err) => console.log(err));
   }, []);
 
   const elections = useSelector((state) => state.election.elections);
