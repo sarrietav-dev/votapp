@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { fetchElections, setOneElection } from '../election.actions';
+import { fetchElections, saveElection } from '../election.actions';
 
 export const fetchElectionsThunk = () => async (dispatch) => {
   await axios
@@ -7,7 +7,7 @@ export const fetchElectionsThunk = () => async (dispatch) => {
     .then((response) => dispatch(fetchElections(response.data)));
 };
 
-export const saveElection = (title, position) => async (dispatch) => {
+export const saveElectionThunk = (title, position) => async (dispatch) => {
   await axios({
     method: 'POST',
     url: 'http://localhost:5000/api/elections',
@@ -16,6 +16,6 @@ export const saveElection = (title, position) => async (dispatch) => {
       position,
     },
   }).then((response) => {
-    dispatch(setOneElection(response.data));
+    dispatch(saveElection(response.data));
   });
 };

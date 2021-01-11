@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeDialog } from '../../store/actions/fab.actions';
-import { saveElection } from '../../store/actions/thunks/elections.thunk';
+import { saveElectionThunk } from '../../store/actions/thunks/elections.thunk';
 
 const CreateElectionDialog = () => {
   const [title, setTitle] = useState('');
@@ -22,7 +22,7 @@ const CreateElectionDialog = () => {
     e.preventDefault();
 
     try {
-      dispatch(saveElection(title, position));
+      dispatch(saveElectionThunk(title, position));
       handleClose();
     } catch (err) {
       console.log(err);

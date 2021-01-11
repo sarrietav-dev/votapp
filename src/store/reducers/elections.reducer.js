@@ -1,4 +1,4 @@
-import { FETCH_ELECTIONS, SET_ONE_ELECTION } from '../actions/types.actions';
+import { FETCH_ELECTIONS, SAVE_ELECTION } from '../actions/types.actions';
 
 const defaultState = {
   elections: [],
@@ -10,7 +10,7 @@ export default (state = defaultState, action) => {
       return {
         elections: [...action.payload],
       };
-    case SET_ONE_ELECTION:
+    case SAVE_ELECTION:
       return {
         elections: [...state.elections, action.payload],
       };
