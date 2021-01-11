@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 
   try {
     await election.save();
-    return res.sendStatus(200);
+    return res.status(200).send(election);
   } catch (err) {
     return res.status(400).json({ err });
   }
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
     const elections = await Election.find({});
     return res.status(200).send(elections);
   } catch (err) {
-    return res.status(400).json({err})
+    return res.status(400).json({ err });
   }
 });
 
