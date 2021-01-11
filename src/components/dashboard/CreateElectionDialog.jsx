@@ -22,7 +22,7 @@ const CreateElectionDialog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await axios({
+    await axios({
       method: 'POST',
       url: 'http://localhost:5000/api/elections',
       data: {
@@ -30,20 +30,14 @@ const CreateElectionDialog = () => {
         position,
       },
       // eslint-disable-next-line no-console
-    }).catch((err) => console.log(err));
-
-    if (response.status === 200) {
-      dispatch(
-        setOneElection({
-          _id: response.data.id,
-          title,
-          position,
-          votes: [],
-          registeredVotes: [],
-        }),
-      );
-      handleClose();
-    }
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch(setOneElection(response.data));
+          handleClose();
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
