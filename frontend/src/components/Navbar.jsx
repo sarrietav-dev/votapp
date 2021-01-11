@@ -13,13 +13,16 @@ const useStyles = makeStyles(() => ({
   navbarSettings: {
     marginLeft: 'auto',
   },
+  navbar: {
+    marginBottom: 20,
+  },
 }));
 
 const Navbar = () => {
   const classes = useStyles();
   return (
     <div className="appbar-wrapper">
-      <AppBar position="static">
+      <AppBar position="static" className={classes.navbar}>
         <Toolbar>
           <IconButton edge="start" color="inherit">
             <HowToVoteIcon />
