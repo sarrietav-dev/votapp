@@ -6,7 +6,7 @@ import Navbar from '../Navbar';
 import CreateElectionDialog from './CreateElectionDialog';
 import ElectionCard from './ElectionCard';
 import FabButton from './FabButton';
-import { setElections } from '../../actions/election.actions';
+import { setElections } from '../../store/actions/election.actions';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
