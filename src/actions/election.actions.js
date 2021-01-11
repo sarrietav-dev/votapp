@@ -1,6 +1,11 @@
-import { SET_ELECTIONS } from './types.actions';
+import { SET_ELECTIONS, SET_ONE_ELECTION } from './types.actions';
 
-export default (data) => ({
+export const setElections = (data) => ({
   type: SET_ELECTIONS,
+  payload: data,
+});
+
+export const setOneElection = (data) => ({
+  type: SET_ONE_ELECTION,
   payload: data,
 });
