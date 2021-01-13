@@ -10,6 +10,9 @@ import {
 import HowToVoteIcon from '@material-ui/icons/HowToVote';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { logoutThunk } from '../store/actions/thunks/auth.thunks';
 
 const useStyles = makeStyles(() => ({
   navbarRightButtons: {
@@ -22,8 +25,13 @@ const useStyles = makeStyles(() => ({
 
 const Navbar = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    dispatch(logoutThunk());
+    history.push('/login');
+  };
 
   return (
     <div className="appbar-wrapper">
