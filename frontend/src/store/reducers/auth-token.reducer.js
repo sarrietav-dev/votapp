@@ -2,7 +2,7 @@
 import { SET_AUTH_TOKEN } from '../actions/types.actions';
 
 const defaultState = {
-  authToken: localStorage.getItem('GET_AUTH_TOKEN') || '',
+  authToken: localStorage.getItem('AUTH_TOKEN') || '',
 };
 
 export default (state = defaultState, action) => {
