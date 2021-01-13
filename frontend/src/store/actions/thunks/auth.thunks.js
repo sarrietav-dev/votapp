@@ -9,7 +9,12 @@ export const loginThunk = (email, password) => async (dispatch) => {
       email,
       password,
     },
-  }).then((response) => dispatch(setAuthToken(response.data.token)));
+  }).then((response) => {
+    const payload = response.data.token;
+    // eslint-disable-next-line no-undef
+    localStorage.setItem('GET_AUTH_TOKEN', payload);
+    dispatch(setAuthToken(payload));
+  });
 };
 
 export const logoutThunk = () => () => {};

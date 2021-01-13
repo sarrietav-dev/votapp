@@ -8,7 +8,6 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch (action.type) {
     case SET_AUTH_TOKEN:
-      localStorage.setItem('GET_AUTH_TOKEN', action.payload);
       return {
         ...state,
         authToken: action.payload,
