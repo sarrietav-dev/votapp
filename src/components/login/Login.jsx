@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { Button, Container, Grid, makeStyles } from '@material-ui/core';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import loginThunk from '../../store/actions/thunks/login.thunks';
+import { loginThunk } from '../../store/actions/thunks/auth.thunks';
 
 const useStyles = makeStyles((theme) => ({
   container: {
