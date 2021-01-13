@@ -22,6 +22,9 @@ const useStyles = makeStyles(() => ({
 
 const Navbar = () => {
   const classes = useStyles();
+
+  const handleLogout = () => {};
+
   return (
     <div className="appbar-wrapper">
       <AppBar position="static" className={classes.navbar}>
@@ -37,7 +40,7 @@ const Navbar = () => {
               </IconButton>
             </Tooltip>
             <Tooltip title="Logout">
-              <IconButton color="inherit">
+              <IconButton color="inherit" onClick={handleLogout}>
                 <ExitToAppIcon />
               </IconButton>
             </Tooltip>
