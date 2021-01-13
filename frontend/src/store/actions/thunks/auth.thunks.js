@@ -1,5 +1,5 @@
 import axios from 'axios';
-import setAuthToken from '../auth-token.actions';
+import { setAuthToken } from '../auth-token.actions';
 
 export const loginThunk = (email, password) => async (dispatch) => {
   await axios({
