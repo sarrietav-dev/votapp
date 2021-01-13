@@ -8,9 +8,10 @@ import {
 } from '@material-ui/core';
 import HowToVoteIcon from '@material-ui/icons/HowToVote';
 import SettingsIcon from '@material-ui/icons/Settings';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles(() => ({
-  navbarSettings: {
+  navbarRightButtons: {
     marginLeft: 'auto',
   },
   navbar: {
@@ -28,9 +29,12 @@ const Navbar = () => {
             <HowToVoteIcon />
           </IconButton>
           <Typography variant="h5">Voteapp</Typography>
-          <div className={classes.navbarSettings}>
+          <div className={classes.navbarRightButtons}>
             <IconButton color="inherit">
               <SettingsIcon />
+            </IconButton>
+            <IconButton color="inherit">
+              <ExitToAppIcon />
             </IconButton>
           </div>
         </Toolbar>
