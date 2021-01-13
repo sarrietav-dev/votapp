@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { SET_AUTH_TOKEN } from '../actions/types.actions';
+import { LOG_OUT, SET_AUTH_TOKEN } from '../actions/types.actions';
 
 const defaultState = {
   authToken: localStorage.getItem('AUTH_TOKEN') || '',
@@ -11,6 +11,10 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         authToken: action.payload,
+      };
+    case LOG_OUT:
+      return {
+        authToken: '',
       };
     default:
       return state;
