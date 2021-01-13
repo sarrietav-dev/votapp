@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 import axios from 'axios';
-import { setAuthToken } from '../auth-token.actions';
+import { logOut, setAuthToken } from '../auth-token.actions';
 
 export const loginThunk = (email, password) => async (dispatch) => {
   await axios({
@@ -11,7 +12,6 @@ export const loginThunk = (email, password) => async (dispatch) => {
     },
   }).then((response) => {
     const payload = response.data.token;
-    // eslint-disable-next-line no-undef
     localStorage.setItem('AUTH_TOKEN', payload);
     dispatch(setAuthToken(payload));
   });
@@ -19,4 +19,5 @@ export const loginThunk = (email, password) => async (dispatch) => {
 
 export const logoutThunk = () => (dispatch) => {
   localStorage.removeItem('AUTH_TOKEN');
+  dispatch(logOut());
 };
