@@ -5,6 +5,7 @@ import {
   Typography,
   IconButton,
   makeStyles,
+  Tooltip,
 } from '@material-ui/core';
 import HowToVoteIcon from '@material-ui/icons/HowToVote';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -30,12 +31,16 @@ const Navbar = () => {
           </IconButton>
           <Typography variant="h5">Voteapp</Typography>
           <div className={classes.navbarRightButtons}>
-            <IconButton color="inherit">
-              <SettingsIcon />
-            </IconButton>
-            <IconButton color="inherit">
-              <ExitToAppIcon />
-            </IconButton>
+            <Tooltip title="Admin Panel">
+              <IconButton color="inherit">
+                <SettingsIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Logout">
+              <IconButton color="inherit">
+                <ExitToAppIcon />
+              </IconButton>
+            </Tooltip>
           </div>
         </Toolbar>
       </AppBar>
