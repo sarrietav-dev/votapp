@@ -4,7 +4,7 @@ import { Redirect, Route } from 'react-router';
 
 // eslint-disable-next-line react/prop-types
 const AuthRoute = ({ children, ...rest }) => {
-  const authToken = useSelector((state) => state.authToken);
+  const authToken = useSelector((state) => state.auth.authToken);
 
   return (
     <Route

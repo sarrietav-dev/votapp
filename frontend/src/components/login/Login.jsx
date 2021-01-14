@@ -20,7 +20,7 @@ function Login() {
   const history = useHistory();
 
   const dispatch = useDispatch();
-  const authToken = useSelector((state) => state.authToken);
+  const authToken = useSelector((state) => state.auth.authToken);
 
   useEffect(() => {
     if (authToken !== '') {
