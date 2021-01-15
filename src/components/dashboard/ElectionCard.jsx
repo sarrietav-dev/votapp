@@ -14,7 +14,6 @@ import PropTypes from 'prop-types';
 const useStyles = makeStyles({
   card: {
     width: 275,
-    margin: 25,
   },
   editButton: {
     marginLeft: 'auto',
@@ -25,7 +24,7 @@ const ElectionCard = ({ title, position }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} variant="outlined">
       <CardActionArea>
         <CardContent>
           <Typography variant="h5">{title}</Typography>
