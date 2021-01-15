@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
+import { Grid } from '@material-ui/core';
 import Navbar from '../Navbar';
 import CreateElectionDialog from './CreateElectionDialog';
 import ElectionCard from './ElectionCard';
@@ -21,13 +22,17 @@ const Dashboard = () => {
       <Navbar />
       <FabButton />
       <CreateElectionDialog />
-      {elections.map((election) => (
-        <ElectionCard
-          title={election.title}
-          position={election.position}
-          key={uuid()}
-        />
-      ))}
+      <Grid container spacing={5} xs={12} justify="center" alignItems="center">
+        {elections.map((election) => (
+          <Grid item>
+            <ElectionCard
+              title={election.title}
+              position={election.position}
+              key={uuid()}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 };
