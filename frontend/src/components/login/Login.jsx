@@ -49,16 +49,16 @@ function Login() {
           justify="center"
           style={{ minHeight: '100vh' }}
         >
-          <Grid item xs={12}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
+          <Grid item>
+            <Grid container spacing={2} direction="column" alignItems="center">
+              <Grid item>
                 <TextField
                   variant="outlined"
                   label="Email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item>
                 <TextField
                   label="Password"
                   name="password"
@@ -67,7 +67,7 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item>
                 <Button color="primary" type="submit" variant="contained">
                   Log In
                 </Button>
