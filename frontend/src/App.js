@@ -4,13 +4,21 @@
 import './App.css';
 import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core';
 import Login from './components/login/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import AuthRoute from './components/AuthRoute';
 
+const useStyles = makeStyles({
+  app: {
+    height: '100vh',
+  },
+});
+
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
+    <div className={classes.app}>
       <BrowserRouter>
         <Switch>
           <Route path="/login">
