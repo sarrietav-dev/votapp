@@ -1,9 +1,11 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
 import FabButton from '../FabButton';
+import NavBar from '../Navbar';
 
 const ElectionDashboard = () => (
   <div className="electionWrapper">
+    <NavBar />
     <FabButton />
     <div className="banner">
       <h1>Title</h1>
