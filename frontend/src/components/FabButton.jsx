@@ -2,7 +2,7 @@ import React from 'react';
 import { Fab, makeStyles } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { useDispatch } from 'react-redux';
-import { openDialog } from '../../store/actions/fab.actions';
+import { openDialog } from '../store/actions/fab.actions';
 
 const useStyles = makeStyles(() => ({
   fab: {
