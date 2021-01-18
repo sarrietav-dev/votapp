@@ -12,6 +12,8 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import BackIcon from '@material-ui/icons/ArrowBack';
+import PropTypes from 'prop-types';
 import { logoutThunk } from '../store/actions/thunks/auth.thunks';
 
 const useStyles = makeStyles(() => ({
@@ -23,7 +25,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Navbar = () => {
+const Navbar = ({ actionIcon = 'home' }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -33,12 +35,19 @@ const Navbar = () => {
     history.push('/login');
   };
 
+  const renderActionButton = () => {
+    if (actionIcon === 'back') {
+      return <BackIcon />;
+    }
+    return <HowToVoteIcon />;
+  };
+
   return (
     <div className="appbar-wrapper">
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>
           <IconButton edge="start" color="inherit">
-            <HowToVoteIcon />
+            {renderActionButton()}
           </IconButton>
           <Typography variant="h5">Voteapp</Typography>
           <div className={classes.navbarRightButtons}>
@@ -57,6 +66,10 @@ const Navbar = () => {
       </AppBar>
     </div>
   );
+};
+
+Navbar.propTypes = {
+  actionIcon: PropTypes.string.isRequired,
 };
 
 export default Navbar;

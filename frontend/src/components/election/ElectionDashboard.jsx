@@ -5,7 +5,7 @@ import NavBar from '../Navbar';
 
 const ElectionDashboard = () => (
   <div className="electionWrapper">
-    <NavBar />
+    <NavBar actionIcon="back" />
     <FabButton />
     <div className="banner">
       <h1>Title</h1>
