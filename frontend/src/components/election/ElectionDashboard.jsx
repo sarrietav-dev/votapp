@@ -5,8 +5,13 @@ import FabButton from '../FabButton';
 import NavBar from '../Navbar';
 
 const useStyles = makeStyles(() => ({
-  electionWrapper: {},
-  banner: {},
+  electionWrapper: {
+    height: '100vh',
+  },
+  banner: {
+    height: '400px',
+    margin: 0,
+  },
 }));
 
 const ElectionDashboard = () => {
