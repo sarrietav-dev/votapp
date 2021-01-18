@@ -5,7 +5,7 @@ import { Grid } from '@material-ui/core';
 import Navbar from '../Navbar';
 import CreateElectionDialog from './CreateElectionDialog';
 import ElectionCard from './ElectionCard';
-import FabButton from './FabButton';
+import FabButton from '../FabButton';
 import { fetchElectionsThunk } from '../../store/actions/thunks/elections.thunk';
 
 const Dashboard = () => {
