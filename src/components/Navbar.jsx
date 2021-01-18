@@ -42,11 +42,13 @@ const Navbar = ({ actionIcon, path }) => {
           <IconButton
             edge="start"
             color="inherit"
-            onClick={
-              actionIcon === 'back'
-                ? history.push(path.from)
-                : history.push('/')
-            }
+            onClick={() => {
+              if (actionIcon === 'back') {
+                history.push(path.from);
+              } else {
+                history.push('/');
+              }
+            }}
           >
             {actionIcon === 'back' ? <BackIcon /> : <HowToVoteIcon />}
           </IconButton>
