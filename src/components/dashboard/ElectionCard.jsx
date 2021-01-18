@@ -31,11 +31,6 @@ const ElectionCard = ({ title, position }) => {
           <Typography>{position}</Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <IconButton className={classes.editButton}>
-          <EditIcon />
-        </IconButton>
-      </CardActions>
     </Card>
   );
 };
