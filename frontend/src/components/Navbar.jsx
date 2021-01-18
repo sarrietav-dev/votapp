@@ -35,19 +35,12 @@ const Navbar = ({ actionIcon = 'home' }) => {
     history.push('/login');
   };
 
-  const renderActionButton = () => {
-    if (actionIcon === 'back') {
-      return <BackIcon />;
-    }
-    return <HowToVoteIcon />;
-  };
-
   return (
     <div className="appbar-wrapper">
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>
           <IconButton edge="start" color="inherit">
-            {renderActionButton()}
+            {actionIcon === 'back' ? <BackIcon /> : <HowToVoteIcon />}
           </IconButton>
           <Typography variant="h5">Voteapp</Typography>
           <div className={classes.navbarRightButtons}>
