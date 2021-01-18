@@ -9,7 +9,7 @@ const ElectionDashboard = () => (
     <FabButton />
     <div className="banner">
       <h1>Title</h1>
-      <Button color="secondary">Action button</Button>
+      <Button color="secondary" variant="contained">Action button</Button>
     </div>
   </div>
 );
