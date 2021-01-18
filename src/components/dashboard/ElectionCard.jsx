@@ -7,6 +7,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles({
   card: {
@@ -19,9 +20,14 @@ const useStyles = makeStyles({
 
 const ElectionCard = ({ title, position }) => {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
-    <Card className={classes.card} variant="outlined">
+    <Card
+      className={classes.card}
+      variant="outlined"
+      onClick={() => history.push('/election')}
+    >
       <CardActionArea>
         <CardContent>
           <Typography variant="h5">{title}</Typography>

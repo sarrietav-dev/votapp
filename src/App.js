@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core';
 import Login from './components/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import AuthRoute from './components/AuthRoute';
+import ElectionDashboard from './components/election/ElectionDashboard';
 
 const useStyles = makeStyles({
   app: {
@@ -24,6 +25,9 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <AuthRoute path="/election">
+            <ElectionDashboard />
+          </AuthRoute>
           <AuthRoute path="/">
             <Dashboard />
           </AuthRoute>
