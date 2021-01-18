@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Navbar = ({ actionIcon = 'home' }) => {
+const Navbar = ({ actionIcon, path }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -39,7 +39,15 @@ const Navbar = ({ actionIcon = 'home' }) => {
     <div className="appbar-wrapper">
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>
-          <IconButton edge="start" color="inherit">
+          <IconButton
+            edge="start"
+            color="inherit"
+            onClick={
+              actionIcon === 'back'
+                ? history.push(path.from)
+                : history.push('/')
+            }
+          >
             {actionIcon === 'back' ? <BackIcon /> : <HowToVoteIcon />}
           </IconButton>
           <Typography variant="h5">Voteapp</Typography>
@@ -61,8 +69,16 @@ const Navbar = ({ actionIcon = 'home' }) => {
   );
 };
 
+Navbar.defaultProps = {
+  actionIcon: 'home',
+  path: { from: '' },
+};
+
 Navbar.propTypes = {
-  actionIcon: PropTypes.string.isRequired,
+  actionIcon: PropTypes.string,
+  path: PropTypes.shape({
+    from: PropTypes.string,
+  }),
 };
 
 export default Navbar;
