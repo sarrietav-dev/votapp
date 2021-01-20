@@ -1,5 +1,10 @@
+/* eslint-disable no-underscore-dangle */
 import axios from 'axios';
-import { fetchElections, saveElection } from '../election.actions';
+import {
+  editElection,
+  fetchElections,
+  saveElection,
+} from '../election.actions';
 
 export const fetchElectionsThunk = () => async (dispatch) => {
   await axios
@@ -18,4 +23,12 @@ export const saveElectionThunk = (title, position) => async (dispatch) => {
   }).then((response) => {
     dispatch(saveElection(response.data));
   });
+};
+
+export const editElectionThunk = (data) => async (dispatch) => {
+  await axios({
+    method: 'PATCH',
+    url: `http://localhost:5000/api/elections/${data._id}`,
+    data,
+  }).then((response) => dispatch(editElection(response.data)));
 };
