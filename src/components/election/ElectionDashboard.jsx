@@ -1,4 +1,5 @@
-import { Button, IconButton, makeStyles } from '@material-ui/core';
+/* eslint-disable object-curly-newline */
+import { Button, Container, IconButton, makeStyles } from '@material-ui/core';
 import React from 'react';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FabButton from '../FabButton';
@@ -9,8 +10,11 @@ const useStyles = makeStyles(() => ({
     height: '100vh',
   },
   banner: {
-    height: '400px',
     margin: 0,
+  },
+  banner__title: {
+    marginTop: 40,
+    marginBottom: 40,
   },
 }));
 
@@ -20,15 +24,15 @@ const ElectionDashboard = () => {
     <div className={classes.electionWrapper}>
       <NavBar actionIcon="back" path={{ from: '/' }} />
       <FabButton />
-      <div className={classes.banner}>
-        <h1>Title</h1>
+      <Container maxWidth="md" className={classes.banner}>
+        <h1 className={classes.banner__title}>Title</h1>
         <Button color="secondary" variant="contained">
           Action button
         </Button>
         <IconButton>
           <SettingsIcon />
         </IconButton>
-      </div>
+      </Container>
     </div>
   );
 };
