@@ -8,12 +8,16 @@ import {
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const message = "This can't be undone";
+
 const DeleteElectionWarning = ({ open, setIsWarningOpen }) => (
   <Dialog open={open}>
     <DialogTitle>Are you sure you want to delete this?</DialogTitle>
-    <DialogContent>This can&apost be undone</DialogContent>
+    <DialogContent>{message}</DialogContent>
     <DialogActions>
-      <Button onClick={() => setIsWarningOpen(false)}>Cancel</Button>
+      <Button onClick={() => setIsWarningOpen(false)} color="secondary">
+        Cancel
+      </Button>
       <Button>Continue</Button>
     </DialogActions>
   </Dialog>
