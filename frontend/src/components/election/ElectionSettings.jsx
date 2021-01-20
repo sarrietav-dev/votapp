@@ -5,10 +5,13 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  Grid,
+  IconButton,
   TextField,
 } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { closeDialog } from '../../store/actions/dialog.actions';
 import { editElectionThunk } from '../../store/actions/thunks/elections.thunk';
 
@@ -55,12 +58,23 @@ const ElectionSettings = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button color="primary" onClick={() => dispatch(closeDialog())}>
-            Cancel
-          </Button>
-          <Button color="primary" type="submit">
-            Accept
-          </Button>
+          <Grid container justify="space-between" alignItems="center">
+            <Grid item>
+              <IconButton>
+                <DeleteIcon />
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <div className="">
+                <Button color="primary" onClick={() => dispatch(closeDialog())}>
+                  Cancel
+                </Button>
+                <Button color="primary" type="submit">
+                  Accept
+                </Button>
+              </div>
+            </Grid>
+          </Grid>
         </DialogActions>
       </form>
     </Dialog>
