@@ -28,7 +28,7 @@ export default (state = defaultState, action) => {
         ...state,
         currentElection: state.elections.filter(
           (election) => election._id === action.payload,
-        ),
+        )[0],
       };
     case EMPTY_CURRENT_ELECTION:
       return {
