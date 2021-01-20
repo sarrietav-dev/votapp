@@ -1,5 +1,11 @@
 /* eslint-disable no-underscore-dangle */
 import {
+  deleteElection,
+  editElection,
+} from '../../utils/electionReducer.utils';
+import {
+  DELETE_ELECTION,
+  EDIT_ELECTION,
   EMPTY_CURRENT_ELECTION,
   FETCH_ELECTIONS,
   SAVE_ELECTION,
@@ -34,6 +40,16 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         currentElection: {},
+      };
+    case DELETE_ELECTION:
+      return {
+        currentElection: {},
+        elections: deleteElection(state.elections, action.payload),
+      };
+    case EDIT_ELECTION:
+      return {
+        elections: editElection(state.elections, action.payload),
+        currentElection: action.payload,
       };
     default:
       return state;
