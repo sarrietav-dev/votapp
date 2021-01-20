@@ -67,7 +67,7 @@ const ElectionSettings = () => {
           <DialogActions>
             <Grid container justify="space-between" alignItems="center">
               <Grid item>
-                <IconButton>
+                <IconButton onClick={() => setIsWarningOpen(true)}>
                   <DeleteIcon />
                 </IconButton>
               </Grid>
