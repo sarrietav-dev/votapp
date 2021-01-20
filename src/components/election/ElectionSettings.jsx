@@ -18,6 +18,7 @@ import { editElectionThunk } from '../../store/actions/thunks/elections.thunk';
 const ElectionSettings = () => {
   const [title, setTitle] = useState('');
   const [position, setPosition] = useState('');
+  const [isWarningOpen, setIsWarningOpen] = useState(false);
   const isOpen = useSelector((state) => state.dialog.isOpen);
   const currentElection = useSelector(
     (state) => state.election.currentElection,
