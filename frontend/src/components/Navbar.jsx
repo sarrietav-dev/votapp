@@ -15,6 +15,7 @@ import { useHistory } from 'react-router';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import PropTypes from 'prop-types';
 import { logoutThunk } from '../store/actions/thunks/auth.thunks';
+import { emptyCurrentElection } from '../store/actions/election.actions';
 
 const useStyles = makeStyles(() => ({
   navbarRightButtons: {
@@ -35,21 +36,20 @@ const Navbar = ({ actionIcon, path }) => {
     history.push('/login');
   };
 
+  const handleOnClick = () => {
+    if (actionIcon === 'back') {
+      dispatch(emptyCurrentElection());
+      history.push(path.from);
+    } else {
+      history.push('/');
+    }
+  };
+
   return (
     <div className="appbar-wrapper">
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            onClick={() => {
-              if (actionIcon === 'back') {
-                history.push(path.from);
-              } else {
-                history.push('/');
-              }
-            }}
-          >
+          <IconButton edge="start" color="inherit" onClick={handleOnClick}>
             {actionIcon === 'back' ? <BackIcon /> : <HowToVoteIcon />}
           </IconButton>
           <Typography variant="h5">Voteapp</Typography>
