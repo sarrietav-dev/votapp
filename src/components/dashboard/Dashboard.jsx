@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuid } from 'uuid';
@@ -26,8 +27,11 @@ const Dashboard = () => {
         {elections.map((election) => (
           <Grid item>
             <ElectionCard
-              title={election.title}
-              position={election.position}
+              data={{
+                _id: election._id,
+                title: election.title,
+                position: election.position,
+              }}
               key={uuid()}
             />
           </Grid>

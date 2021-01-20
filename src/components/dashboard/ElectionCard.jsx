@@ -18,20 +18,20 @@ const useStyles = makeStyles({
   },
 });
 
-const ElectionCard = ({ title, position }) => {
+const ElectionCard = ({ data }) => {
   const classes = useStyles();
   const history = useHistory();
 
+  const onClickHandler = () => {
+    history.push('/election');
+  };
+
   return (
-    <Card
-      className={classes.card}
-      variant="outlined"
-      onClick={() => history.push('/election')}
-    >
+    <Card className={classes.card} variant="outlined" onClick={onClickHandler}>
       <CardActionArea>
         <CardContent>
-          <Typography variant="h5">{title}</Typography>
-          <Typography>{position}</Typography>
+          <Typography variant="h5">{data.title}</Typography>
+          <Typography>{data.position}</Typography>
         </CardContent>
       </CardActionArea>
     </Card>
@@ -39,8 +39,10 @@ const ElectionCard = ({ title, position }) => {
 };
 
 ElectionCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  position: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    title: PropTypes.string,
+    position: PropTypes.string,
+  }).isRequired,
 };
 
 export default ElectionCard;
