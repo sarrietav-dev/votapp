@@ -48,7 +48,7 @@ const ElectionSettings = () => {
           <Button color="primary" onClick={() => dispatch(closeDialog())}>
             Cancel
           </Button>
-          <Button color="primary">Accept</Button>
+          <Button color="primary" type="submit">Accept</Button>
         </DialogActions>
       </form>
     </Dialog>
