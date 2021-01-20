@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import {
   Button,
   Dialog,
@@ -14,12 +15,15 @@ const ElectionSettings = () => {
   const [title, setTitle] = useState('');
   const [position, setPosition] = useState('');
   const isOpen = useSelector((state) => state.dialog.isOpen);
+  const currentElectionId = useSelector(
+    (state) => state.election.currentElection._id,
+  );
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(`${title} and ${position}`);
     dispatch(closeDialog());
   };
 
