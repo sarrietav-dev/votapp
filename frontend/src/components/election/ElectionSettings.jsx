@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { closeDialog } from '../../store/actions/dialog.actions';
 import { editElectionThunk } from '../../store/actions/thunks/elections.thunk';
+import DeleteElectionWarning from './DeleteElectionWarning';
 
 const ElectionSettings = () => {
   const [title, setTitle] = useState('');
@@ -37,48 +38,57 @@ const ElectionSettings = () => {
   };
 
   return (
-    <Dialog open={isOpen}>
-      <form onSubmit={handleSubmit}>
-        <DialogTitle>Election Title</DialogTitle>
-        <DialogContent>
-          <TextField
-            margin="dense"
-            label="Title"
-            type="text"
-            fullWidth
-            variant="filled"
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <TextField
-            margin="dense"
-            label="Position"
-            type="text"
-            fullWidth
-            variant="filled"
-            onChange={(e) => setPosition(e.target.value)}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Grid container justify="space-between" alignItems="center">
-            <Grid item>
-              <IconButton>
-                <DeleteIcon />
-              </IconButton>
+    <div className="election-settings-wrapper">
+      <DeleteElectionWarning
+        open={isWarningOpen}
+        setIsWarningOpen={setIsWarningOpen}
+      />
+      <Dialog open={isOpen}>
+        <form onSubmit={handleSubmit}>
+          <DialogTitle>Election Title</DialogTitle>
+          <DialogContent>
+            <TextField
+              margin="dense"
+              label="Title"
+              type="text"
+              fullWidth
+              variant="filled"
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <TextField
+              margin="dense"
+              label="Position"
+              type="text"
+              fullWidth
+              variant="filled"
+              onChange={(e) => setPosition(e.target.value)}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Grid container justify="space-between" alignItems="center">
+              <Grid item>
+                <IconButton>
+                  <DeleteIcon />
+                </IconButton>
+              </Grid>
+              <Grid item>
+                <div className="">
+                  <Button
+                    color="primary"
+                    onClick={() => dispatch(closeDialog())}
+                  >
+                    Cancel
+                  </Button>
+                  <Button color="primary" type="submit">
+                    Accept
+                  </Button>
+                </div>
+              </Grid>
             </Grid>
-            <Grid item>
-              <div className="">
-                <Button color="primary" onClick={() => dispatch(closeDialog())}>
-                  Cancel
-                </Button>
-                <Button color="primary" type="submit">
-                  Accept
-                </Button>
-              </div>
-            </Grid>
-          </Grid>
-        </DialogActions>
-      </form>
-    </Dialog>
+          </DialogActions>
+        </form>
+      </Dialog>
+    </div>
   );
 };
 
