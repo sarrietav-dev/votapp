@@ -7,21 +7,38 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { closeDialog } from '../../store/actions/dialog.actions';
+import { deleteElectionThunk } from '../../store/actions/thunks/elections.thunk';
 
 const message = "This can't be undone";
 
-const DeleteElectionWarning = ({ open, setIsWarningOpen }) => (
-  <Dialog open={open}>
-    <DialogTitle>Are you sure you want to delete this?</DialogTitle>
-    <DialogContent>{message}</DialogContent>
-    <DialogActions>
-      <Button onClick={() => setIsWarningOpen(false)} color="secondary">
-        Cancel
-      </Button>
-      <Button>Continue</Button>
-    </DialogActions>
-  </Dialog>
-);
+const DeleteElectionWarning = ({ open, setIsWarningOpen }) => {
+  const dispatch = useDispatch();
+  const id = useSelector((state) => state.election.currentElection);
+  const history = useHistory();
+
+  const handleClick = () => {
+    dispatch(deleteElectionThunk(id));
+    setIsWarningOpen(false);
+    dispatch(closeDialog());
+    history.push('/');
+  };
+
+  return (
+    <Dialog open={open}>
+      <DialogTitle>Are you sure you want to delete this?</DialogTitle>
+      <DialogContent>{message}</DialogContent>
+      <DialogActions>
+        <Button onClick={() => setIsWarningOpen(false)} color="secondary">
+          Cancel
+        </Button>
+        <Button onClick={handleClick}>Continue</Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
 
 DeleteElectionWarning.propTypes = {
   open: PropTypes.bool.isRequired,
