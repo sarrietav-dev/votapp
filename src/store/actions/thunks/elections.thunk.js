@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 import {
+  deleteElection,
   editElection,
   fetchElections,
   saveElection,
@@ -31,4 +32,11 @@ export const editElectionThunk = (data) => async (dispatch) => {
     url: `http://localhost:5000/api/elections/${data._id}`,
     data,
   }).then(() => dispatch(editElection(data)));
+};
+
+export const deleteElectionThunk = (id) => async (dispatch) => {
+  await axios({
+    method: 'DELETE',
+    url: `http://localhost:5000/api/elections/${id}`,
+  }).then(() => dispatch(deleteElection(id)));
 };
