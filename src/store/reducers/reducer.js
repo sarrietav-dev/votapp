@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import authReducer from './auth-token.reducer';
-import fabReducer from './dialogs.reducer';
+import dialogsReducer from './dialogs.reducer';
 import electionReducer from './elections.reducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  fab: fabReducer,
+  dialog: dialogsReducer,
   election: electionReducer,
 });
 
