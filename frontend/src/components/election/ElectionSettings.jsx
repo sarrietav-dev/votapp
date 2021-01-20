@@ -10,20 +10,21 @@ import {
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeDialog } from '../../store/actions/dialog.actions';
+import { editElectionThunk } from '../../store/actions/thunks/elections.thunk';
 
 const ElectionSettings = () => {
   const [title, setTitle] = useState('');
   const [position, setPosition] = useState('');
   const isOpen = useSelector((state) => state.dialog.isOpen);
-  const currentElectionId = useSelector(
-    (state) => state.election.currentElection._id,
+  const currentElection = useSelector(
+    (state) => state.election.currentElection,
   );
 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    dispatch(editElectionThunk({ ...currentElection, title, position }));
     dispatch(closeDialog());
   };
 
