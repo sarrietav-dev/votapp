@@ -47,4 +47,13 @@ router.patch('/:id', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    await Election.deleteOne({ _id: req.params.id });
+    return res.sendStatus(200);
+  } catch (err) {
+    return res.status(400).json({ err });
+  }
+});
+
 module.exports = router;
