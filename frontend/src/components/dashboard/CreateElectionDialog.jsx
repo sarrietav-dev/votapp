@@ -15,7 +15,7 @@ const CreateElectionDialog = () => {
   const [title, setTitle] = useState('');
   const [position, setPosition] = useState('');
   const dispatch = useDispatch();
-  const isOpen = useSelector((state) => state.fab.isOpen); // <--- Issue
+  const isOpen = useSelector((state) => state.fab.isOpen);
 
   const handleClose = () => dispatch(closeDialog());
   const handleSubmit = async (e) => {
