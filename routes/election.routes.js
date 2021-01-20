@@ -32,6 +32,9 @@ router.get('/', async (req, res) => {
 });
 
 router.patch('/:id', async (req, res) => {
+  const { error } = electionValidation(req.body);
+  if (error) return res.status(400).json({ error: error.details[0].message });
+
   try {
     const election = await Election.updateOne(
       { _id: req.body._id },
