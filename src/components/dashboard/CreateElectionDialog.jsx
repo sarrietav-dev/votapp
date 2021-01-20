@@ -18,7 +18,7 @@ const CreateElectionDialog = () => {
   const isOpen = useSelector((state) => state.fab.isOpen);
 
   const handleClose = () => dispatch(closeDialog());
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     try {
