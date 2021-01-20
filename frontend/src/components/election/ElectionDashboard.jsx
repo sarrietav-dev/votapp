@@ -33,7 +33,7 @@ const ElectionDashboard = () => {
       <ElectionSettings />
       <FabButton />
       <Container maxWidth="md" className={classes.banner}>
-        <h1 className={classes.banner__title}>Title</h1>
+        <h1 className={classes.banner__title}>{currentElection.title}</h1>
         <Button color="secondary" variant="contained">
           Action button
         </Button>
