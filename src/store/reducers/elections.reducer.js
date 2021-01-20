@@ -15,10 +15,12 @@ export default (state = defaultState, action) => {
   switch (action.type) {
     case FETCH_ELECTIONS:
       return {
+        ...state,
         elections: [...action.payload],
       };
     case SAVE_ELECTION:
       return {
+        ...state,
         elections: [...state.elections, action.payload],
       };
     case SET_CURRENT_ELECTION:
