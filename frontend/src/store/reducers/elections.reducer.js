@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import {
+  EMPTY_CURRENT_ELECTION,
   FETCH_ELECTIONS,
   SAVE_ELECTION,
   SET_CURRENT_ELECTION,
@@ -26,6 +27,11 @@ export default (state = defaultState, action) => {
         currentElection: state.elections.filter(
           (election) => election._id === action.payload,
         ),
+      };
+    case EMPTY_CURRENT_ELECTION:
+      return {
+        ...state,
+        currentElection: {},
       };
     default:
       return state;
