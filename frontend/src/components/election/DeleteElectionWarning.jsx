@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import {
   Button,
   Dialog,
@@ -16,7 +17,7 @@ const message = "This can't be undone";
 
 const DeleteElectionWarning = ({ open, setIsWarningOpen }) => {
   const dispatch = useDispatch();
-  const id = useSelector((state) => state.election.currentElection);
+  const id = useSelector((state) => state.election.currentElection._id);
   const history = useHistory();
 
   const handleClick = () => {
