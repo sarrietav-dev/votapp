@@ -1,4 +1,5 @@
 import {
+  EMPTY_CURRENT_ELECTION,
   FETCH_ELECTIONS,
   SAVE_ELECTION,
   SET_CURRENT_ELECTION,
@@ -17,4 +18,8 @@ export const saveElection = (data) => ({
 export const setCurrentElection = (data) => ({
   type: SET_CURRENT_ELECTION,
   payload: data,
+});
+
+export const emptyCurrentElection = () => ({
+  type: EMPTY_CURRENT_ELECTION,
 });
