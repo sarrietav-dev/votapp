@@ -7,12 +7,14 @@ import {
   TextField,
 } from '@material-ui/core';
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeDialog } from '../../store/actions/dialog.actions';
 
 const ElectionSettings = () => {
   const [title, setTitle] = useState('');
   const [position, setPosition] = useState('');
   const isOpen = useSelector((state) => state.dialog.isOpen);
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +45,9 @@ const ElectionSettings = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button color="primary">Cancel</Button>
+          <Button color="primary" onClick={() => dispatch(closeDialog())}>
+            Cancel
+          </Button>
           <Button color="primary">Accept</Button>
         </DialogActions>
       </form>

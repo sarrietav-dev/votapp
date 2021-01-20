@@ -4,6 +4,7 @@ import React from 'react';
 import SettingsIcon from '@material-ui/icons/Settings';
 import FabButton from '../FabButton';
 import NavBar from '../Navbar';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles(() => ({
   electionWrapper: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles(() => ({
 
 const ElectionDashboard = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   return (
     <div className={classes.electionWrapper}>
       <NavBar actionIcon="back" path={{ from: '/' }} />
@@ -29,7 +31,7 @@ const ElectionDashboard = () => {
         <Button color="secondary" variant="contained">
           Action button
         </Button>
-        <IconButton>
+        <IconButton onClick={() => dispatch()}>
           <SettingsIcon />
         </IconButton>
       </Container>
