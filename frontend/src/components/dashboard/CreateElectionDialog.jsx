@@ -8,7 +8,7 @@ import {
   TextField,
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeDialog } from '../../store/actions/fab.actions';
+import { closeDialog } from '../../store/actions/dialog.actions';
 import { saveElectionThunk } from '../../store/actions/thunks/elections.thunk';
 
 const CreateElectionDialog = () => {
