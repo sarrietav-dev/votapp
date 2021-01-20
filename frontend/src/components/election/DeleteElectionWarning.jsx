@@ -5,24 +5,32 @@ import {
   DialogContent,
   DialogTitle,
 } from '@material-ui/core';
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { closeDialog } from '../../store/actions/dialog.actions';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-const DeleteElectionWarning = () => {
-  const isOpen = useSelector((state) => state.dialog.isOpen);
-  const dispatch = useDispatch();
+const DeleteElectionWarning = ({ isOpen }) => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => setOpen(isOpen), []);
 
   return (
-    <Dialog open={isOpen}>
+    <Dialog open={open}>
       <DialogTitle>Are you sure you want to delete this?</DialogTitle>
       <DialogContent>This can&apost be undone</DialogContent>
       <DialogActions>
-        <Button onClick={() => dispatch(closeDialog())}>Cancel</Button>
+        <Button onClick={() => setOpen(false)}>Cancel</Button>
         <Button>Continue</Button>
       </DialogActions>
     </Dialog>
   );
+};
+
+DeleteElectionWarning.defaultProps = {
+  isOpen: false,
+};
+
+DeleteElectionWarning.propTypes = {
+  isOpen: PropTypes.bool,
 };
 
 export default DeleteElectionWarning;
