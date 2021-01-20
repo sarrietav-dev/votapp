@@ -30,5 +30,5 @@ export const editElectionThunk = (data) => async (dispatch) => {
     method: 'PATCH',
     url: `http://localhost:5000/api/elections/${data._id}`,
     data,
-  }).then((response) => dispatch(editElection(response.data)));
+  }).then(() => dispatch(editElection(data)));
 };
