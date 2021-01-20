@@ -14,9 +14,15 @@ const ElectionSettings = () => {
   const [position, setPosition] = useState('');
   const isOpen = useSelector((state) => state.dialog.isOpen);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(`${title} and ${position}`);
+  };
+
   return (
     <Dialog open={isOpen}>
-      <form>
+      <form onSubmit={handleSubmit}>
         <DialogTitle>Election Title</DialogTitle>
         <DialogContent>
           <TextField
