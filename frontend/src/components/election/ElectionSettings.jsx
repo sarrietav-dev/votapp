@@ -24,7 +24,11 @@ const ElectionSettings = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editElectionThunk({ ...currentElection, title, position }));
+    try {
+      dispatch(editElectionThunk({ ...currentElection, title, position }));
+    } catch (err) {
+      console.log(err);
+    }
     dispatch(closeDialog());
   };
 
