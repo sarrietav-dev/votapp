@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogTitle,
 } from '@material-ui/core';
-import React, {  } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const DeleteElectionWarning = ({ open, setIsWarningOpen }) => (
