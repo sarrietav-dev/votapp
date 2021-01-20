@@ -15,6 +15,6 @@ export const saveElection = (data) => ({
 });
 
 export const setCurrentElection = (data) => ({
-  tyle: SET_CURRENT_ELECTION,
+  type: SET_CURRENT_ELECTION,
   payload: data,
 });
