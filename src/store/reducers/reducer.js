@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import authReducer from './auth-token.reducer';
-import fabReducer from './fab.reducer';
+import fabReducer from './dialogs.reducer';
 import electionReducer from './elections.reducer';
 
 const rootReducer = combineReducers({
