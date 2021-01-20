@@ -1,8 +1,9 @@
 /* eslint-disable object-curly-newline */
 import { Button, Container, IconButton, makeStyles } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import FabButton from '../FabButton';
 import NavBar from '../Navbar';
 import { openDialog } from '../../store/actions/dialog.actions';
@@ -22,10 +23,17 @@ const useStyles = makeStyles(() => ({
 }));
 
 const ElectionDashboard = () => {
-  const currentElection = useSelector((state) => state.election.currentElection);
+  const currentElection = useSelector(
+    (state) => state.election.currentElection,
+  );
 
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    if (Object.keys(currentElection).length === 0) history.push('/');
+  });
 
   return (
     <div className={classes.electionWrapper}>
