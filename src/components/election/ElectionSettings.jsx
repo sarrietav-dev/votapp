@@ -20,6 +20,7 @@ const ElectionSettings = () => {
     e.preventDefault();
 
     console.log(`${title} and ${position}`);
+    dispatch(closeDialog());
   };
 
   return (
@@ -48,7 +49,9 @@ const ElectionSettings = () => {
           <Button color="primary" onClick={() => dispatch(closeDialog())}>
             Cancel
           </Button>
-          <Button color="primary" type="submit">Accept</Button>
+          <Button color="primary" type="submit">
+            Accept
+          </Button>
         </DialogActions>
       </form>
     </Dialog>
