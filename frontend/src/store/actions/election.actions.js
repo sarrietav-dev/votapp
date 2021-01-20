@@ -1,4 +1,6 @@
 import {
+  DELETE_ELECTION,
+  EDIT_ELECTION,
   EMPTY_CURRENT_ELECTION,
   FETCH_ELECTIONS,
   SAVE_ELECTION,
@@ -22,4 +24,14 @@ export const setCurrentElection = (data) => ({
 
 export const emptyCurrentElection = () => ({
   type: EMPTY_CURRENT_ELECTION,
+});
+
+export const editElection = (data) => ({
+  type: EDIT_ELECTION,
+  payload: data,
+});
+
+export const deleteElection = (data) => ({
+  type: DELETE_ELECTION,
+  payload: data,
 });
