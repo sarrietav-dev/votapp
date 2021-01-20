@@ -7,3 +7,4 @@ export const OPEN_DIALOG = 'OPEN_DIALOG';
 // Elections actions.
 export const FETCH_ELECTIONS = 'FETCH_ELECTIONS';
 export const SAVE_ELECTION = 'SAVE_ELECTION';
+export const SET_CURRENT_ELECTION = 'SET_CURRENT_ELECTION';
