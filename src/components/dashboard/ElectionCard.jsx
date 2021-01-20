@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import {
   Card,
@@ -8,6 +9,8 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setCurrentElection } from '../../store/actions/election.actions';
 
 const useStyles = makeStyles({
   card: {
@@ -21,8 +24,10 @@ const useStyles = makeStyles({
 const ElectionCard = ({ data }) => {
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const onClickHandler = () => {
+    dispatch(setCurrentElection(data._id));
     history.push('/election');
   };
 
@@ -40,6 +45,7 @@ const ElectionCard = ({ data }) => {
 
 ElectionCard.propTypes = {
   data: PropTypes.shape({
+    _id: PropTypes.string,
     title: PropTypes.string,
     position: PropTypes.string,
   }).isRequired,
