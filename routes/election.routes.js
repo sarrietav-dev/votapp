@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const router = require('express').Router();
 const Election = require('../models/Election.model');
 const electionValidation = require('../validation/election.val');
@@ -25,6 +26,19 @@ router.get('/', async (req, res) => {
   try {
     const elections = await Election.find({});
     return res.status(200).send(elections);
+  } catch (err) {
+    return res.status(400).json({ err });
+  }
+});
+
+router.patch('/:id', async (req, res) => {
+  try {
+    const election = await Election.updateOne(
+      { _id: req.body._id },
+      { ...req.body }
+    );
+
+    return res.status(200).json(election);
   } catch (err) {
     return res.status(400).json({ err });
   }
