@@ -12,13 +12,13 @@ import {
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { useForm } from 'react-hook-form';
 import { closeDialog } from '../../store/actions/dialog.actions';
 import { editElectionThunk } from '../../store/actions/thunks/elections.thunk';
 import DeleteElectionWarning from './DeleteElectionWarning';
 
 const ElectionSettings = () => {
-  const [title, setTitle] = useState('');
-  const [position, setPosition] = useState('');
+  const { editElection, handleSubmit } = useForm();
   const [isWarningOpen, setIsWarningOpen] = useState(false);
   const isOpen = useSelector((state) => state.dialog.isOpen);
   const currentElection = useSelector(
@@ -27,10 +27,9 @@ const ElectionSettings = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
     try {
-      dispatch(editElectionThunk({ ...currentElection, title, position }));
+      dispatch(editElectionThunk({ ...currentElection, ...data }));
     } catch (err) {
       console.log(err);
     }
@@ -44,7 +43,7 @@ const ElectionSettings = () => {
         setIsWarningOpen={setIsWarningOpen}
       />
       <Dialog open={isOpen}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <DialogTitle>Election Title</DialogTitle>
           <DialogContent>
             <TextField
@@ -53,7 +52,8 @@ const ElectionSettings = () => {
               type="text"
               fullWidth
               variant="filled"
-              onChange={(e) => setTitle(e.target.value)}
+              name="title"
+              ref={editElection}
             />
             <TextField
               margin="dense"
@@ -61,7 +61,8 @@ const ElectionSettings = () => {
               type="text"
               fullWidth
               variant="filled"
-              onChange={(e) => setPosition(e.target.value)}
+              name="position"
+              ref={editElection}
             />
           </DialogContent>
           <DialogActions>
@@ -72,7 +73,7 @@ const ElectionSettings = () => {
                 </IconButton>
               </Grid>
               <Grid item>
-                <div className="">
+                <div>
                   <Button
                     color="primary"
                     onClick={() => dispatch(closeDialog())}
