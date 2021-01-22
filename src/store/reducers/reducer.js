@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 import authReducer from './auth-token.reducer';
-import dialogsReducer from './dialogs.reducer';
+import dialogReducer from './dialogs.reducer';
 import electionReducer from './elections.reducer';
+import alertReducer from './alerts.reducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  dialog: dialogsReducer,
+  dialog: dialogReducer,
   election: electionReducer,
+  alert: alertReducer,
 });
 
 export default rootReducer;
