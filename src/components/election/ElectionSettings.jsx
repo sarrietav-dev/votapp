@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-wrap-multilines */
 /* eslint-disable no-underscore-dangle */
 import {
   Button,
@@ -5,6 +6,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
   Grid,
   IconButton,
   TextField,
@@ -12,14 +14,14 @@ import {
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { closeDialog } from '../../store/actions/dialog.actions';
 import { editElectionThunk } from '../../store/actions/thunks/elections.thunk';
 import DeleteElectionWarning from './DeleteElectionWarning';
 import { raiseAlert } from '../../store/actions/alert.actions';
 
 const ElectionSettings = () => {
-  const { editElection, handleSubmit } = useForm();
+  const { handleSubmit, control } = useForm();
   const [isWarningOpen, setIsWarningOpen] = useState(false);
   const isOpen = useSelector((state) => state.dialog.isOpen);
   const currentElection = useSelector(
@@ -47,24 +49,38 @@ const ElectionSettings = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <DialogTitle>Election Title</DialogTitle>
           <DialogContent>
-            <TextField
-              margin="dense"
-              label="Title"
-              type="text"
-              fullWidth
-              variant="filled"
-              name="title"
-              ref={editElection}
-            />
-            <TextField
-              margin="dense"
-              label="Position"
-              type="text"
-              fullWidth
-              variant="filled"
-              name="position"
-              ref={editElection}
-            />
+            <FormControl>
+              <Controller
+                name="title"
+                as={
+                  <TextField
+                    margin="dense"
+                    label="Title"
+                    type="text"
+                    fullWidth
+                    variant="filled"
+                    name="title"
+                  />
+                }
+                control={control}
+              />
+            </FormControl>
+            <FormControl>
+              <Controller
+                name="position"
+                as={
+                  <TextField
+                    margin="dense"
+                    label="Position"
+                    type="text"
+                    fullWidth
+                    variant="filled"
+                    name="position"
+                  />
+                }
+                control={control}
+              />
+            </FormControl>
           </DialogContent>
           <DialogActions>
             <Grid container justify="space-between" alignItems="center">

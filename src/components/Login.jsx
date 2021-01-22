@@ -1,10 +1,17 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 // eslint-disable-next-line object-curly-newline
-import { Button, Container, Grid, makeStyles } from '@material-ui/core';
+import {
+  Button,
+  Container,
+  FormControl,
+  Grid,
+  makeStyles,
+} from '@material-ui/core';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { DevTool } from '@hookform/devtools';
 import { loginThunk } from '../store/actions/thunks/auth.thunks';
@@ -16,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login() {
-  const { login, control, handleSubmit } = useForm();
+  const { handleSubmit, control } = useForm();
 
   const classes = useStyles();
   const history = useHistory();
@@ -49,21 +56,35 @@ function Login() {
           <Grid item>
             <Grid container spacing={2} direction="column" alignItems="center">
               <Grid item>
-                <TextField
-                  variant="outlined"
-                  name="email"
-                  label="Email"
-                  ref={login}
-                />
+                <FormControl>
+                  <Controller
+                    name="email"
+                    as={
+                      <TextField
+                        variant="outlined"
+                        name="email"
+                        label="Email"
+                      />
+                    }
+                    control={control}
+                  />
+                </FormControl>
               </Grid>
               <Grid item>
-                <TextField
-                  label="Password"
-                  name="password"
-                  type="password"
-                  variant="outlined"
-                  ref={login}
-                />
+                <FormControl>
+                  <Controller
+                    name="password"
+                    as={
+                      <TextField
+                        label="Password"
+                        name="password"
+                        type="password"
+                        variant="outlined"
+                      />
+                    }
+                    control={control}
+                  />
+                </FormControl>
               </Grid>
               <Grid item>
                 <Button color="primary" type="submit" variant="contained">
