@@ -18,7 +18,7 @@ module.exports.connectMock = async () => {
       useUnifiedTopology: true,
     })
     .then((res) => {
-      log(chalk.blue('Connected to MongoDB Atlas!'));
+      log(chalk.blue('Connected to MongoDB mock!'));
     })
     .catch((err) => log(chalk.red(err)));
 };
