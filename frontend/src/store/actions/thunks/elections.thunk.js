@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
+import { raiseAlert } from '../alert.actions';
 import {
   deleteElection,
   editElection,
@@ -18,9 +19,16 @@ export const saveElectionThunk = (data) => async (dispatch) => {
     method: 'POST',
     url: 'http://localhost:5000/api/elections',
     data,
-  }).then((response) => {
-    dispatch(saveElection(response.data));
-  });
+  })
+    .then((response) => {
+      dispatch(saveElection(response.data));
+    })
+    .catch((err) => {
+      // TODO: Fix "title" is required.
+      dispatch(
+        raiseAlert({ variant: 'error', message: err.response.data.error }),
+      );
+    });
 };
 
 export const editElectionThunk = (data) => async (dispatch) => {
