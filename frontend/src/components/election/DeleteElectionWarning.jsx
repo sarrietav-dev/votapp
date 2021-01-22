@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { closeDialog } from '../../store/actions/dialog.actions';
 import { deleteElectionThunk } from '../../store/actions/thunks/elections.thunk';
+import { raiseAlert } from '../../store/actions/alert.actions';
 
 const message = "This can't be undone";
 
@@ -21,10 +22,14 @@ const DeleteElectionWarning = ({ open, setIsWarningOpen }) => {
   const history = useHistory();
 
   const handleClick = () => {
-    dispatch(deleteElectionThunk(id));
-    setIsWarningOpen(false);
-    dispatch(closeDialog());
-    history.push('/');
+    try {
+      dispatch(deleteElectionThunk(id));
+      setIsWarningOpen(false);
+      dispatch(closeDialog());
+      history.push('/');
+    } catch (err) {
+      dispatch(raiseAlert({ variant: 'error', message: err }));
+    }
   };
 
   return (

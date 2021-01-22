@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-wrap-multilines */
 /* eslint-disable no-underscore-dangle */
 import {
   Button,
@@ -5,6 +6,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
   Grid,
   IconButton,
   TextField,
@@ -12,13 +14,14 @@ import {
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { Controller, useForm } from 'react-hook-form';
 import { closeDialog } from '../../store/actions/dialog.actions';
 import { editElectionThunk } from '../../store/actions/thunks/elections.thunk';
 import DeleteElectionWarning from './DeleteElectionWarning';
+import { raiseAlert } from '../../store/actions/alert.actions';
 
 const ElectionSettings = () => {
-  const [title, setTitle] = useState('');
-  const [position, setPosition] = useState('');
+  const { handleSubmit, control } = useForm();
   const [isWarningOpen, setIsWarningOpen] = useState(false);
   const isOpen = useSelector((state) => state.dialog.isOpen);
   const currentElection = useSelector(
@@ -27,14 +30,13 @@ const ElectionSettings = () => {
 
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = (data) => {
     try {
-      dispatch(editElectionThunk({ ...currentElection, title, position }));
+      dispatch(editElectionThunk({ ...currentElection, ...data }));
+      dispatch(closeDialog());
     } catch (err) {
-      console.log(err);
+      dispatch(raiseAlert({ variant: 'error', message: err }));
     }
-    dispatch(closeDialog());
   };
 
   return (
@@ -44,25 +46,57 @@ const ElectionSettings = () => {
         setIsWarningOpen={setIsWarningOpen}
       />
       <Dialog open={isOpen}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <DialogTitle>Election Title</DialogTitle>
           <DialogContent>
-            <TextField
-              margin="dense"
-              label="Title"
-              type="text"
-              fullWidth
-              variant="filled"
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <TextField
-              margin="dense"
-              label="Position"
-              type="text"
-              fullWidth
-              variant="filled"
-              onChange={(e) => setPosition(e.target.value)}
-            />
+            <Grid container direction="column">
+              <Grid item>
+                <FormControl>
+                  <Controller
+                    name="title"
+                    as={
+                      <TextField
+                        margin="dense"
+                        label="Title"
+                        type="text"
+                        fullWidth
+                        variant="filled"
+                        name="title"
+                      />
+                    }
+                    control={control}
+                    defaultValue=""
+                    rules={{
+                      required: true,
+                      min: 6,
+                    }}
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item>
+                <FormControl>
+                  <Controller
+                    name="position"
+                    as={
+                      <TextField
+                        margin="dense"
+                        label="Position"
+                        type="text"
+                        fullWidth
+                        variant="filled"
+                        name="position"
+                      />
+                    }
+                    rules={{
+                      required: true,
+                      min: 6,
+                    }}
+                    defaultValue=""
+                    control={control}
+                  />
+                </FormControl>
+              </Grid>
+            </Grid>
           </DialogContent>
           <DialogActions>
             <Grid container justify="space-between" alignItems="center">
@@ -72,7 +106,7 @@ const ElectionSettings = () => {
                 </IconButton>
               </Grid>
               <Grid item>
-                <div className="">
+                <div>
                   <Button
                     color="primary"
                     onClick={() => dispatch(closeDialog())}

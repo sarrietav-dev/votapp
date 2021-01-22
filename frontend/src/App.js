@@ -9,6 +9,7 @@ import Login from './components/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import AuthRoute from './components/AuthRoute';
 import ElectionDashboard from './components/election/ElectionDashboard';
+import AlertMessage from './components/AlertMessage';
 
 const useStyles = makeStyles({
   app: {
@@ -20,6 +21,7 @@ function App() {
   const classes = useStyles();
   return (
     <div className={classes.app}>
+      <AlertMessage />
       <BrowserRouter>
         <Switch>
           <Route path="/login">
