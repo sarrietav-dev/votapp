@@ -30,14 +30,13 @@ const Dashboard = () => {
       <CreateElectionDialog />
       <Grid container spacing={5} justify="center" alignItems="center">
         {elections.map((election) => (
-          <Grid item>
+          <Grid item key={shortid.generate()}>
             <ElectionCard
               data={{
                 _id: election._id,
                 title: election.title,
                 position: election.position,
               }}
-              key={shortid.generate()}
             />
           </Grid>
         ))}
