@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const router = require('express').Router();
-const Election = require('../models/Election.model');
+const Election = require('../database/models/Election.model');
 const electionValidation = require('../validation/election.val');
 
 router.post('/', async (req, res) => {
