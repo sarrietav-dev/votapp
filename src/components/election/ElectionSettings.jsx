@@ -16,6 +16,7 @@ import { useForm } from 'react-hook-form';
 import { closeDialog } from '../../store/actions/dialog.actions';
 import { editElectionThunk } from '../../store/actions/thunks/elections.thunk';
 import DeleteElectionWarning from './DeleteElectionWarning';
+import { raiseAlert } from '../../store/actions/alert.actions';
 
 const ElectionSettings = () => {
   const { editElection, handleSubmit } = useForm();
@@ -30,10 +31,10 @@ const ElectionSettings = () => {
   const onSubmit = (data) => {
     try {
       dispatch(editElectionThunk({ ...currentElection, ...data }));
+      dispatch(closeDialog());
     } catch (err) {
-      console.log(err);
+      dispatch(raiseAlert({ variant: 'error', message: err }));
     }
-    dispatch(closeDialog());
   };
 
   return (
