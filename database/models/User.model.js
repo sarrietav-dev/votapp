@@ -31,6 +31,14 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  constraints: {
+    type: new mongoose.Schema({
+      is_admin: {
+        type: Boolean,
+        default: false,
+      },
+    }),
+  },
 });
 
 module.exports = mongoose.model('User', userSchema);
