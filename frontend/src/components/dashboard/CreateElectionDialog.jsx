@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import React from 'react';
 import {
   Button,
@@ -5,15 +6,16 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
   TextField,
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { closeDialog } from '../../store/actions/dialog.actions';
 import { saveElectionThunk } from '../../store/actions/thunks/elections.thunk';
 
 const CreateElectionDialog = () => {
-  const { createElection, handleSubmit } = useForm();
+  const { handleSubmit, control } = useForm();
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.dialog.isOpen);
 
@@ -28,28 +30,42 @@ const CreateElectionDialog = () => {
       <DialogTitle>Create election</DialogTitle>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="election-title"
-            label="Title"
-            type="text"
-            fullWidth
-            variant="filled"
-            name="title"
-            ref={createElection}
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            id="election-position"
-            label="Position"
-            type="text"
-            fullWidth
-            variant="filled"
-            name="position"
-            ref={createElection}
-          />
+          <FormControl>
+            <Controller
+              name="title"
+              as={
+                <TextField
+                  autoFocus
+                  margin="dense"
+                  id="election-title"
+                  label="Title"
+                  type="text"
+                  fullWidth
+                  variant="filled"
+                  name="title"
+                />
+              }
+              control={control}
+            />
+          </FormControl>
+          <FormControl>
+            <Controller
+              name="position"
+              as={
+                <TextField
+                  autoFocus
+                  margin="dense"
+                  id="election-position"
+                  label="Position"
+                  type="text"
+                  fullWidth
+                  variant="filled"
+                  name="position"
+                />
+              }
+              control={control}
+            />
+          </FormControl>
         </DialogContent>
         <DialogActions>
           <Button color="primary" onClick={handleClose}>
