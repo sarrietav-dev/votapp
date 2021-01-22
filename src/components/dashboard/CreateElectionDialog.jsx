@@ -46,6 +46,10 @@ const CreateElectionDialog = () => {
                 />
               }
               control={control}
+              rules={{
+                required: true,
+                min: 6,
+              }}
             />
           </FormControl>
           <FormControl>
@@ -64,6 +68,10 @@ const CreateElectionDialog = () => {
                 />
               }
               control={control}
+              rules={{
+                required: true,
+                min: 6,
+              }}
             />
           </FormControl>
         </DialogContent>

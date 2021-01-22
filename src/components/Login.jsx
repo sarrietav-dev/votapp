@@ -67,6 +67,11 @@ function Login() {
                       />
                     }
                     control={control}
+                    rules={{
+                      required: true,
+                      min: 6,
+                      max: 1024,
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -83,6 +88,11 @@ function Login() {
                       />
                     }
                     control={control}
+                    rules={{
+                      required: true,
+                      min: 6,
+                      max: 1024,
+                    }}
                   />
                 </FormControl>
               </Grid>

@@ -63,6 +63,10 @@ const ElectionSettings = () => {
                   />
                 }
                 control={control}
+                rules={{
+                  required: true,
+                  min: 6,
+                }}
               />
             </FormControl>
             <FormControl>
@@ -78,6 +82,10 @@ const ElectionSettings = () => {
                     name="position"
                   />
                 }
+                rules={{
+                  required: true,
+                  min: 6,
+                }}
                 control={control}
               />
             </FormControl>
