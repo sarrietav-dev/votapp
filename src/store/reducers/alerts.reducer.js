@@ -3,7 +3,7 @@ import { CLOSE_ALERT, RAISE_ALERT } from '../actions/types.actions';
 const defaultState = {
   open: false,
   message: '',
-  variant: '',
+  variant: 'info',
 };
 
 export default (state = defaultState, action) => {
