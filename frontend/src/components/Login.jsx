@@ -38,7 +38,6 @@ function Login() {
   }, [authToken]);
 
   const onSubmit = (data) => {
-    console.log(data);
     dispatch(loginThunk(data));
     history.push('/');
   };
