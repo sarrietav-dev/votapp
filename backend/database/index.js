@@ -1,6 +1,9 @@
 /* eslint-disable consistent-return */
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const chalk = require('chalk');
+
+const { log } = console;
 
 dotenv.config();
 
@@ -13,6 +16,7 @@ function connect() {
       })
       .then((res, err) => {
         if (err) return reject(err);
+        log(chalk.blue('Connected to MongoDB Atlas!'));
         resolve();
       });
   });
