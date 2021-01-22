@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { closeDialog } from '../../store/actions/dialog.actions';
 import { saveElectionThunk } from '../../store/actions/thunks/elections.thunk';
-import { raiseAlert } from '../../store/actions/alert.actions';
 
 const CreateElectionDialog = () => {
   const { createElection, handleSubmit } = useForm();
@@ -20,12 +19,8 @@ const CreateElectionDialog = () => {
 
   const handleClose = () => dispatch(closeDialog());
   const onSubmit = (data) => {
-    try {
-      dispatch(saveElectionThunk(data));
-      handleClose();
-    } catch (err) {
-      dispatch(raiseAlert({ variant: 'error', message: err }));
-    }
+    dispatch(saveElectionThunk(data));
+    handleClose();
   };
 
   return (

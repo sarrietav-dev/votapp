@@ -5,8 +5,9 @@ import { Button, Container, Grid, makeStyles } from '@material-ui/core';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { DevTool } from '@hookform/devtools';
 import { loginThunk } from '../store/actions/thunks/auth.thunks';
-import { raiseAlert } from '../store/actions/alert.actions';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login() {
-  const { login, handleSubmit } = useForm();
+  const { login, control, handleSubmit } = useForm();
 
   const classes = useStyles();
   const history = useHistory();
@@ -30,12 +31,9 @@ function Login() {
   }, [authToken]);
 
   const onSubmit = (data) => {
-    try {
-      dispatch(loginThunk(data));
-      history.push('/');
-    } catch (err) {
-      dispatch(raiseAlert({ variant: 'error', message: err }));
-    }
+    console.log(data);
+    dispatch(loginThunk(data));
+    history.push('/');
   };
 
   return (
@@ -76,6 +74,7 @@ function Login() {
           </Grid>
         </Grid>
       </form>
+      <DevTool control={control} />
     </Container>
   );
 }
