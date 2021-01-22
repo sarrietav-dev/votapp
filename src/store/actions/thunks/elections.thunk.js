@@ -24,7 +24,6 @@ export const saveElectionThunk = (data) => async (dispatch) => {
       dispatch(saveElection(response.data));
     })
     .catch((err) => {
-      // TODO: Fix "title" is required.
       dispatch(
         raiseAlert({ variant: 'error', message: err.response.data.error }),
       );
