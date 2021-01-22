@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Button,
   Dialog,
@@ -8,21 +8,19 @@ import {
   TextField,
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
 import { closeDialog } from '../../store/actions/dialog.actions';
 import { saveElectionThunk } from '../../store/actions/thunks/elections.thunk';
 
 const CreateElectionDialog = () => {
-  const [title, setTitle] = useState('');
-  const [position, setPosition] = useState('');
+  const { createElection, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.dialog.isOpen);
 
   const handleClose = () => dispatch(closeDialog());
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const onSubmit = (data) => {
     try {
-      dispatch(saveElectionThunk(title, position));
+      dispatch(saveElectionThunk(data));
       handleClose();
     } catch (err) {
       console.log(err);
@@ -32,7 +30,7 @@ const CreateElectionDialog = () => {
   return (
     <Dialog open={isOpen} onClose={handleClose}>
       <DialogTitle>Create election</DialogTitle>
-      <form action="" onSubmit={handleSubmit}>
+      <form action="" onSubmit={handleSubmit(onSubmit)}>
         <DialogContent>
           <TextField
             autoFocus
@@ -42,7 +40,8 @@ const CreateElectionDialog = () => {
             type="text"
             fullWidth
             variant="filled"
-            onChange={(e) => setTitle(e.target.value)}
+            name="title"
+            ref={createElection}
           />
           <TextField
             autoFocus
@@ -52,7 +51,8 @@ const CreateElectionDialog = () => {
             type="text"
             fullWidth
             variant="filled"
-            onChange={(e) => setPosition(e.target.value)}
+            name="position"
+            ref={createElection}
           />
         </DialogContent>
         <DialogActions>
