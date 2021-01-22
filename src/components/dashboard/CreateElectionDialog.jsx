@@ -7,6 +7,7 @@ import {
   DialogContent,
   DialogTitle,
   FormControl,
+  Grid,
   TextField,
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,50 +31,56 @@ const CreateElectionDialog = () => {
       <DialogTitle>Create election</DialogTitle>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <DialogContent>
-          <FormControl>
-            <Controller
-              name="title"
-              as={
-                <TextField
-                  autoFocus
-                  margin="dense"
-                  id="election-title"
-                  label="Title"
-                  type="text"
-                  fullWidth
-                  variant="filled"
+          <Grid container direction="column">
+            <Grid item>
+              <FormControl>
+                <Controller
                   name="title"
+                  as={
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="election-title"
+                      label="Title"
+                      type="text"
+                      fullWidth
+                      variant="filled"
+                      name="title"
+                    />
+                  }
+                  control={control}
+                  rules={{
+                    required: true,
+                    min: 6,
+                  }}
                 />
-              }
-              control={control}
-              rules={{
-                required: true,
-                min: 6,
-              }}
-            />
-          </FormControl>
-          <FormControl>
-            <Controller
-              name="position"
-              as={
-                <TextField
-                  autoFocus
-                  margin="dense"
-                  id="election-position"
-                  label="Position"
-                  type="text"
-                  fullWidth
-                  variant="filled"
+              </FormControl>
+            </Grid>
+            <Grid item>
+              <FormControl>
+                <Controller
                   name="position"
+                  as={
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="election-position"
+                      label="Position"
+                      type="text"
+                      fullWidth
+                      variant="filled"
+                      name="position"
+                    />
+                  }
+                  control={control}
+                  rules={{
+                    required: true,
+                    min: 6,
+                  }}
                 />
-              }
-              control={control}
-              rules={{
-                required: true,
-                min: 6,
-              }}
-            />
-          </FormControl>
+              </FormControl>
+            </Grid>
+          </Grid>
         </DialogContent>
         <DialogActions>
           <Button color="primary" onClick={handleClose}>
