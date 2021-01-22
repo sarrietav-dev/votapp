@@ -9,31 +9,18 @@ const mongod = new MongoMemoryServer();
 
 dotenv.config();
 
-module.exports.connect = async () => {
-  if (process.env.NODE_ENV === 'test') {
-    const URI = await mongod.getUri();
+module.exports.connectMock = async () => {
+  const URI = await mongod.getUri();
 
-    await mongoose(URI, {
+  await mongoose
+    .connect(URI, {
       useNewUrlParser: true,
-      autoReconnect: true,
-      reconnectTries: Number.MAX_VALUE,
-      reconnectInterval: 1000,
+      useUnifiedTopology: true,
     })
-      .then((res) => {
-        log(chalk.blue('Connected to MongoDB Atlas!'));
-      })
-      .catch((err) => log(chalk.red(err)));
-  } else {
-    await mongoose
-      .connect(process.env.CONNECTION_STRING, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-      })
-      .then((res) => {
-        log(chalk.blue('Connected to MongoDB Atlas!'));
-      })
-      .catch((err) => log(chalk.red(err)));
-  }
+    .then((res) => {
+      log(chalk.blue('Connected to MongoDB Atlas!'));
+    })
+    .catch((err) => log(chalk.red(err)));
 };
 
 module.exports.close = async () => {
@@ -49,4 +36,17 @@ module.exports.clear = async () => {
     const collection = collections[key];
     await collection.deleteMany();
   }
+};
+
+module.exports.connect = async () => {
+  await mongoose
+    .connect(process.env.CONNECTION_STRING, {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useUnifiedTopology: true,
+    })
+    .then((res) => {
+      log(chalk.blue('Connected to MongoDB Atlas!'));
+    })
+    .catch((err) => log(chalk.red(err)));
 };
