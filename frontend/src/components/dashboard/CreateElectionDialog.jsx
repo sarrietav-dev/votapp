@@ -49,6 +49,7 @@ const CreateElectionDialog = () => {
                     />
                   }
                   control={control}
+                  defaultValue=""
                   rules={{
                     required: true,
                     min: 6,
@@ -73,6 +74,7 @@ const CreateElectionDialog = () => {
                     />
                   }
                   control={control}
+                  defaultValue=""
                   rules={{
                     required: true,
                     min: 6,

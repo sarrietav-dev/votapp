@@ -67,6 +67,7 @@ function Login() {
                       />
                     }
                     control={control}
+                    defaultValue=""
                     rules={{
                       required: true,
                       min: 6,
@@ -88,6 +89,7 @@ function Login() {
                       />
                     }
                     control={control}
+                    defaultValue=""
                     rules={{
                       required: true,
                       min: 6,
