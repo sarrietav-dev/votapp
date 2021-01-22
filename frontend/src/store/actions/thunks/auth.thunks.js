@@ -2,14 +2,11 @@
 import axios from 'axios';
 import { logOut, setAuthToken } from '../auth-token.actions';
 
-export const loginThunk = (email, password) => async (dispatch) => {
+export const loginThunk = (data) => async (dispatch) => {
   await axios({
     method: 'POST',
     url: 'http://localhost:5000/api/login/',
-    data: {
-      email,
-      password,
-    },
+    data,
   }).then((response) => {
     const payload = response.data.token;
     localStorage.setItem('AUTH_TOKEN', payload);
