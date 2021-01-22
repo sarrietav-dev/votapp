@@ -6,6 +6,7 @@ import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { loginThunk } from '../store/actions/thunks/auth.thunks';
+import { raiseAlert } from '../store/actions/alert.actions';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -33,7 +34,7 @@ function Login() {
       dispatch(loginThunk(data));
       history.push('/');
     } catch (err) {
-      console.log(err);
+      dispatch(raiseAlert({ variant: 'error', message: err }));
     }
   };
 

@@ -8,12 +8,17 @@ import CreateElectionDialog from './CreateElectionDialog';
 import ElectionCard from './ElectionCard';
 import FabButton from '../FabButton';
 import { fetchElectionsThunk } from '../../store/actions/thunks/elections.thunk';
+import { raiseAlert } from '../../store/actions/alert.actions';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    dispatch(fetchElectionsThunk());
+    try {
+      dispatch(fetchElectionsThunk());
+    } catch (err) {
+      dispatch(raiseAlert({ variant: 'error', message: err }));
+    }
   }, []);
 
   const elections = useSelector((state) => state.election.elections);
