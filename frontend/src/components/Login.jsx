@@ -13,7 +13,6 @@ import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { DevTool } from '@hookform/devtools';
 import { loginThunk } from '../store/actions/thunks/auth.thunks';
 
 const useStyles = makeStyles((theme) => ({
@@ -106,7 +105,6 @@ function Login() {
           </Grid>
         </Grid>
       </form>
-      <DevTool control={control} />
     </Container>
   );
 }
