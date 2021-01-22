@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 as uuid } from 'uuid';
+import shortid from 'shortid';
 import { Grid } from '@material-ui/core';
 import Navbar from '../Navbar';
 import CreateElectionDialog from './CreateElectionDialog';
@@ -28,7 +28,7 @@ const Dashboard = () => {
       <Navbar />
       <FabButton />
       <CreateElectionDialog />
-      <Grid container spacing={5} xs={12} justify="center" alignItems="center">
+      <Grid container spacing={5} justify="center" alignItems="center">
         {elections.map((election) => (
           <Grid item>
             <ElectionCard
@@ -37,7 +37,7 @@ const Dashboard = () => {
                 title: election.title,
                 position: election.position,
               }}
-              key={uuid()}
+              key={shortid.generate()}
             />
           </Grid>
         ))}
