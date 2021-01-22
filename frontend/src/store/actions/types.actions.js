@@ -4,6 +4,9 @@ export const LOG_OUT = 'LOG_OUT';
 // Dialog actions.
 export const CLOSE_DIALOG = 'CLOSE_DIALOG';
 export const OPEN_DIALOG = 'OPEN_DIALOG';
+// Alert actions
+export const RAISE_ALERT = 'RAISE_ALERT';
+export const CLOSE_ALERT = 'CLOSE_ALERT';
 // Elections actions.
 export const FETCH_ELECTIONS = 'FETCH_ELECTIONS';
 export const SAVE_ELECTION = 'SAVE_ELECTION';
