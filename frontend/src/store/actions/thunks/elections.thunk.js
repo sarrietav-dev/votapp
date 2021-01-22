@@ -13,14 +13,11 @@ export const fetchElectionsThunk = () => async (dispatch) => {
     .then((response) => dispatch(fetchElections(response.data)));
 };
 
-export const saveElectionThunk = (title, position) => async (dispatch) => {
+export const saveElectionThunk = (data) => async (dispatch) => {
   await axios({
     method: 'POST',
     url: 'http://localhost:5000/api/elections',
-    data: {
-      title,
-      position,
-    },
+    data,
   }).then((response) => {
     dispatch(saveElection(response.data));
   });
