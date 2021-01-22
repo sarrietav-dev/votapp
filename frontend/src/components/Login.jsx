@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 // eslint-disable-next-line object-curly-newline
 import { Button, Container, Grid, makeStyles } from '@material-ui/core';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
 import { loginThunk } from '../store/actions/thunks/auth.thunks';
 
 const useStyles = makeStyles((theme) => ({
@@ -13,8 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { login, handleSubmit } = useForm();
 
   const classes = useStyles();
   const history = useHistory();
@@ -28,11 +28,9 @@ function Login() {
     }
   }, [authToken]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const onSubmit = (data) => {
     try {
-      dispatch(loginThunk(email, password));
+      dispatch(loginThunk(data));
       history.push('/');
     } catch (err) {
       console.log(err);
@@ -41,7 +39,7 @@ function Login() {
 
   return (
     <Container className={classes.container} maxWidth="md">
-      <form action="" onSubmit={handleSubmit}>
+      <form action="" onSubmit={handleSubmit(onSubmit)}>
         <Grid
           container
           spacing={2}
@@ -54,8 +52,9 @@ function Login() {
               <Grid item>
                 <TextField
                   variant="outlined"
+                  name="email"
                   label="Email"
-                  onChange={(e) => setEmail(e.target.value)}
+                  ref={login}
                 />
               </Grid>
               <Grid item>
@@ -64,7 +63,7 @@ function Login() {
                   name="password"
                   type="password"
                   variant="outlined"
-                  onChange={(e) => setPassword(e.target.value)}
+                  ref={login}
                 />
               </Grid>
               <Grid item>
