@@ -37,7 +37,7 @@ router.patch('/:id', async (req, res) => {
 
   try {
     const election = await Election.updateOne(
-      { _id: req.body._id },
+      { _id: req.params.id },
       { ...req.body }
     );
 
