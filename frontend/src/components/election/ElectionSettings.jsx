@@ -49,46 +49,52 @@ const ElectionSettings = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <DialogTitle>Election Title</DialogTitle>
           <DialogContent>
-            <FormControl>
-              <Controller
-                name="title"
-                as={
-                  <TextField
-                    margin="dense"
-                    label="Title"
-                    type="text"
-                    fullWidth
-                    variant="filled"
+            <Grid container direction="column">
+              <Grid item>
+                <FormControl>
+                  <Controller
                     name="title"
+                    as={
+                      <TextField
+                        margin="dense"
+                        label="Title"
+                        type="text"
+                        fullWidth
+                        variant="filled"
+                        name="title"
+                      />
+                    }
+                    control={control}
+                    rules={{
+                      required: true,
+                      min: 6,
+                    }}
                   />
-                }
-                control={control}
-                rules={{
-                  required: true,
-                  min: 6,
-                }}
-              />
-            </FormControl>
-            <FormControl>
-              <Controller
-                name="position"
-                as={
-                  <TextField
-                    margin="dense"
-                    label="Position"
-                    type="text"
-                    fullWidth
-                    variant="filled"
+                </FormControl>
+              </Grid>
+              <Grid item>
+                <FormControl>
+                  <Controller
                     name="position"
+                    as={
+                      <TextField
+                        margin="dense"
+                        label="Position"
+                        type="text"
+                        fullWidth
+                        variant="filled"
+                        name="position"
+                      />
+                    }
+                    rules={{
+                      required: true,
+                      min: 6,
+                    }}
+                    control={control}
                   />
-                }
-                rules={{
-                  required: true,
-                  min: 6,
-                }}
-                control={control}
-              />
-            </FormControl>
+                </FormControl>
+              </Grid>
+            </Grid>
           </DialogContent>
           <DialogActions>
             <Grid container justify="space-between" alignItems="center">
