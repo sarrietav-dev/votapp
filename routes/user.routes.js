@@ -28,6 +28,7 @@ router.post('/', async (req, res) => {
     birthdate: req.body.birthdate,
     phoneNumber: req.body.phoneNumber,
     gender: Boolean(req.body.gender),
+    constraints: req.body.constraints,
   });
 
   try {
