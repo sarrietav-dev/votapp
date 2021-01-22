@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const User = require('../models/User.model');
+const User = require('../database/models/User.model');
 const registerValidation = require('../validation/register.val');
 
 // TODO: Make get '/' route to get all the users.
