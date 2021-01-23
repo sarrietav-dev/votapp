@@ -28,14 +28,17 @@
 **server.js**  
 Contains every configuration related to the server. All from express, database connection and cors. Also handles the routing middleware.  
 
-**models/**  
-Folder that contains every database mongo model squema, using Mongoose.  
+**database/**  
+Folder that contains every database mongo model and configuration, using Mongoose.  
 
 **routes/**  
 Folder that contains every API route that the frontend can access, using Express Router.  
 
 **validation/**  
 Folder that contains files that help with the validatiion of incoming request data using Joi and other packages.  
+
+**tests/**
+Folder that contains every test about api resquesting, using Mocha/Chai, supertest andd mongodb-memory-server.
 
 #### API Routes
 - `/api/login`: Handles login authentication for the app.
