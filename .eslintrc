@@ -1,6 +1,6 @@
 {
   "extends": ["eslint:recommended", "airbnb", "prettier"],
-  "plugins": ["prettier"]
+  "plugins": ["prettier"],
   "env": {
     "mocha": true,
     "mongo": true
