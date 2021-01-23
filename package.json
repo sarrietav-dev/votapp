@@ -1,0 +1,21 @@
+{
+  "name": "votapp",
+  "version": "1.0.0",
+  "description": "## How to deploy on your machine",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd backend; npm test; cd ..",
+    "install": "cd backend; npm install; cd ../frontend; npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarrietav-dev/votapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarrietav-dev/votapp/issues"
+  },
+  "homepage": "https://github.com/sarrietav-dev/votapp#readme"
+}
