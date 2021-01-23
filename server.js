@@ -1,12 +1,13 @@
 const express = require('express');
 const cors = require('cors');
+const chalk = require('chalk');
+const dotenv = require('dotenv');
 const loginRoute = require('./routes/login.routes');
 const userRoute = require('./routes/user.routes');
 const electionRoute = require('./routes/election.routes');
-const chalk = require('chalk');
 const db = require('./database/index');
+
 const { log } = console;
-const dotenv = require('dotenv');
 
 dotenv.config();
 
