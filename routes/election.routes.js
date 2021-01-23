@@ -49,6 +49,9 @@ router.patch('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
+    const election = await Election.findOne({ _id: req.params.id });
+    if (!election) return res.status(404).json({ error: 'Election not found' });
+
     await Election.deleteOne({ _id: req.params.id });
     return res.sendStatus(200);
   } catch (err) {
