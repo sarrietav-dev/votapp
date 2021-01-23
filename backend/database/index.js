@@ -1,3 +1,6 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable consistent-return */
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -17,7 +20,7 @@ module.exports.connectMock = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
-    .then((res) => {
+    .then(() => {
       log(chalk.blue('Connected to MongoDB mock!'));
     })
     .catch((err) => log(chalk.red(err)));
@@ -30,7 +33,7 @@ module.exports.close = async () => {
 };
 
 module.exports.clear = async () => {
-  const collections = mongoose.connection.collections;
+  const { collections } = mongoose.connection;
 
   for (const key in collections) {
     const collection = collections[key];
@@ -45,7 +48,7 @@ module.exports.connect = async () => {
       useCreateIndex: true,
       useUnifiedTopology: true,
     })
-    .then((res) => {
+    .then(() => {
       log(chalk.blue('Connected to MongoDB Atlas!'));
     })
     .catch((err) => log(chalk.red(err)));
