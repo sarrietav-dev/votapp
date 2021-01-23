@@ -29,4 +29,3 @@ if (process.env.NODE_ENV !== 'test') db.connect();
 app.listen(5000, () => log(chalk.blue('\nServer running!')));
 
 module.exports = app;
-// a
