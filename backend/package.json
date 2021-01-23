@@ -1,10 +1,10 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive --exit"
+    "test": "mocha --recursive --exit",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -33,5 +33,9 @@
     "mocha": "^8.2.1",
     "prettier": "^2.2.1",
     "supertest": "^6.1.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "description": ""
 }
