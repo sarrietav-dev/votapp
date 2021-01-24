@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
     min: 6,
     max: 1024,
   },
+  code: {
+    type: String,
+    required: true,
+  },
   birthdate: {
     type: Date,
     default: Date.now,
@@ -31,13 +35,13 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  constraints: {
-    type: new mongoose.Schema({
-      is_admin: {
-        type: Boolean,
-        default: false,
-      },
-    }),
+  is_admin: {
+    type: Boolean,
+    default: false,
+  },
+  is_allowed: {
+    type: Boolean,
+    default: false,
   },
 });
 
