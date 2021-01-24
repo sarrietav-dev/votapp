@@ -4,8 +4,8 @@ process.env.NODE_ENV = 'test';
 const { expect } = require('chai');
 const request = require('supertest');
 
-const app = require('../../../server');
-const conn = require('../../../database/index');
+const app = require('../../server');
+const conn = require('../../database/index');
 
 describe('Elections testing', () => {
   before((done) => {
