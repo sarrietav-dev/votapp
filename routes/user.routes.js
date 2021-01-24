@@ -48,7 +48,7 @@ router.get('/unverified', async (req, res) => {
       { is_verified: false },
       { name: 1, code: 1, email: 1, gender: 1 }
     );
-    return res.send(unverifiedUsers);
+    return res.status(200).json(unverifiedUsers);
   } catch (err) {
     return res.status(400).send({ error: err });
   }
