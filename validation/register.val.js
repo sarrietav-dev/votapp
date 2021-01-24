@@ -8,6 +8,8 @@ const registerValidation = (data) => {
     gender: Joi.boolean(),
     phoneNumber: Joi.string().max(10),
     birthday: Joi.date(),
+    is_admin: Joi.boolean(),
+    code: Joi.string().min(10).max(10).required(),
   });
 
   return schema.validate(data);
