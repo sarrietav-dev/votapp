@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const { models } = require('mongoose');
 const User = require('../database/models/User.model');
 const registerValidation = require('../validation/register.val');
 
