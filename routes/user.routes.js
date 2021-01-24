@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
+const { models } = require('mongoose');
 const User = require('../database/models/User.model');
 const registerValidation = require('../validation/register.val');
 
@@ -36,6 +37,18 @@ router.post('/', async (req, res) => {
     const savedUser = await user.save();
     // TODO: Delete user for security reasons.
     return res.status(200).send({ message: 'User created', savedUser });
+  } catch (err) {
+    return res.status(400).send({ error: err });
+  }
+});
+
+router.get('/unverified', async (req, res) => {
+  try {
+    const unverifiedUsers = await User.find(
+      { is_verified: false },
+      { name: 1, code: 1, email: 1, gender: 1 }
+    );
+    return res.send(unverifiedUsers);
   } catch (err) {
     return res.status(400).send({ error: err });
   }
