@@ -16,11 +16,7 @@ describe('Elections testing', () => {
   });
 
   after((done) => {
-    conn
-      .clear()
-      .then(() => done())
-      .catch((err) => done(err));
-
+    conn.clear().catch((err) => done(err));
     conn
       .close()
       .then(() => done())
