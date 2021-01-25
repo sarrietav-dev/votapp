@@ -78,7 +78,7 @@ router.patch('/verify/:id', async (req, res) => {
     const user = await User.findById(id, { is_verified: 1, is_admin: 1 });
 
     if (user.is_admin)
-      return res.status(400).json({ error: 'the user is an admin' });
+      return res.status(400).json({ error: 'The user is an admin' });
 
     if (user.is_verified)
       return res.status(400).json({ error: 'The user is already verified' });
