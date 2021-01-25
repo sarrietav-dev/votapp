@@ -96,10 +96,17 @@ function Login() {
                   />
                 </FormControl>
               </Grid>
-              <Grid item>
-                <Button color="primary" type="submit" variant="contained">
-                  Log In
-                </Button>
+              <Grid container>
+                <Grid item>
+                  <Button color="primary" type="submit" variant="contained">
+                    Log In
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button color="primary" variant="outlined">
+                    Request access
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
