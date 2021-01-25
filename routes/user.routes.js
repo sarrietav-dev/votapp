@@ -53,7 +53,6 @@ router.post('/', async (req, res) => {
     });
 
     const savedUser = await user.save();
-    // TODO: Delete user for security reasons.
     return res.status(200).send({ message: 'User created', id: savedUser._id });
   } catch (error) {
     return res.status(400).send({ error });
