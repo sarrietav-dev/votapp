@@ -92,14 +92,28 @@ describe('Users testing', () => {
 
   it('Get regular user', (done) => {
     request(app)
-      .get(`api/users/${regularUserId}`)
+      .get(`/api/users/${regularUserId}`)
       .then((res) => {
         const { body, status } = res;
         expect(status).to.be.equal(200);
         expect(body._id).to.be.equal(regularUserId);
-        expect(body.is_admin).to.be.false();
+        expect(body.is_admin).to.be.equal(false);
         done();
       })
       .catch((err) => done(err));
   });
+
+  it('Get admin user', (done) => {
+    request(app)
+      .get(`/api/users/${adminUserId}`)
+      .then((res) => {
+        const { body, status } = res;
+        expect(status).to.be.equal(200);
+        expect(body._id).to.be.equal(adminUserId);
+        expect(body.is_admin).to.be.equal(true);
+        done();
+      })
+      .catch((err) => done(err));
+  });
+
 });
