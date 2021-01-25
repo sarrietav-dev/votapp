@@ -71,7 +71,7 @@ router.get('/unverified', async (req, res) => {
   }
 });
 
-router.post('/verify/:id', async (req, res) => {
+router.patch('/verify/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
