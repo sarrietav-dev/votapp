@@ -32,6 +32,10 @@ router.post('/', async (req, res) => {
     const emailExist = await User.findOne({ email: req.body.email });
     if (emailExist) return res.status(400).send({ error: 'Email exists' });
 
+    // Code repeatition validation
+    const codeExist = await User.findOne({ code: req.body.code });
+    if (codeExist) return res.status(400).send({ error: 'Code exists' });
+
     // Hash password
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
