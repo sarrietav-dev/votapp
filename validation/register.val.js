@@ -7,7 +7,7 @@ const registerValidation = (data) => {
     email: Joi.string().min(6).max(1024).required().email(),
     gender: Joi.boolean(),
     phoneNumber: Joi.string().max(10),
-    birthday: Joi.date(),
+    birthdate: Joi.date(),
     is_admin: Joi.boolean(),
     code: Joi.string().min(10).max(10).required(),
   });
