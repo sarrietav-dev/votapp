@@ -128,4 +128,16 @@ describe('Users testing', () => {
       })
       .catch((err) => done(err));
   });
+
+  it('Verify regular user', (done) => {
+    request(app)
+      .patch(`/api/users/verify/${regularUserId}`)
+      .then((res) => {
+        const { body, status } = res;
+        expect(status).to.be.equal(200);
+        expect(body.message).to.be.equal('Operation completed');
+        done();
+      })
+      .catch((err) => done(err));
+  });
 });
