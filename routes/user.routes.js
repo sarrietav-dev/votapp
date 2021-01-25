@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const User = require('../database/models/User.model');
@@ -53,7 +54,7 @@ router.post('/', async (req, res) => {
 
     const savedUser = await user.save();
     // TODO: Delete user for security reasons.
-    return res.status(200).send({ message: 'User created', savedUser });
+    return res.status(200).send({ message: 'User created', id: savedUser._id });
   } catch (error) {
     return res.status(400).send({ error });
   }
