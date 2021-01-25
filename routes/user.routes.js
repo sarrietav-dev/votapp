@@ -4,6 +4,14 @@ const User = require('../database/models/User.model');
 const registerValidation = require('../validation/register.val');
 
 // TODO: Make get '/' route to get all the users.
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.find({});
+    return res.status(200).json(users);
+  } catch (err) {
+    return res.status(400).json({ error: err });
+  }
+});
 
 // TODO: Make get '/:id' route to get one user.
 
