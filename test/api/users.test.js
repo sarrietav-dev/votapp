@@ -116,4 +116,16 @@ describe('Users testing', () => {
       .catch((err) => done(err));
   });
 
+  it('Error or verify admin', (done) => {
+    request(app)
+      .patch(`/api/users/verify/${adminUserId}`)
+      .then((res) => {
+        const { body, status } = res;
+        expect(status).to.be.equal(400);
+        expect(body).to.contain.property('error');
+        expect(body.error).to.be.equal('The user is an admin');
+        done();
+      })
+      .catch((err) => done(err));
+  });
 });
