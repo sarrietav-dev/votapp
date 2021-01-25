@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
     min: 6,
     max: 1024,
   },
+  code: {
+    type: String,
+    required: true,
+  },
   birthdate: {
     type: Date,
     default: Date.now,
@@ -30,6 +34,14 @@ const userSchema = new mongoose.Schema({
   gender: {
     type: Boolean,
     default: true,
+  },
+  is_admin: {
+    type: Boolean,
+    default: false,
+  },
+  is_verified: {
+    type: Boolean,
+    default: false,
   },
 });
 
