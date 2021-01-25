@@ -11,6 +11,7 @@ const { log } = console;
 const mongod = new MongoMemoryServer();
 
 dotenv.config();
+mongoose.set('useFindAndModify', false);
 
 module.exports.connectMock = async () => {
   const URI = await mongod.getUri();
