@@ -62,7 +62,7 @@ router.post('/', async (req, res) => {
 router.get('/unverified', async (req, res) => {
   try {
     const unverifiedUsers = await User.find(
-      { is_verified: false },
+      { is_verified: false, is_admin: false },
       { name: 1, code: 1, email: 1, gender: 1 }
     );
     return res.status(200).json(unverifiedUsers);
