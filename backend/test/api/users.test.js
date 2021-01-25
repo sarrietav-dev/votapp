@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 process.env.NODE_ENV = 'test';
 
 const { expect } = require('chai');
@@ -84,6 +85,19 @@ describe('Users testing', () => {
       .then((res) => {
         const { body } = res;
         expect(body.length).to.be.equal(2);
+        done();
+      })
+      .catch((err) => done(err));
+  });
+
+  it('Get regular user', (done) => {
+    request(app)
+      .get(`api/users/${regularUserId}`)
+      .then((res) => {
+        const { body, status } = res;
+        expect(status).to.be.equal(200);
+        expect(body._id).to.be.equal(regularUserId);
+        expect(body.is_admin).to.be.false();
         done();
       })
       .catch((err) => done(err));
