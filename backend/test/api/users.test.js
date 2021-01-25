@@ -179,4 +179,38 @@ describe('Users testing', () => {
       })
       .catch((err) => done(err));
   });
+
+  let unverifiedUserId;
+  it('Post one regular user', (done) => {
+    request(app)
+      .post('/api/users/')
+      .send({
+        name: 'Unverified Dummy',
+        email: 'unverifiedDummy@test.com',
+        password: 'Dummypass',
+        birthdate: '2000-01-01',
+        phoneNumber: '1010101010',
+        gender: Boolean(true),
+        code: '0110101111',
+      })
+      .then((res) => {
+        const { status, body } = res;
+        unverifiedUserId = body.id;
+        expect(status).to.be.equal(200);
+        done();
+      })
+      .catch((err) => done(err));
+  });
+
+  it('Deny unverified user', (done) => {
+    request(app)
+      .delete(`/api/users/deny/${unverifiedUserId}`)
+      .then((res) => {
+        const { body, status } = res;
+        expect(status).to.be.equal(200);
+        expect(body.message).to.be.equal('Operation completed');
+        done();
+      })
+      .catch((err) => done(err));
+  });
 });
