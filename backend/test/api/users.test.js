@@ -166,4 +166,17 @@ describe('Users testing', () => {
       })
       .catch((err) => done(err));
   });
+
+  it('Deny admin user', (done) => {
+    request(app)
+      .delete(`/api/users/deny/${adminUserId}`)
+      .then((res) => {
+        const { body, status } = res;
+        expect(status).to.be.equal(400);
+        expect(body).to.contain.property('error');
+        expect(body.error).to.be.equal('The user is an admin');
+        done();
+      })
+      .catch((err) => done(err));
+  });
 });
