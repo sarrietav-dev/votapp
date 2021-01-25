@@ -12,7 +12,14 @@ router.get('/', async (req, res) => {
   }
 });
 
-// TODO: Make get '/:id' route to get one user.
+router.get('/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    return res.status(200).json(user);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
 
 // Create an user
 router.post('/', async (req, res) => {
