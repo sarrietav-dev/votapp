@@ -82,6 +82,4 @@ router.post('/verify/:id', async (req, res) => {
   }
 });
 
-
-
 module.exports = router;
