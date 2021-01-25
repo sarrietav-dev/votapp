@@ -60,4 +60,28 @@ router.get('/unverified', async (req, res) => {
   }
 });
 
+router.post('/verify/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const user = await User.findOne(
+      { _id: id },
+      { is_verified: 1, is_admin: 1 }
+    );
+
+    if (user.is_admin)
+      return res.status(400).json({ error: 'the user is an admin' });
+
+    if (user.is_verified)
+      return res.status(400).json({ error: 'The user is already verified' });
+
+    await User.updateOne({ _id: id }, { is_verified: true });
+    return res.status(200).json({ message: 'Operation completed' });
+  } catch (error) {
+    return res.status(400).send({ error });
+  }
+});
+
+
+
 module.exports = router;
