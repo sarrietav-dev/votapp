@@ -113,8 +113,12 @@ const RegisterDialog = () => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancel}>Cancel</Button>
-          <Button type="submit">Send</Button>
+          <Button onClick={handleCancel} color="secondary" variant="outlined">
+            Cancel
+          </Button>
+          <Button type="submit" color="primary" variant="contained">
+            Send
+          </Button>
         </DialogActions>
       </form>
     </Dialog>
