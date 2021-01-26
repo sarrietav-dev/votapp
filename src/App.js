@@ -5,7 +5,7 @@ import './App.css';
 import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
-import Login from './components/Login';
+import Login from './components/login/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import AuthRoute from './components/AuthRoute';
 import ElectionDashboard from './components/election/ElectionDashboard';
