@@ -15,13 +15,16 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeDialog } from '../../store/actions/dialog.actions';
 
 const RegisterDialog = () => {
   const isOpen = useSelector((state) => state.dialog.isOpen);
   const { handleSubmit, control } = useForm();
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => console.log(data);
+  const handleCancel = () => dispatch(closeDialog());
 
   return (
     <Dialog open={isOpen}>
@@ -105,7 +108,7 @@ const RegisterDialog = () => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button>Cancel</Button>
+          <Button onClick={handleCancel}>Cancel</Button>
           <Button type="submit">Send</Button>
         </DialogActions>
       </form>
