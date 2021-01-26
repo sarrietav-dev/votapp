@@ -14,6 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { loginThunk } from '../../store/actions/thunks/auth.thunks';
+import { openDialog } from '../../store/actions/dialog.actions';
+import RegisterDialog from './RegisterDialog';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -39,6 +41,10 @@ function Login() {
   const onSubmit = (data) => {
     dispatch(loginThunk(data));
     history.push('/');
+  };
+
+  const handleRegisterClick = () => {
+    dispatch(openDialog());
   };
 
   return (
@@ -103,7 +109,11 @@ function Login() {
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button color="primary" variant="outlined">
+                  <Button
+                    color="primary"
+                    variant="outlined"
+                    onClick={handleRegisterClick}
+                  >
                     Request access
                   </Button>
                 </Grid>
@@ -112,6 +122,7 @@ function Login() {
           </Grid>
         </Grid>
       </form>
+      <RegisterDialog />
     </Container>
   );
 }
