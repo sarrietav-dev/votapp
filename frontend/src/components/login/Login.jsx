@@ -13,11 +13,13 @@ import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { loginThunk } from '../store/actions/thunks/auth.thunks';
+import { loginThunk } from '../../store/actions/thunks/auth.thunks';
+import { openDialog } from '../../store/actions/dialog.actions';
+import RegisterDialog from './RegisterDialog';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
   },
 }));
 
@@ -41,6 +43,10 @@ function Login() {
     history.push('/');
   };
 
+  const handleRegisterClick = () => {
+    dispatch(openDialog());
+  };
+
   return (
     <Container className={classes.container} maxWidth="md">
       <form action="" onSubmit={handleSubmit(onSubmit)}>
@@ -52,7 +58,7 @@ function Login() {
           style={{ minHeight: '100vh' }}
         >
           <Grid item>
-            <Grid container spacing={2} direction="column" alignItems="center">
+            <Grid container spacing={3} direction="column" alignItems="center">
               <Grid item>
                 <FormControl>
                   <Controller
@@ -96,15 +102,27 @@ function Login() {
                   />
                 </FormControl>
               </Grid>
-              <Grid item>
-                <Button color="primary" type="submit" variant="contained">
-                  Log In
-                </Button>
+              <Grid container spacing={2}>
+                <Grid item>
+                  <Button color="primary" type="submit" variant="contained">
+                    Log In
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button
+                    color="primary"
+                    variant="outlined"
+                    onClick={handleRegisterClick}
+                  >
+                    Request access
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </form>
+      <RegisterDialog />
     </Container>
   );
 }

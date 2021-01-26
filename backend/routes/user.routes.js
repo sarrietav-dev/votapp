@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
       password: hashedPassword,
       birthdate: req.body.birthdate,
       phoneNumber: req.body.phoneNumber,
-      gender: Boolean(req.body.gender),
+      gender: req.body.gender,
       is_admin: Boolean(req.body.is_admin),
       code: req.body.code,
     });
