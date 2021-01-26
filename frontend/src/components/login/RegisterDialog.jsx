@@ -25,6 +25,7 @@ const RegisterDialog = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
+    console.log(data);
     dispatch(registerThunk(data));
     dispatch(closeDialog());
   };
@@ -33,7 +34,11 @@ const RegisterDialog = () => {
   return (
     <Dialog open={isOpen} maxWidth="xs" fullWidth>
       <DialogTitle>Fill request</DialogTitle>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        onSubmit={() => {
+          handleSubmit(onSubmit);
+        }}
+      >
         <DialogContent>
           <Grid container spacing={3} direction="column">
             <Grid item xs={12}>
@@ -73,6 +78,7 @@ const RegisterDialog = () => {
                   />
                 }
                 control={control}
+                defaultValue=""
                 rules={{ required: true }}
               />
             </Grid>
@@ -88,6 +94,7 @@ const RegisterDialog = () => {
                   />
                 }
                 control={control}
+                defaultValue=""
                 rules={{ required: true }}
               />
             </Grid>
@@ -112,6 +119,7 @@ const RegisterDialog = () => {
                   </FormControl>
                 }
                 control={control}
+                defaultValue=""
                 rules={{ required: true }}
               />
             </Grid>
