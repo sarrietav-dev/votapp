@@ -6,7 +6,7 @@ import { raiseAlert } from '../alert.actions';
 export default (data) => async (dispatch) => {
   await axios({
     method: 'POST',
-    url: 'http://localhost:3000/api/users/',
+    url: 'http://localhost:5000/api/users/',
     data,
   })
     .then(() => {
