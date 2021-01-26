@@ -53,6 +53,7 @@ const RegisterDialog = () => {
                 defaultValue=""
                 rules={{
                   required: true,
+                  max: 10,
                 }}
               />
             </Grid>
