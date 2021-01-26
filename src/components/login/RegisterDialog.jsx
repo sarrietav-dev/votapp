@@ -33,7 +33,7 @@ const RegisterDialog = () => {
   return (
     <Dialog open={isOpen} maxWidth="xs" fullWidth>
       <DialogTitle>Fill request</DialogTitle>
-      <form onSubmit={onSubmit(handleSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <DialogContent>
           <Grid container spacing={3} direction="column">
             <Grid item xs={12}>
