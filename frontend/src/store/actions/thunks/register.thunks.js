@@ -10,9 +10,6 @@ export default (data) => async (dispatch) => {
     data,
   })
     .then((res) => {
-      console.log(data);
-      console.log(res.status);
-      console.log(res.data);
       if (Object.prototype.hasOwnProperty.call(data, 'is_admin')) {
         dispatch(
           raiseAlert({
