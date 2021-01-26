@@ -27,17 +27,15 @@ const RegisterDialog = () => {
   const handleCancel = () => dispatch(closeDialog());
 
   return (
-    <Dialog open={isOpen}>
+    <Dialog open={isOpen} maxWidth="xs" fullWidth>
       <DialogTitle>Fill request</DialogTitle>
       <form onSubmit={onSubmit(handleSubmit)}>
         <DialogContent>
           <Grid container spacing={3} direction="column">
-            <Grid item xs>
+            <Grid item xs={12}>
               <Controller
                 name="name"
-                as={
-                  <TextField variant="outlined" name="name" label="Your name" />
-                }
+                as={<TextField name="name" label="Your name" fullWidth />}
                 control={control}
                 defaultValue=""
                 rules={{
@@ -49,12 +47,7 @@ const RegisterDialog = () => {
               <Controller
                 name="code"
                 as={
-                  <TextField
-                    type="number"
-                    variant="outlined"
-                    name="code"
-                    label="Code"
-                  />
+                  <TextField type="number" name="code" label="Code" fullWidth />
                 }
                 control={control}
                 defaultValue=""
@@ -66,7 +59,14 @@ const RegisterDialog = () => {
             <Grid item xs>
               <Controller
                 name="email"
-                as={<TextField type="email" name="email" label="Email" />}
+                as={
+                  <TextField
+                    type="email"
+                    name="email"
+                    label="Email"
+                    fullWidth
+                  />
+                }
                 control={control}
                 rules={{ required: true }}
               />
@@ -75,7 +75,12 @@ const RegisterDialog = () => {
               <Controller
                 name="password"
                 as={
-                  <TextField type="password" name="password" label="Password" />
+                  <TextField
+                    type="password"
+                    name="password"
+                    label="Password"
+                    fullWidth
+                  />
                 }
                 control={control}
                 rules={{ required: true }}
@@ -85,7 +90,7 @@ const RegisterDialog = () => {
               <Controller
                 name="gender"
                 as={
-                  <FormControl component="fieldset">
+                  <FormControl component="fieldset" fullWidth>
                     <FormLabel component="legend">Gender</FormLabel>
                     <RadioGroup aria-label="gender" name="gender">
                       <FormControlLabel
