@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
     max: 10,
   },
   gender: {
-    type: Boolean,
+    type: String,
     default: true,
   },
   is_admin: {
