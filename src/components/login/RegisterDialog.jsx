@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-wrap-multilines */
 import {
   Button,
@@ -34,11 +35,7 @@ const RegisterDialog = () => {
   return (
     <Dialog open={isOpen} maxWidth="xs" fullWidth>
       <DialogTitle>Fill request</DialogTitle>
-      <form
-        onSubmit={() => {
-          handleSubmit(onSubmit);
-        }}
-      >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <DialogContent>
           <Grid container spacing={3} direction="column">
             <Grid item xs={12}>
@@ -62,7 +59,7 @@ const RegisterDialog = () => {
                 defaultValue=""
                 rules={{
                   required: true,
-                  max: 10,
+                  maxLength: 10,
                 }}
               />
             </Grid>
