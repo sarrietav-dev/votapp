@@ -17,7 +17,7 @@ import { loginThunk } from '../store/actions/thunks/auth.thunks';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(2),
   },
 }));
 
@@ -52,7 +52,7 @@ function Login() {
           style={{ minHeight: '100vh' }}
         >
           <Grid item>
-            <Grid container spacing={2} direction="column" alignItems="center">
+            <Grid container spacing={3} direction="column" alignItems="center">
               <Grid item>
                 <FormControl>
                   <Controller
@@ -96,7 +96,7 @@ function Login() {
                   />
                 </FormControl>
               </Grid>
-              <Grid container>
+              <Grid container spacing={2}>
                 <Grid item>
                   <Button color="primary" type="submit" variant="contained">
                     Log In
