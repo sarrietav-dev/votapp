@@ -27,6 +27,8 @@ export default (data) => async (dispatch) => {
       }
     })
     .catch((error) =>
-      dispatch(raiseAlert({ message: error, variant: 'error' })),
+      dispatch(
+        raiseAlert({ message: error.response.data.error, variant: 'error' }),
+      ),
     );
 };
