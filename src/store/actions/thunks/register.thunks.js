@@ -9,10 +9,7 @@ export default (data) => async (dispatch) => {
     url: 'http://localhost:5000/api/users/',
     data,
   })
-    .then((res) => {
-      console.log(data);
-      console.log(res.status);
-      console.log(res.data);
+    .then(() => {
       if (Object.prototype.hasOwnProperty.call(data, 'is_admin')) {
         dispatch(
           raiseAlert({
