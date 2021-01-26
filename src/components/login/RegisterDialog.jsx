@@ -17,13 +17,17 @@ import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeDialog } from '../../store/actions/dialog.actions';
+import registerThunk from '../../store/actions/thunks/register.thunks';
 
 const RegisterDialog = () => {
   const isOpen = useSelector((state) => state.dialog.isOpen);
   const { handleSubmit, control } = useForm();
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    dispatch(registerThunk(data));
+    dispatch(closeDialog());
+  };
   const handleCancel = () => dispatch(closeDialog());
 
   return (
