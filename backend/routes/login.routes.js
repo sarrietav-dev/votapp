@@ -17,7 +17,10 @@ router.post('/', async (req, res) => {
     return res.status(400).send({ error: 'Email or password is wrong' });
 
   // eslint-disable-next-line no-underscore-dangle
-  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  const token = jwt.sign(
+    { _id: user._id, is_admin: user.is_admin },
+    process.env.TOKEN_SECRET
+  );
   res.header('auth-token', token);
 
   return res.send({ message: 'Logged In', token });
