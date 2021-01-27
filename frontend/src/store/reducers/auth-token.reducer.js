@@ -3,6 +3,7 @@ import { LOG_OUT, SET_AUTH_TOKEN } from '../actions/types.actions';
 
 const defaultState = {
   authToken: localStorage.getItem('AUTH_TOKEN') || '',
+  is_admin: false,
 };
 
 export default (state = defaultState, action) => {
