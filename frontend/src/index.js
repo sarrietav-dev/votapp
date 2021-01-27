@@ -1,11 +1,15 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
+import { config as dotenvConfig } from 'dotenv';
 import App from './App';
 import store from './store/store';
+
+dotenvConfig();
 
 ReactDOM.render(
   <Provider store={store}>
