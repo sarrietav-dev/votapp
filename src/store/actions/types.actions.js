@@ -1,6 +1,7 @@
 // Authentication actions.
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const LOG_OUT = 'LOG_OUT';
+export const SET_IS_ADMIN = 'SET_IS_ADMIN';
 // Dialog actions.
 export const CLOSE_DIALOG = 'CLOSE_DIALOG';
 export const OPEN_DIALOG = 'OPEN_DIALOG';
