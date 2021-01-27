@@ -26,6 +26,7 @@ const ElectionDashboard = () => {
   const currentElection = useSelector(
     (state) => state.election.currentElection,
   );
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
 
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -45,9 +46,11 @@ const ElectionDashboard = () => {
         <Button color="secondary" variant="contained">
           Action button
         </Button>
-        <IconButton onClick={() => dispatch(openDialog())}>
-          <SettingsIcon />
-        </IconButton>
+        {isAdmin && (
+          <IconButton onClick={() => dispatch(openDialog())}>
+            <SettingsIcon />
+          </IconButton>
+        )}
       </Container>
     </div>
   );
