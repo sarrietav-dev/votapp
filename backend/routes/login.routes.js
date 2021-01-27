@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-underscore-dangle */
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -16,8 +18,14 @@ router.post('/', async (req, res) => {
   if (!validPassword)
     return res.status(400).send({ error: 'Email or password is wrong' });
 
+  if (!user.is_verified)
+    return res.status(400).json({ error: 'The user is not verified' });
+
   // eslint-disable-next-line no-underscore-dangle
-  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+  const token = jwt.sign(
+    { _id: user._id, is_admin: user.is_admin },
+    process.env.TOKEN_SECRET
+  );
   res.header('auth-token', token);
 
   return res.send({ message: 'Logged In', token });
