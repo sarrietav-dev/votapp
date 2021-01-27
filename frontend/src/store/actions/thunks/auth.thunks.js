@@ -1,9 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-undef */
 import axios from 'axios';
+import { verify } from 'jsonwebtoken';
 import { raiseAlert } from '../alert.actions';
-import { logOut, setAuthToken } from '../auth-token.actions';
+import { logOut, setAuthToken, setIsAdmin } from '../auth-token.actions';
 
 export const loginThunk = (data) => async (dispatch) => {
   await axios({
@@ -15,6 +17,9 @@ export const loginThunk = (data) => async (dispatch) => {
       const payload = response.data.token;
       localStorage.setItem('AUTH_TOKEN', payload);
       dispatch(setAuthToken(payload));
+
+      const decodedToken = verify(payload, process.env.TOKEN_SECRET);
+      dispatch(setIsAdmin(decodedToken.is_admin));
     })
     .catch((err) =>
       dispatch(
