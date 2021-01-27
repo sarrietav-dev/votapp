@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/sarrietav-dev/votapp#readme",
   "dependencies": {
-    "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1"
   }
 }
