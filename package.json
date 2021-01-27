@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/sarrietav-dev/votapp/issues"
   },
-  "homepage": "https://github.com/sarrietav-dev/votapp#readme"
+  "homepage": "https://github.com/sarrietav-dev/votapp#readme",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
 }
