@@ -18,14 +18,14 @@ export const loginThunk = (data) => async (dispatch) => {
       localStorage.setItem('AUTH_TOKEN', payload);
       dispatch(setAuthToken(payload));
 
-      const decodedToken = verify(payload, process.env.TOKEN_SECRET);
+      const decodedToken = verify(payload, process.env.REACT_APP_TOKEN_SECRET);
       dispatch(setIsAdmin(decodedToken.is_admin));
     })
-    .catch((err) =>
+    .catch((err) => {
       dispatch(
         raiseAlert({ variant: 'error', message: err.response.data.error }),
-      ),
-    );
+      );
+    });
 };
 
 export const logoutThunk = () => (dispatch) => {
