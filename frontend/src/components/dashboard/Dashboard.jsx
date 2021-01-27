@@ -22,11 +22,12 @@ const Dashboard = () => {
   }, []);
 
   const elections = useSelector((state) => state.election.elections);
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
 
   return (
     <div className="dashboard-wrapper">
       <Navbar />
-      <FabButton />
+      {isAdmin && <FabButton />}
       <CreateElectionDialog />
       <Grid container spacing={5} justify="center" alignItems="center">
         {elections.map((election) => (
