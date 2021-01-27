@@ -7,7 +7,7 @@ import {
 
 const defaultState = {
   authToken: localStorage.getItem('AUTH_TOKEN') || '',
-  is_admin: false,
+  isAdmin: false,
 };
 
 export default (state = defaultState, action) => {
@@ -20,12 +20,12 @@ export default (state = defaultState, action) => {
     case LOG_OUT:
       return {
         authToken: '',
-        is_admin: false,
+        isAdmin: false,
       };
     case SET_IS_ADMIN:
       return {
         ...state,
-        is_admin: action.payload,
+        isAdmin: action.payload,
       };
     default:
       return state;
