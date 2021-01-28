@@ -14,9 +14,9 @@ const AdminPanel = () => {
   const dispatch = useDispatch();
   const open = useSelector((state) => state.panel.open);
   return (
-    <Drawer open={open} onClose={() => dispatch(closePanel())}>
+    <Drawer open={open} anchor="right" onClose={() => dispatch(closePanel())}>
       <List>
-        <ListItem>
+        <ListItem button>
           <ListItemIcon>
             <AddUser />
           </ListItemIcon>
@@ -26,6 +26,5 @@ const AdminPanel = () => {
     </Drawer>
   );
 };
-
 
 export default AdminPanel;
