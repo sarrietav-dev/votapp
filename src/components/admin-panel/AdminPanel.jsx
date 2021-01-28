@@ -8,7 +8,7 @@ import {
 import AddUser from '@material-ui/icons/GroupAdd';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { closePanel } from '../store/actions/panel.actions';
+import { closePanel } from '../../store/actions/panel.actions';
 
 const AdminPanel = () => {
   const dispatch = useDispatch();
