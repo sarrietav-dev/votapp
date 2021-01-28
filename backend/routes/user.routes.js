@@ -13,6 +13,19 @@ router.get('/', async (req, res) => {
   }
 });
 
+// FIXME: This rotes has a unknown bug
+router.get('/unverified', async (req, res) => {
+  try {
+    const unverifiedUsers = await User.find(
+      { is_verified: false, is_admin: false },
+      { name: 1, code: 1, email: 1, gender: 1 }
+    );
+    return res.status(200).json(unverifiedUsers);
+  } catch (error) {
+    return res.status(400).send({ error });
+  }
+});
+
 router.get('/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
@@ -59,18 +72,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// FIXME: This rotes has a unknown bug
-router.get('/unverified', async (req, res) => {
-  try {
-    const unverifiedUsers = await User.find(
-      { is_verified: false, is_admin: false },
-      { name: 1, code: 1, email: 1, gender: 1 }
-    );
-    return res.status(200).json(unverifiedUsers);
-  } catch (error) {
-    return res.status(400).send({ error });
-  }
-});
 
 router.patch('/verify/:id', async (req, res) => {
   try {
