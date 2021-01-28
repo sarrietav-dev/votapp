@@ -22,9 +22,11 @@ const useStyles = makeStyles({
 function App() {
   const classes = useStyles();
   const isAdmin = useSelector((state) => state.auth.isAdmin);
+  const open = useSelector((state) => state.panel.open);
+
   return (
     <div className={classes.app}>
-      {isAdmin && <AdminPanel />}
+      {isAdmin && <AdminPanel open={open} />}
       <AlertMessage />
       <BrowserRouter>
         <Switch>
