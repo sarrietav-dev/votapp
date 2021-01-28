@@ -202,6 +202,18 @@ describe('Users testing', () => {
       .catch((err) => done(err));
   });
 
+  it('Get unverified users', (done) => {
+    request(app)
+      .get('/api/users/unverified')
+      .then((res) => {
+        const { body, status } = res;
+        expect(status).to.be.equal(200);
+        expect(body.length).to.be.equal(1);
+        done();
+      })
+      .catch((err) => done(err));
+  });
+
   it('Deny unverified user', (done) => {
     request(app)
       .delete(`/api/users/deny/${unverifiedUserId}`)
