@@ -1,11 +1,16 @@
 import { Dialog, DialogContent } from '@material-ui/core';
 import React from 'react';
 import PropTypes from 'prop-types';
+import UnverifiedUser from './UnverifiedUser';
 
 const VerifyUsersDialog = ({ isOpen, onClose }) => (
-  <Dialog open={isOpen} onClose={onClose}>
+  <Dialog open={isOpen} onClose={onClose} fullWidth>
     <DialogContent>
-      <div className="" />
+      <UnverifiedUser
+        data={{
+          name: 'Sebastian',
+        }}
+      />
     </DialogContent>
   </Dialog>
 );
