@@ -1,4 +1,4 @@
-import { deleteElection } from '../../utils/electionReducer.utils';
+import { deleteElection } from '../../utils/reducer.utils';
 import { FETCH_UNVERIFIED_USERS, VERIFY_USER } from '../actions/types.actions';
 
 const initialState = {
