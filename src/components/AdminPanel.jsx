@@ -7,12 +7,12 @@ import {
 } from '@material-ui/core';
 import AddUser from '@material-ui/icons/GroupAdd';
 import React from 'react';
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { closePanel } from '../store/actions/panel.actions';
 
-const AdminPanel = ({ open }) => {
+const AdminPanel = () => {
   const dispatch = useDispatch();
+  const open = useSelector((state) => state.panel.open);
   return (
     <Drawer open={open} onClose={() => dispatch(closePanel())}>
       <List>
@@ -27,8 +27,5 @@ const AdminPanel = ({ open }) => {
   );
 };
 
-AdminPanel.propTypes = {
-  open: PropTypes.bool.isRequired,
-};
 
 export default AdminPanel;
