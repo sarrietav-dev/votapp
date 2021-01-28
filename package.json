@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive --exit",
+    "test": "mocha --recursive --exit --timeout 5000",
     "start": "node server.js"
   },
   "keywords": [],
