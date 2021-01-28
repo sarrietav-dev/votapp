@@ -11,7 +11,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import AuthRoute from './components/AuthRoute';
 import ElectionDashboard from './components/election/ElectionDashboard';
 import AlertMessage from './components/AlertMessage';
-import AdminPanel from './components/dashboard/AdminPanel';
+import AdminPanel from './components/AdminPanel';
 
 const useStyles = makeStyles({
   app: {
