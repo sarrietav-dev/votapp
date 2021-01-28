@@ -10,12 +10,13 @@ import {
 import HowToVoteIcon from '@material-ui/icons/HowToVote';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import PropTypes from 'prop-types';
 import { logoutThunk } from '../store/actions/thunks/auth.thunks';
 import { emptyCurrentElection } from '../store/actions/election.actions';
+import { openPanel } from '../store/actions/panel.actions';
 
 const useStyles = makeStyles(() => ({
   navbarRightButtons: {
@@ -31,6 +32,8 @@ const Navbar = ({ actionIcon, path }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
+
   const handleLogout = () => {
     dispatch(logoutThunk());
     history.push('/login');
@@ -45,6 +48,12 @@ const Navbar = ({ actionIcon, path }) => {
     }
   };
 
+  const openPanelHandler = () => {
+    if (isAdmin) {
+      dispatch(openPanel());
+    }
+  };
+
   return (
     <div className="appbar-wrapper">
       <AppBar position="static" className={classes.navbar}>
@@ -55,7 +64,7 @@ const Navbar = ({ actionIcon, path }) => {
           <Typography variant="h5">Voteapp</Typography>
           <div className={classes.navbarRightButtons}>
             <Tooltip title="Admin Panel">
-              <IconButton color="inherit">
+              <IconButton color="inherit" onClick={openPanelHandler}>
                 <SettingsIcon />
               </IconButton>
             </Tooltip>
