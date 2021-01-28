@@ -18,3 +18,6 @@ export const DELETE_ELECTION = 'DELETE_ELECTION';
 // AdminPanel
 export const OPEN_PANEL = 'OPEN_PANEL';
 export const CLOSE_PANEL = 'CLOSE_PANEL';
+// Unverified users.
+export const FETCH_UNVERIFIED_USERS = 'FETCH_UNVERIFIED_USERS';
+export const VERIFY_USER = 'VERIFY_USER';
