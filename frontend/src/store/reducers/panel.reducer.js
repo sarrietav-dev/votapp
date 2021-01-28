@@ -5,7 +5,7 @@ const defaultState = {
 };
 
 export default (state = defaultState, action) => {
-  switch (action.types) {
+  switch (action.type) {
     case OPEN_PANEL:
       return {
         ...state,
