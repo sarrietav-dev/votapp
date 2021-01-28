@@ -15,24 +15,30 @@
 #### Packages used
 - Express: To handle routing and general server operations.
 - Mongoose: To handle communications with the database.
-- Bcrypt: TO encrypt passwords.
+- Bcrypt: To encrypt passwords.
 - JWT (JSONWebToken): To ensure security on API requests.
 - Joi: To validate data from requests.
 - CORS: ?
 - Dotenv: To allow `.env` file.
+- mongodb-memory-server: To mock a mongodb database for testing purposes.
+- mocha/chai: Testing library for asserting.
+- supertest: Testing library that helps with requests to the same server.
 
 #### Workspace structure
 **server.js**  
 Contains every configuration related to the server. All from express, database connection and cors. Also handles the routing middleware.  
 
-**models/**  
-Folder that contains every database mongo model squema, using Mongoose.  
+**database/**  
+Folder that contains every database mongo model and configuration, using Mongoose.  
 
 **routes/**  
 Folder that contains every API route that the frontend can access, using Express Router.  
 
 **validation/**  
 Folder that contains files that help with the validatiion of incoming request data using Joi and other packages.  
+
+**tests/**
+Folder that contains every test about api resquesting, using Mocha/Chai, supertest andd mongodb-memory-server.
 
 #### API Routes
 - `/api/login`: Handles login authentication for the app.
@@ -55,7 +61,8 @@ Folder that contains files that help with the validatiion of incoming request da
 - react-router/react-router-dom: To orginize component access and redirection.
 - redux: To manage state between components.
 - redux-thunk: To handle the state management logic (No styling related).
-- uuid: To ensure random ids when mapping.
+- shortid: To ensure random ids when mapping.
+- react-hook-form: To have better performance when dealing with forms.
 
 #### Workspace structure
 - **src/App.js**: Main component.  
