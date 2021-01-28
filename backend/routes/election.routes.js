@@ -1,18 +1,21 @@
 /* eslint-disable no-underscore-dangle */
 const router = require('express').Router();
+const sanitize = require('mongo-sanitize');
 const Election = require('../database/models/Election.model');
 const electionValidation = require('../validation/election.val');
 
 router.post('/', async (req, res) => {
   try {
-    const { error } = electionValidation(req.body);
+    const body = sanitize(req.body);
+
+    const { error } = electionValidation(body);
     if (error) return res.status(400).json({ error: error.details[0].message });
 
     // TODO: Check if the requester is an admin.
 
     const election = new Election({
-      title: req.body.title,
-      position: req.body.position,
+      title: body.title,
+      position: body.position,
     });
 
     await election.save();
@@ -24,7 +27,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const elections = await Election.find({});
+    const elections = await Election.find();
     return res.status(200).send(elections);
   } catch (error) {
     return res.status(400).json({ err: error });
@@ -33,12 +36,13 @@ router.get('/', async (req, res) => {
 
 router.patch('/:id', async (req, res) => {
   try {
-    const { error } = electionValidation(req.body);
+    const body = sanitize(req.body);
+    const { error } = electionValidation(body);
     if (error) return res.status(400).json({ error: error.details[0].message });
 
     const election = await Election.updateOne(
       { _id: req.params.id },
-      { ...req.body }
+      { ...body }
     );
 
     return res.status(200).json(election);
