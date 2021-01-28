@@ -33,7 +33,7 @@ describe('Users testing', () => {
         password: 'Dummypass',
         birthdate: '2000-01-01',
         phoneNumber: '1010101010',
-        gender: Boolean(true),
+        gender: 'male',
         code: '0110101101',
       })
       .then((res) => {
@@ -66,7 +66,7 @@ describe('Users testing', () => {
         password: 'Dummypass',
         birthdate: '2000-01-01',
         phoneNumber: '1010101010',
-        gender: Boolean(true),
+        gender: 'male',
         code: '0110101100',
         is_admin: true,
       })
@@ -190,7 +190,7 @@ describe('Users testing', () => {
         password: 'Dummypass',
         birthdate: '2000-01-01',
         phoneNumber: '1010101010',
-        gender: Boolean(true),
+        gender: 'male',
         code: '0110101111',
       })
       .then((res) => {
