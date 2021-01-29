@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -10,6 +11,11 @@ import {
   Typography,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { useDispatch } from 'react-redux';
+import {
+  denyUserThunk,
+  verifyUserThunk,
+} from '../../store/actions/thunks/verify.thunks';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,6 +38,16 @@ const useStyles = makeStyles((theme) => ({
 
 const UnverifiedUser = ({ data }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const handleAccept = () => {
+    dispatch(verifyUserThunk(data._id));
+  };
+
+  const handleDeny = () => {
+    dispatch(denyUserThunk(data._id));
+  };
+
   return (
     <Accordion className={classes.root}>
       <AccordionSummary
@@ -57,10 +73,15 @@ const UnverifiedUser = ({ data }) => {
         </Typography>
       </AccordionDetails>
       <AccordionActions>
-        <Button color="secondary" variant="outlined">
+        <Button color="secondary" variant="outlined" onClick={handleDeny}>
           Deny
         </Button>
-        <Button type="submit" color="primary" variant="contained">
+        <Button
+          type="submit"
+          color="primary"
+          variant="contained"
+          onClick={handleAccept}
+        >
           Accept
         </Button>
       </AccordionActions>
@@ -70,6 +91,7 @@ const UnverifiedUser = ({ data }) => {
 
 UnverifiedUser.propTypes = {
   data: PropTypes.shape({
+    _id: PropTypes.string,
     name: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired,
