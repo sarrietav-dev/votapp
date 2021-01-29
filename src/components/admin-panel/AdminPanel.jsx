@@ -31,7 +31,7 @@ const AdminPanel = () => {
         }),
       );
     } else {
-      dispatch(closePanel());
+      setOpenDialog(true);
     }
   };
 
