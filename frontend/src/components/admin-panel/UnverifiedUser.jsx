@@ -68,7 +68,7 @@ const UnverifiedUser = ({ data }) => {
         </Typography>
         <br />
         <Typography>
-          Gender
+          Gender:
           {data.gender}
         </Typography>
       </AccordionDetails>
