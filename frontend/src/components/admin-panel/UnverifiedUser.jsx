@@ -58,10 +58,10 @@ const UnverifiedUser = ({ data }) => {
       </AccordionDetails>
       <AccordionActions>
         <Button color="secondary" variant="outlined">
-          Cancel
+          Deny
         </Button>
         <Button type="submit" color="primary" variant="contained">
-          Send
+          Accept
         </Button>
       </AccordionActions>
     </Accordion>
