@@ -13,7 +13,12 @@ export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_UNVERIFIED_USERS:
       return { unverifiedUsers: payload };
-    case VERIFY_USER || DENY_USER:
+    case VERIFY_USER:
+      return {
+        ...state,
+        unverifiedUsers: deleteOne(state.unverifiedUsers, payload),
+      };
+    case DENY_USER:
       return {
         ...state,
         unverifiedUsers: deleteOne(state.unverifiedUsers, payload),
