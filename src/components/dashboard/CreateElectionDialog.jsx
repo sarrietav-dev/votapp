@@ -6,7 +6,6 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  FormControl,
   Grid,
   TextField,
 } from '@material-ui/core';
@@ -27,60 +26,56 @@ const CreateElectionDialog = () => {
   };
 
   return (
-    <Dialog open={isOpen} onClose={handleClose}>
+    <Dialog open={isOpen} onClose={handleClose} fullWidth maxWidth="xs">
       <DialogTitle>Create election</DialogTitle>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <DialogContent>
           <Grid container direction="column">
             <Grid item>
-              <FormControl>
-                <Controller
-                  name="title"
-                  as={
-                    <TextField
-                      autoFocus
-                      margin="dense"
-                      id="election-title"
-                      label="Title"
-                      type="text"
-                      fullWidth
-                      variant="filled"
-                      name="title"
-                    />
-                  }
-                  control={control}
-                  defaultValue=""
-                  rules={{
-                    required: true,
-                    min: 6,
-                  }}
-                />
-              </FormControl>
+              <Controller
+                name="title"
+                as={
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="election-title"
+                    label="Title"
+                    type="text"
+                    fullWidth
+                    variant="filled"
+                    name="title"
+                  />
+                }
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: true,
+                  min: 6,
+                }}
+              />
             </Grid>
             <Grid item>
-              <FormControl>
-                <Controller
-                  name="position"
-                  as={
-                    <TextField
-                      autoFocus
-                      margin="dense"
-                      id="election-position"
-                      label="Position"
-                      type="text"
-                      fullWidth
-                      variant="filled"
-                      name="position"
-                    />
-                  }
-                  control={control}
-                  defaultValue=""
-                  rules={{
-                    required: true,
-                    min: 6,
-                  }}
-                />
-              </FormControl>
+              <Controller
+                name="position"
+                as={
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="election-position"
+                    label="Position"
+                    type="text"
+                    fullWidth
+                    variant="filled"
+                    name="position"
+                  />
+                }
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: true,
+                  min: 6,
+                }}
+              />
             </Grid>
           </Grid>
         </DialogContent>

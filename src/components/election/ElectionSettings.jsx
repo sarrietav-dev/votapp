@@ -6,7 +6,6 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  FormControl,
   Grid,
   IconButton,
   TextField,
@@ -45,56 +44,52 @@ const ElectionSettings = () => {
         open={isWarningOpen}
         setIsWarningOpen={setIsWarningOpen}
       />
-      <Dialog open={isOpen}>
+      <Dialog open={isOpen} fullWidth maxWidth="xs">
         <form onSubmit={handleSubmit(onSubmit)}>
           <DialogTitle>Election Title</DialogTitle>
           <DialogContent>
             <Grid container direction="column">
               <Grid item>
-                <FormControl>
-                  <Controller
-                    name="title"
-                    as={
-                      <TextField
-                        margin="dense"
-                        label="Title"
-                        type="text"
-                        fullWidth
-                        variant="filled"
-                        name="title"
-                      />
-                    }
-                    control={control}
-                    defaultValue=""
-                    rules={{
-                      required: true,
-                      min: 6,
-                    }}
-                  />
-                </FormControl>
+                <Controller
+                  name="title"
+                  as={
+                    <TextField
+                      margin="dense"
+                      label="Title"
+                      type="text"
+                      fullWidth
+                      variant="filled"
+                      name="title"
+                    />
+                  }
+                  control={control}
+                  defaultValue=""
+                  rules={{
+                    required: true,
+                    min: 6,
+                  }}
+                />
               </Grid>
               <Grid item>
-                <FormControl>
-                  <Controller
-                    name="position"
-                    as={
-                      <TextField
-                        margin="dense"
-                        label="Position"
-                        type="text"
-                        fullWidth
-                        variant="filled"
-                        name="position"
-                      />
-                    }
-                    rules={{
-                      required: true,
-                      min: 6,
-                    }}
-                    defaultValue=""
-                    control={control}
-                  />
-                </FormControl>
+                <Controller
+                  name="position"
+                  as={
+                    <TextField
+                      margin="dense"
+                      label="Position"
+                      type="text"
+                      fullWidth
+                      variant="filled"
+                      name="position"
+                    />
+                  }
+                  rules={{
+                    required: true,
+                    min: 6,
+                  }}
+                  defaultValue=""
+                  control={control}
+                />
               </Grid>
             </Grid>
           </DialogContent>
