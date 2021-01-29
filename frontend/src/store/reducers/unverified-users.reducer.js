@@ -1,4 +1,4 @@
-import { deleteElection } from '../../utils/reducer.utils';
+import { deleteOne } from '../../utils/reducer.utils';
 import { FETCH_UNVERIFIED_USERS, VERIFY_USER } from '../actions/types.actions';
 
 const initialState = {
@@ -12,7 +12,7 @@ export default (state = initialState, { type, payload }) => {
     case VERIFY_USER:
       return {
         ...state,
-        unverifiedUsers: deleteElection(state.unverifiedUsers, payload),
+        unverifiedUsers: deleteOne(state.unverifiedUsers, payload),
       };
     default:
       return state;
