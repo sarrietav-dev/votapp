@@ -32,18 +32,11 @@ const useStyles = makeStyles((theme) => ({
 
 const UnverifiedUser = ({ data }) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
-  };
   return (
     <Accordion className={classes.root}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         className={classes.summary}
-        expanded={expanded === data.code}
-        onChange={handleChange(data.code)}
       >
         <Typography variant="h5">{data.name}</Typography>
       </AccordionSummary>
