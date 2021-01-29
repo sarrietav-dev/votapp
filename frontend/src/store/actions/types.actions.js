@@ -21,3 +21,4 @@ export const CLOSE_PANEL = 'CLOSE_PANEL';
 // Unverified users.
 export const FETCH_UNVERIFIED_USERS = 'FETCH_UNVERIFIED_USERS';
 export const VERIFY_USER = 'VERIFY_USER';
+export const DENY_USER = 'DENY_USER';
