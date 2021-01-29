@@ -2,7 +2,11 @@
 /* eslint-disable implicit-arrow-linebreak */
 import axios from 'axios';
 import { raiseAlert } from '../alert.actions';
-import { fetchUnverifiedUsers, verifyUser } from '../unverified-users.actions';
+import {
+  denyUser,
+  fetchUnverifiedUsers,
+  verifyUser,
+} from '../unverified-users.actions';
 
 export const fetchUnverifiedUsersThunk = () => async (dispatch) => {
   await axios({
@@ -31,6 +35,30 @@ export const verifyUserThunk = (id) => async (dispatch) => {
     .then((response) => {
       const { data } = response;
       dispatch(verifyUser(id));
+
+      raiseAlert({
+        message: data.message,
+        variant: 'success',
+      });
+    })
+    .catch((error) => {
+      dispatch(
+        raiseAlert({
+          message: error.response.data.error,
+          variant: 'error',
+        }),
+      );
+    });
+};
+
+export const denyUserThunk = (id) => async (dispatch) => {
+  await axios({
+    method: 'DELETE',
+    url: `http://localhost:5000/api/users/deny/${id}`,
+  })
+    .then((response) => {
+      const { data } = response;
+      dispatch(denyUser(id));
 
       raiseAlert({
         message: data.message,
