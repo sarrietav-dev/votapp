@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import {
-  deleteElection,
+  deleteOne,
   editElection,
 } from '../../utils/reducer.utils';
 import {
@@ -44,7 +44,7 @@ export default (state = defaultState, action) => {
     case DELETE_ELECTION:
       return {
         currentElection: {},
-        elections: deleteElection(state.elections, action.payload),
+        elections: deleteOne(state.elections, action.payload),
       };
     case EDIT_ELECTION:
       return {
