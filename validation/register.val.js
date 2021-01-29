@@ -9,7 +9,7 @@ const registerValidation = (data) => {
     phoneNumber: Joi.string().max(10),
     birthdate: Joi.date(),
     is_admin: Joi.boolean(),
-    code: Joi.string().min(10).max(10).required(),
+    code: Joi.string().min(6).max(10).required(),
   });
 
   return schema.validate(data);
