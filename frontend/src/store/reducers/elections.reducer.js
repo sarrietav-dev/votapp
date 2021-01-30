@@ -28,7 +28,9 @@ const electionSlice = createSlice({
       state.currentElection = {};
     },
     deleteElection(state, action) {
-      state.elections.filter((election) => election._id !== action.payload);
+      state.elections = state.elections.filter(
+        (election) => election._id !== action.payload,
+      );
       state.currentElection = {};
     },
     editElection(state, action) {
