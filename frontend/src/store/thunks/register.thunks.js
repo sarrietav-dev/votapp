@@ -1,12 +1,13 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import axios from 'axios';
+import serverUrl from '../../utils/server-url';
 import { raiseAlert } from '../reducers/alerts.reducer';
 
 export default (data) => async (dispatch) => {
   await axios({
     method: 'POST',
-    url: 'http://localhost:5000/api/users/',
+    url: `${serverUrl}/users/`,
     data,
   })
     .then(() => {
