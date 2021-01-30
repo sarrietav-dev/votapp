@@ -1,12 +1,12 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import axios from 'axios';
-import { raiseAlert } from '../../reducers/alerts.reducer';
+import { raiseAlert } from '../reducers/alerts.reducer';
 import {
   denyUser,
   fetchUnverifiedUsers,
   verifyUser,
-} from '../../reducers/unverified-users.reducer';
+} from '../reducers/unverified-users.reducer';
 
 export const fetchUnverifiedUsersThunk = () => async (dispatch) => {
   await axios({

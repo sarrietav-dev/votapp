@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { generate } from 'shortid';
 import UnverifiedUser from './UnverifiedUser';
-import { fetchUnverifiedUsersThunk } from '../../store/actions/thunks/verify.thunks';
+import { fetchUnverifiedUsersThunk } from '../../store/thunks/verify.thunks';
 
 const VerifyUsersDialog = ({ isOpen, onClose }) => {
   const unverifiedUsers = useSelector(
