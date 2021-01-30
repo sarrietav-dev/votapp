@@ -5,7 +5,11 @@
 import axios from 'axios';
 import { verify } from 'jsonwebtoken';
 import { raiseAlert } from '../../reducers/alerts.reducer';
-import { logOut, setAuthToken, setIsAdmin } from '../auth-token.actions';
+import {
+  logOut,
+  setAuthToken,
+  setIsAdmin,
+} from '../../reducers/auth-token.reducer';
 
 export const loginThunk = (data) => async (dispatch) => {
   await axios({
