@@ -7,7 +7,7 @@ const registerValidation = require('../validation/register.val');
 
 router.get('/', async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find({ is_admin: false, is_verified: true });
     return res.status(200).json(users);
   } catch (error) {
     return res.status(400).json({ error });
