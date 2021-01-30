@@ -1,22 +1,22 @@
-import { CLOSE_PANEL, OPEN_PANEL } from '../actions/types.actions';
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
-const defaultState = {
+const initialState = {
   open: false,
 };
 
-export default (state = defaultState, action) => {
-  switch (action.type) {
-    case OPEN_PANEL:
-      return {
-        ...state,
-        open: true,
-      };
-    case CLOSE_PANEL:
-      return {
-        ...state,
-        open: false,
-      };
-    default:
-      return state;
-  }
-};
+const panelSlice = createSlice({
+  name: 'panel',
+  initialState,
+  reducers: {
+    openPanel(state) {
+      state.open = true;
+    },
+    closePanel(state) {
+      state.open = false;
+    },
+  },
+});
+
+export const { closePanel, openPanel } = panelSlice.actions;
+export default panelSlice.reducer;
