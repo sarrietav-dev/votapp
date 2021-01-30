@@ -1,57 +1,49 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
-import {
-  deleteOne,
-  editElection,
-} from '../../utils/reducer.utils';
-import {
-  DELETE_ELECTION,
-  EDIT_ELECTION,
-  EMPTY_CURRENT_ELECTION,
-  FETCH_ELECTIONS,
-  SAVE_ELECTION,
-  SET_CURRENT_ELECTION,
-} from '../actions/types.actions';
 
-const defaultState = {
+import { createSlice } from '@reduxjs/toolkit';
+import { editElection as edit } from '../../utils/reducer.utils';
+
+const initialState = {
   elections: [],
   currentElection: {},
 };
 
-export default (state = defaultState, action) => {
-  switch (action.type) {
-    case FETCH_ELECTIONS:
-      return {
-        ...state,
-        elections: [...action.payload],
-      };
-    case SAVE_ELECTION:
-      return {
-        ...state,
-        elections: [...state.elections, action.payload],
-      };
-    case SET_CURRENT_ELECTION:
-      return {
-        ...state,
-        currentElection: state.elections.filter(
-          (election) => election._id === action.payload,
-        )[0],
-      };
-    case EMPTY_CURRENT_ELECTION:
-      return {
-        ...state,
-        currentElection: {},
-      };
-    case DELETE_ELECTION:
-      return {
-        currentElection: {},
-        elections: deleteOne(state.elections, action.payload),
-      };
-    case EDIT_ELECTION:
-      return {
-        elections: editElection(state.elections, action.payload),
-        currentElection: action.payload,
-      };
-    default:
-      return state;
-  }
-};
+const electionSlice = createSlice({
+  name: 'elections',
+  initialState,
+  reducers: {
+    fetchElections(state, action) {
+      state.elections = action.payload;
+    },
+    saveElection(state, action) {
+      state.elections.push(action.payload);
+    },
+    setCurrentElection(state, action) {
+      state.currentElection.filter(
+        (election) => election._id !== action.payload,
+      );
+    },
+    emptyCurrentElection(state) {
+      state.currentElection = {};
+    },
+    deleteElection(state, action) {
+      state.elections.filter((election) => election._id !== action.payload);
+      state.currentElection = {};
+    },
+    editElection(state, action) {
+      state.elections = edit(state.elections, action.payload);
+      state.currentElection = action.payload;
+    },
+  },
+});
+
+export const {
+  deleteElection,
+  editElection,
+  emptyCurrentElection,
+  fetchElections,
+  saveElection,
+  setCurrentElection,
+} = electionSlice.actions;
+export default electionSlice.reducer;
