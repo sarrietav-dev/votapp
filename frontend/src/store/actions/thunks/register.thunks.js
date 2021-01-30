@@ -1,7 +1,7 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import axios from 'axios';
-import { raiseAlert } from '../alert.actions';
+import { raiseAlert } from '../../reducers/alerts.reducer';
 
 export default (data) => async (dispatch) => {
   await axios({

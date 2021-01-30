@@ -11,7 +11,7 @@ import {
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
-import { closeDialog } from '../../store/actions/dialog.actions';
+import { closeDialog } from '../../store/reducers/dialogs.reducer';
 import { saveElectionThunk } from '../../store/actions/thunks/elections.thunk';
 
 const CreateElectionDialog = () => {

@@ -1,33 +1,27 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-import {
-  LOG_OUT,
-  SET_AUTH_TOKEN,
-  SET_IS_ADMIN,
-} from '../actions/types.actions';
+import { createSlice } from '@reduxjs/toolkit';
 
-const defaultState = {
-  authToken: localStorage.getItem('AUTH_TOKEN') || '',
-  isAdmin: false,
-};
+const authSlice = createSlice({
+  name: 'auth',
+  initialState: {
+    authToken: localStorage.getItem('AUTH_TOKEN') || '',
+    isAdmin: false,
+  },
+  reducers: {
+    setAuthToken(state, action) {
+      state.authToken = action.payload;
+    },
+    logOut(state, _action) {
+      state.authToken = '';
+      state.isAdmin = false;
+    },
+    setIsAdmin(state, action) {
+      state.isAdmin = action.payload;
+    },
+  },
+});
 
-export default (state = defaultState, action) => {
-  switch (action.type) {
-    case SET_AUTH_TOKEN:
-      return {
-        ...state,
-        authToken: action.payload,
-      };
-    case LOG_OUT:
-      return {
-        authToken: '',
-        isAdmin: false,
-      };
-    case SET_IS_ADMIN:
-      return {
-        ...state,
-        isAdmin: action.payload,
-      };
-    default:
-      return state;
-  }
-};
+export const { logOut, setAuthToken, setIsAdmin } = authSlice.actions;
+export default authSlice.reducer;

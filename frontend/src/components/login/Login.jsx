@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { loginThunk } from '../../store/actions/thunks/auth.thunks';
-import { openDialog } from '../../store/actions/dialog.actions';
+import { openDialog } from '../../store/reducers/dialogs.reducer';
 import RegisterDialog from './RegisterDialog';
 
 const useStyles = makeStyles((theme) => ({

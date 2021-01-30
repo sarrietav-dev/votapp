@@ -1,29 +1,34 @@
-import { deleteOne } from '../../utils/reducer.utils';
-import {
-  DENY_USER,
-  FETCH_UNVERIFIED_USERS,
-  VERIFY_USER,
-} from '../actions/types.actions';
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   unverifiedUsers: [],
 };
 
-export default (state = initialState, { type, payload }) => {
-  switch (type) {
-    case FETCH_UNVERIFIED_USERS:
-      return { unverifiedUsers: payload };
-    case VERIFY_USER:
-      return {
-        ...state,
-        unverifiedUsers: deleteOne(state.unverifiedUsers, payload),
-      };
-    case DENY_USER:
-      return {
-        ...state,
-        unverifiedUsers: deleteOne(state.unverifiedUsers, payload),
-      };
-    default:
-      return state;
-  }
-};
+const unverifiedUsersSlice = createSlice({
+  name: 'unverified',
+  initialState,
+  reducers: {
+    fetchUnverifiedUsers(state, action) {
+      state.unverifiedUsers = action.payload;
+    },
+    verifyUser(state, action) {
+      state.unverifiedUsers = state.unverifiedUsers.filter(
+        (user) => user._id !== action.payload,
+      );
+    },
+    denyUser(state, action) {
+      state.unverifiedUsers = state.unverifiedUsers.filter(
+        (user) => user._id !== action.payload,
+      );
+    },
+  },
+});
+
+export const {
+  denyUser,
+  fetchUnverifiedUsers,
+  verifyUser,
+} = unverifiedUsersSlice.actions;
+export default unverifiedUsersSlice.reducer;
