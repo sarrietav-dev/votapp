@@ -8,8 +8,8 @@ import {
 import AddUser from '@material-ui/icons/GroupAdd';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { raiseAlert } from '../../store/actions/alert.actions';
-import { closePanel } from '../../store/actions/panel.actions';
+import { raiseAlert } from '../../store/reducers/alerts.reducer';
+import { closePanel } from '../../store/reducers/panel.reducer';
 import VerifyUsersDialog from './VerifyUsersDialog';
 
 const AdminPanel = () => {

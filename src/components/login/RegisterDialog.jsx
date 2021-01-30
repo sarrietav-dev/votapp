@@ -17,7 +17,7 @@ import {
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeDialog } from '../../store/actions/dialog.actions';
+import { closeDialog } from '../../store/reducers/dialogs.reducer';
 import registerThunk from '../../store/actions/thunks/register.thunks';
 
 const RegisterDialog = () => {
