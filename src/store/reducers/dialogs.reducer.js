@@ -1,22 +1,22 @@
-import { CLOSE_DIALOG, OPEN_DIALOG } from '../actions/types.actions';
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
-const defaultState = {
+const initialState = {
   isOpen: false,
 };
 
-export default (state = defaultState, action) => {
-  switch (action.type) {
-    case OPEN_DIALOG:
-      return {
-        ...state,
-        isOpen: true,
-      };
-    case CLOSE_DIALOG:
-      return {
-        ...state,
-        isOpen: false,
-      };
-    default:
-      return state;
-  }
-};
+const dialogSlice = createSlice({
+  name: 'dialog',
+  initialState,
+  reducers: {
+    openDialog(state) {
+      state.isOpen = true;
+    },
+    closeDialog(state) {
+      state.isOpen = false;
+    },
+  },
+});
+
+export const { openDialog, closeDialog } = dialogSlice.actions;
+export default dialogSlice.reducer;
