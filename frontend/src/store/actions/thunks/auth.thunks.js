@@ -4,7 +4,7 @@
 /* eslint-disable no-undef */
 import axios from 'axios';
 import { verify } from 'jsonwebtoken';
-import { raiseAlert } from '../alert.actions';
+import { raiseAlert } from '../../reducers/alerts.reducer';
 import { logOut, setAuthToken, setIsAdmin } from '../auth-token.actions';
 
 export const loginThunk = (data) => async (dispatch) => {
