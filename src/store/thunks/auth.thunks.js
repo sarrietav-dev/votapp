@@ -4,6 +4,7 @@
 /* eslint-disable no-undef */
 import axios from 'axios';
 import { verify } from 'jsonwebtoken';
+import serverUrl from '../../utils/server-url';
 import { raiseAlert } from '../reducers/alerts.reducer';
 import {
   logOut,
@@ -14,7 +15,7 @@ import {
 export const loginThunk = (data) => async (dispatch) => {
   await axios({
     method: 'POST',
-    url: 'http://localhost:5000/api/login/',
+    url: `${serverUrl}/login/`,
     data,
   })
     .then((response) => {
