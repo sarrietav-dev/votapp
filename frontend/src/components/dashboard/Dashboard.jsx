@@ -8,7 +8,7 @@ import CreateElectionDialog from './CreateElectionDialog';
 import ElectionCard from './ElectionCard';
 import FabButton from '../FabButton';
 import { fetchElectionsThunk } from '../../store/actions/thunks/elections.thunk';
-import { raiseAlert } from '../../store/actions/alert.actions';
+import { raiseAlert } from '../../store/reducers/alerts.reducer';
 
 const Dashboard = () => {
   const dispatch = useDispatch();

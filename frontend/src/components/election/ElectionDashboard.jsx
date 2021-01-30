@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import FabButton from '../FabButton';
 import NavBar from '../Navbar';
-import { openDialog } from '../../store/actions/dialog.actions';
+import { openDialog } from '../../store/reducers/dialogs.reducer';
 import ElectionSettings from './ElectionSettings';
 
 const useStyles = makeStyles(() => ({

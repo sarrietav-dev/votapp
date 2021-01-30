@@ -14,10 +14,10 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Controller, useForm } from 'react-hook-form';
-import { closeDialog } from '../../store/actions/dialog.actions';
+import { closeDialog } from '../../store/reducers/dialogs.reducer';
 import { editElectionThunk } from '../../store/actions/thunks/elections.thunk';
 import DeleteElectionWarning from './DeleteElectionWarning';
-import { raiseAlert } from '../../store/actions/alert.actions';
+import { raiseAlert } from '../../store/reducers/alerts.reducer';
 
 const ElectionSettings = () => {
   const { handleSubmit, control } = useForm();

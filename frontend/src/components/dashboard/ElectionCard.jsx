@@ -10,7 +10,7 @@ import {
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { setCurrentElection } from '../../store/actions/election.actions';
+import { setCurrentElection } from '../../store/reducers/elections.reducer';
 
 const useStyles = makeStyles({
   card: {
