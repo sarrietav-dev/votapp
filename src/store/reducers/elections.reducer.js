@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
 
@@ -22,7 +23,7 @@ const electionSlice = createSlice({
     setCurrentElection(state, action) {
       state.currentElection = state.elections.filter(
         (election) => election._id !== action.payload,
-      );
+      )[0];
     },
     emptyCurrentElection(state) {
       state.currentElection = {};
