@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { CLOSE_ALERT, RAISE_ALERT } from '../actions/types.actions';
 
 const alertSlice = createSlice({
   name: 'alerts',
