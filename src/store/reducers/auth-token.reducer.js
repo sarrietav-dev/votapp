@@ -3,12 +3,6 @@
 /* eslint-disable no-undef */
 import { createSlice } from '@reduxjs/toolkit';
 
-import {
-  LOG_OUT,
-  SET_AUTH_TOKEN,
-  SET_IS_ADMIN,
-} from '../actions/types.actions';
-
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
