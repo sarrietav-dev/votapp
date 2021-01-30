@@ -1,12 +1,14 @@
 /* eslint-disable react/jsx-wrap-multilines */
-import React from 'react';
+import React, { useRef } from 'react';
 import {
   Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControlLabel,
   Grid,
+  Switch,
   TextField,
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +18,7 @@ import { saveElectionThunk } from '../../store/actions/thunks/elections.thunk';
 
 const CreateElectionDialog = () => {
   const { handleSubmit, control } = useForm();
+  const switchRef = useRef();
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.dialog.isOpen);
 
@@ -75,6 +78,13 @@ const CreateElectionDialog = () => {
                   required: true,
                   min: 6,
                 }}
+              />
+            </Grid>
+            <Grid item>
+              <FormControlLabel
+                disabled
+                control={<Switch checked inputRef={switchRef} />}
+                label="Select candidates beforehand"
               />
             </Grid>
           </Grid>
