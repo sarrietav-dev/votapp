@@ -1,12 +1,12 @@
 /* eslint-disable no-underscore-dangle */
 import axios from 'axios';
-import { raiseAlert } from '../alert.actions';
+import { raiseAlert } from '../../reducers/alerts.reducer';
 import {
   deleteElection,
   editElection,
   fetchElections,
   saveElection,
-} from '../election.actions';
+} from '../../reducers/elections.reducer';
 
 export const fetchElectionsThunk = () => async (dispatch) => {
   await axios

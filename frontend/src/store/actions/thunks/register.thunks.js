@@ -1,7 +1,7 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import axios from 'axios';
-import { raiseAlert } from '../alert.actions';
+import { raiseAlert } from '@reduxjs/toolkit';
 
 export default (data) => async (dispatch) => {
   await axios({
