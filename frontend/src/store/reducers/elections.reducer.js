@@ -20,7 +20,7 @@ const electionSlice = createSlice({
       state.elections.push(action.payload);
     },
     setCurrentElection(state, action) {
-      state.currentElection.filter(
+      state.currentElection = state.elections.filter(
         (election) => election._id !== action.payload,
       );
     },
