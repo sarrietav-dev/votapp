@@ -18,7 +18,7 @@ import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeDialog } from '../../store/reducers/dialogs.reducer';
-import registerThunk from '../../store/actions/thunks/register.thunks';
+import registerThunk from '../../store/thunks/register.thunks';
 
 const RegisterDialog = () => {
   const isOpen = useSelector((state) => state.dialog.isOpen);

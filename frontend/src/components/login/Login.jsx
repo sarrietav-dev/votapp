@@ -13,7 +13,7 @@ import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { loginThunk } from '../../store/actions/thunks/auth.thunks';
+import { loginThunk } from '../../store/thunks/auth.thunks';
 import { openDialog } from '../../store/reducers/dialogs.reducer';
 import RegisterDialog from './RegisterDialog';
 
