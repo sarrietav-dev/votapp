@@ -1,17 +1,18 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 import axios from 'axios';
-import { raiseAlert } from '../../reducers/alerts.reducer';
+import serverUrl from '../../utils/server-url';
+import { raiseAlert } from '../reducers/alerts.reducer';
 import {
   denyUser,
   fetchUnverifiedUsers,
   verifyUser,
-} from '../../reducers/unverified-users.reducer';
+} from '../reducers/unverified-users.reducer';
 
 export const fetchUnverifiedUsersThunk = () => async (dispatch) => {
   await axios({
     method: 'GET',
-    url: 'http://localhost:5000/api/users/unverified',
+    url: `${serverUrl}/users/unverified`,
   })
     .then((response) => {
       const { data } = response;
@@ -30,7 +31,7 @@ export const fetchUnverifiedUsersThunk = () => async (dispatch) => {
 export const verifyUserThunk = (id) => async (dispatch) => {
   await axios({
     method: 'PATCH',
-    url: `http://localhost:5000/api/users/verify/${id}`,
+    url: `${serverUrl}/users/verify/${id}`,
   })
     .then((response) => {
       const { data } = response;
@@ -54,7 +55,7 @@ export const verifyUserThunk = (id) => async (dispatch) => {
 export const denyUserThunk = (id) => async (dispatch) => {
   await axios({
     method: 'DELETE',
-    url: `http://localhost:5000/api/users/deny/${id}`,
+    url: `${serverUrl}/users/deny/${id}`,
   })
     .then((response) => {
       const { data } = response;

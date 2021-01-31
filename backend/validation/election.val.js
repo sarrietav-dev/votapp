@@ -7,6 +7,7 @@ const electionValidation = (data) => {
     position: Joi.string().min(5).required(),
     registeredVotes: Joi.array(),
     votes: Joi.array(),
+    candidates: Joi.array(),
     __v: Joi.number(),
   });
 

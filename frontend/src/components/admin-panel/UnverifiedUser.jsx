@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 import {
   denyUserThunk,
   verifyUserThunk,
-} from '../../store/actions/thunks/verify.thunks';
+} from '../../store/thunks/verify.thunks';
 
 const useStyles = makeStyles((theme) => ({
   root: {

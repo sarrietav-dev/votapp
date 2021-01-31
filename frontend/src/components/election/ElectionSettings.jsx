@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Controller, useForm } from 'react-hook-form';
 import { closeDialog } from '../../store/reducers/dialogs.reducer';
-import { editElectionThunk } from '../../store/actions/thunks/elections.thunk';
+import { editElectionThunk } from '../../store/thunks/elections.thunk';
 import DeleteElectionWarning from './DeleteElectionWarning';
 import { raiseAlert } from '../../store/reducers/alerts.reducer';
 

@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import PropTypes from 'prop-types';
-import { logoutThunk } from '../store/actions/thunks/auth.thunks';
+import { logoutThunk } from '../store/thunks/auth.thunks';
 import { emptyCurrentElection } from '../store/reducers/elections.reducer';
 import { openPanel } from '../store/reducers/panel.reducer';
 
