@@ -16,6 +16,7 @@ router.post('/', async (req, res) => {
     const election = new Election({
       title: body.title,
       position: body.position,
+      candidates: body.candidates,
     });
 
     await election.save();
