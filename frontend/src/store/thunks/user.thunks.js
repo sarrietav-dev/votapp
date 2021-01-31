@@ -14,11 +14,12 @@ const fetchUsers = createAsyncThunk(
       .then((response) => response.data)
       .catch((err) =>
         // eslint-disable-next-line no-undef
-        dispatch(
+        thunkAPI.dispatch(
           raiseAlert({ message: err.response.data.error, variant: 'error' }),
         ),
       );
     return res;
   },
 );
+
 export default fetchUsers;
