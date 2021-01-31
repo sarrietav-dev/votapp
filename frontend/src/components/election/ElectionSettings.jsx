@@ -6,7 +6,6 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  FormControl,
   Grid,
   IconButton,
   TextField,
@@ -15,10 +14,10 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Controller, useForm } from 'react-hook-form';
-import { closeDialog } from '../../store/actions/dialog.actions';
-import { editElectionThunk } from '../../store/actions/thunks/elections.thunk';
+import { closeDialog } from '../../store/reducers/dialogs.reducer';
+import { editElectionThunk } from '../../store/thunks/elections.thunk';
 import DeleteElectionWarning from './DeleteElectionWarning';
-import { raiseAlert } from '../../store/actions/alert.actions';
+import { raiseAlert } from '../../store/reducers/alerts.reducer';
 
 const ElectionSettings = () => {
   const { handleSubmit, control } = useForm();
@@ -45,56 +44,52 @@ const ElectionSettings = () => {
         open={isWarningOpen}
         setIsWarningOpen={setIsWarningOpen}
       />
-      <Dialog open={isOpen}>
+      <Dialog open={isOpen} fullWidth maxWidth="xs">
         <form onSubmit={handleSubmit(onSubmit)}>
           <DialogTitle>Election Title</DialogTitle>
           <DialogContent>
             <Grid container direction="column">
               <Grid item>
-                <FormControl>
-                  <Controller
-                    name="title"
-                    as={
-                      <TextField
-                        margin="dense"
-                        label="Title"
-                        type="text"
-                        fullWidth
-                        variant="filled"
-                        name="title"
-                      />
-                    }
-                    control={control}
-                    defaultValue=""
-                    rules={{
-                      required: true,
-                      min: 6,
-                    }}
-                  />
-                </FormControl>
+                <Controller
+                  name="title"
+                  as={
+                    <TextField
+                      margin="dense"
+                      label="Title"
+                      type="text"
+                      fullWidth
+                      variant="filled"
+                      name="title"
+                    />
+                  }
+                  control={control}
+                  defaultValue=""
+                  rules={{
+                    required: true,
+                    min: 6,
+                  }}
+                />
               </Grid>
               <Grid item>
-                <FormControl>
-                  <Controller
-                    name="position"
-                    as={
-                      <TextField
-                        margin="dense"
-                        label="Position"
-                        type="text"
-                        fullWidth
-                        variant="filled"
-                        name="position"
-                      />
-                    }
-                    rules={{
-                      required: true,
-                      min: 6,
-                    }}
-                    defaultValue=""
-                    control={control}
-                  />
-                </FormControl>
+                <Controller
+                  name="position"
+                  as={
+                    <TextField
+                      margin="dense"
+                      label="Position"
+                      type="text"
+                      fullWidth
+                      variant="filled"
+                      name="position"
+                    />
+                  }
+                  rules={{
+                    required: true,
+                    min: 6,
+                  }}
+                  defaultValue=""
+                  control={control}
+                />
               </Grid>
             </Grid>
           </DialogContent>

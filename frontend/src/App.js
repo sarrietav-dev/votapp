@@ -5,11 +5,13 @@ import './App.css';
 import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
-import Login from './components/Login';
+import { useSelector } from 'react-redux';
+import Login from './components/login/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import AuthRoute from './components/AuthRoute';
 import ElectionDashboard from './components/election/ElectionDashboard';
 import AlertMessage from './components/AlertMessage';
+import AdminPanel from './components/admin-panel/AdminPanel';
 
 const useStyles = makeStyles({
   app: {
@@ -19,8 +21,10 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
   return (
     <div className={classes.app}>
+      {isAdmin && <AdminPanel />}
       <AlertMessage />
       <BrowserRouter>
         <Switch>

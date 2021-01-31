@@ -7,8 +7,8 @@ import Navbar from '../Navbar';
 import CreateElectionDialog from './CreateElectionDialog';
 import ElectionCard from './ElectionCard';
 import FabButton from '../FabButton';
-import { fetchElectionsThunk } from '../../store/actions/thunks/elections.thunk';
-import { raiseAlert } from '../../store/actions/alert.actions';
+import { fetchElectionsThunk } from '../../store/thunks/elections.thunk';
+import { raiseAlert } from '../../store/reducers/alerts.reducer';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -22,13 +22,21 @@ const Dashboard = () => {
   }, []);
 
   const elections = useSelector((state) => state.election.elections);
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
 
   return (
     <div className="dashboard-wrapper">
+      {isAdmin && <FabButton />}
       <Navbar />
-      <FabButton />
       <CreateElectionDialog />
-      <Grid container spacing={5} justify="center" alignItems="center">
+      <Grid
+        container
+        spacing={2}
+        justify="center"
+        alignItems="center"
+        style={{ margin: 0 }}
+        xs={12}
+      >
         {elections.map((election) => (
           <Grid item key={shortid.generate()}>
             <ElectionCard
