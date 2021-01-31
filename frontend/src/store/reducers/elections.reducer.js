@@ -8,6 +8,7 @@ import { editElection as edit } from '../../utils/reducer.utils';
 const initialState = {
   elections: [],
   currentElection: {},
+  selectedCandidates: [],
 };
 
 const electionSlice = createSlice({
@@ -38,6 +39,9 @@ const electionSlice = createSlice({
       state.elections = edit(state.elections, action.payload);
       state.currentElection = action.payload;
     },
+    setCandidates(state, action) {
+      state.selectedCandidates = action.payload;
+    },
   },
 });
 
@@ -48,5 +52,6 @@ export const {
   fetchElections,
   saveElection,
   setCurrentElection,
+  setCandidates,
 } = electionSlice.actions;
 export default electionSlice.reducer;
