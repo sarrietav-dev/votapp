@@ -23,10 +23,13 @@ const CreateElectionDialog = () => {
   const [isChecked] = useState(true);
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.dialog.isOpen);
+  const selectedCandidates = useSelector(
+    (state) => state.election.selectedCandidates,
+  );
 
   const handleClose = () => dispatch(closeDialog());
   const onSubmit = (data) => {
-    dispatch(saveElectionThunk(data));
+    dispatch(saveElectionThunk({ ...data, selectedCandidates }));
     handleClose();
   };
 
