@@ -29,7 +29,7 @@ const CreateElectionDialog = () => {
 
   const handleClose = () => dispatch(closeDialog());
   const onSubmit = (data) => {
-    dispatch(saveElectionThunk({ ...data, selectedCandidates }));
+    dispatch(saveElectionThunk({ ...data, candidates: selectedCandidates }));
     handleClose();
   };
 
