@@ -10,9 +10,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import { closeDialog } from '../../store/actions/dialog.actions';
-import { deleteElectionThunk } from '../../store/actions/thunks/elections.thunk';
-import { raiseAlert } from '../../store/actions/alert.actions';
+import { closeDialog } from '../../store/reducers/dialogs.reducer';
+import { deleteElectionThunk } from '../../store/thunks/elections.thunk';
+import { raiseAlert } from '../../store/reducers/alerts.reducer';
 
 const message = "This can't be undone";
 

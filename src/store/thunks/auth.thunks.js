@@ -1,26 +1,36 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-undef */
 import axios from 'axios';
-import { raiseAlert } from '../alert.actions';
-import { logOut, setAuthToken } from '../auth-token.actions';
+import { verify } from 'jsonwebtoken';
+import serverUrl from '../../utils/server-url';
+import { raiseAlert } from '../reducers/alerts.reducer';
+import {
+  logOut,
+  setAuthToken,
+  setIsAdmin,
+} from '../reducers/auth-token.reducer';
 
 export const loginThunk = (data) => async (dispatch) => {
   await axios({
     method: 'POST',
-    url: 'http://localhost:5000/api/login/',
+    url: `${serverUrl}/login/`,
     data,
   })
     .then((response) => {
       const payload = response.data.token;
       localStorage.setItem('AUTH_TOKEN', payload);
       dispatch(setAuthToken(payload));
+
+      const decodedToken = verify(payload, process.env.REACT_APP_TOKEN_SECRET);
+      dispatch(setIsAdmin(decodedToken.is_admin));
     })
-    .catch((err) =>
+    .catch((err) => {
       dispatch(
         raiseAlert({ variant: 'error', message: err.response.data.error }),
-      ),
-    );
+      );
+    });
 };
 
 export const logoutThunk = () => (dispatch) => {

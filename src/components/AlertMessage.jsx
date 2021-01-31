@@ -2,7 +2,7 @@ import { Snackbar } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeAlert } from '../store/actions/alert.actions';
+import { closeAlert } from '../store/reducers/alerts.reducer';
 
 const AlertMessage = () => {
   const { open, message, variant } = useSelector((state) => state.alert);
