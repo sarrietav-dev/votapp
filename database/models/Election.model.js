@@ -16,7 +16,7 @@ const electionSchema = new mongoose.Schema({
     default: [],
   },
   candidates: {
-    type: mongoose.Types.ObjectId,
+    type: Array,
     default: [],
   },
   votes: {
