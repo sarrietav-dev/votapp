@@ -18,7 +18,7 @@ const VotingPanel = () => {
   return (
     <div className={classes.votingPanel}>
       {candidates.map((candidate) => (
-        <h1 key={generate()}>{candidate}</h1>
+        <h1 key={generate()}>{candidate.name}</h1>
       ))}
     </div>
   );
