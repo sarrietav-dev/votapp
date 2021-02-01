@@ -32,14 +32,14 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <AuthRoute path="/vote">
+            <VotingPanel />
+          </AuthRoute>
           <AuthRoute path="/election">
             <ElectionDashboard />
           </AuthRoute>
           <AuthRoute path="/">
             <Dashboard />
-          </AuthRoute>
-          <AuthRoute path="/vote">
-            <VotingPanel />
           </AuthRoute>
         </Switch>
       </BrowserRouter>
