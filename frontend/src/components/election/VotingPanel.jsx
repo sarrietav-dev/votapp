@@ -2,10 +2,14 @@ import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { generate } from 'shortid';
+import CandidateCard from './CandidateCard';
 
 const useStyles = makeStyles(() => ({
   votingPanel: {
     height: '100vh',
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
 }));
 
@@ -15,11 +19,16 @@ const VotingPanel = () => {
   );
   const classes = useStyles();
 
+  const onClick = (id) => {
+    console.log(id);
+  };
+
   return (
     <div className={classes.votingPanel}>
       {candidates.map((candidate) => (
-        <h1 key={generate()}>{candidate.name}</h1>
+        <CandidateCard data={candidate} onClick={onClick} key={generate()} />
       ))}
+      <CandidateCard data={{ name: 'Blank ballot', code: '' }} />
     </div>
   );
 };
