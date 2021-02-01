@@ -53,7 +53,7 @@ const ElectionDashboard = () => {
     <div className={classes.electionWrapper}>
       <NavBar actionIcon="back" path={{ from: '/' }} />
       <ElectionSettings />
-      <FabButton />
+      {isAdmin && <FabButton />}
       <Container maxWidth="md" className={classes.banner}>
         <Typography variant="h4" className={classes.banner__title}>
           {currentElection.title}
