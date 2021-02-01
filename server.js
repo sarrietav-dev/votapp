@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const chalk = require('chalk');
 const dotenv = require('dotenv');
+const rateLimit = require('express-rate-limit');
 const loginRoute = require('./routes/login.routes');
 const userRoute = require('./routes/user.routes');
 const electionRoute = require('./routes/election.routes');
@@ -18,6 +19,14 @@ app.use(cors());
 // Configure express to recieve JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 50, // limit each IP to 50 requests per windowMs
+  message: 'Too many requests, please try again after 15 minutes',
+});
+
+app.use(limiter);
 
 // Route middleware.
 app.use('/api/login', loginRoute);
