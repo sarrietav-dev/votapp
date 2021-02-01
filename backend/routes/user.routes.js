@@ -27,6 +27,7 @@ router.get('/unverified', async (req, res) => {
   }
 });
 
+// TODO: Add rate limiter to this route.
 // Create an user
 router.post('/', async (req, res) => {
   try {
