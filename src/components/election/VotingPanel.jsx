@@ -1,6 +1,6 @@
 /* eslint-disable operator-linebreak */
 import { IconButton, makeStyles } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { generate } from 'shortid';
 import BackIcon from '@material-ui/icons/ArrowBack';
@@ -30,11 +30,10 @@ const VotingPanel = () => {
     history.push('/election');
   };
 
-  useEffect(() => {
-    if (candidates.length === 0) {
-      history.push('/');
-    }
-  });
+  if (candidates.length === 0) {
+    history.push('/');
+    return null;
+  }
 
   return (
     <>
