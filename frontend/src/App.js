@@ -12,6 +12,7 @@ import AuthRoute from './components/AuthRoute';
 import ElectionDashboard from './components/election/ElectionDashboard';
 import AlertMessage from './components/AlertMessage';
 import AdminPanel from './components/admin-panel/AdminPanel';
+import VotingPanel from './components/election/VotingPanel';
 
 const useStyles = makeStyles({
   app: {
@@ -31,6 +32,9 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <AuthRoute path="/vote">
+            <VotingPanel />
+          </AuthRoute>
           <AuthRoute path="/election">
             <ElectionDashboard />
           </AuthRoute>

@@ -1,5 +1,11 @@
 /* eslint-disable object-curly-newline */
-import { Button, Container, IconButton, makeStyles } from '@material-ui/core';
+import {
+  Button,
+  Container,
+  IconButton,
+  makeStyles,
+  Typography,
+} from '@material-ui/core';
 import React, { useEffect } from 'react';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { useDispatch, useSelector } from 'react-redux';
@@ -17,8 +23,11 @@ const useStyles = makeStyles(() => ({
     margin: 0,
   },
   banner__title: {
-    marginTop: 40,
-    marginBottom: 40,
+    marginTop: 25,
+    marginBottom: 10,
+  },
+  banner__position: {
+    marginBottom: 25,
   },
 }));
 
@@ -36,15 +45,24 @@ const ElectionDashboard = () => {
     if (Object.keys(currentElection).length === 0) history.push('/');
   });
 
+  const onButtonClick = () => {
+    if (!isAdmin) history.push('/vote');
+  };
+
   return (
     <div className={classes.electionWrapper}>
       <NavBar actionIcon="back" path={{ from: '/' }} />
       <ElectionSettings />
       <FabButton />
       <Container maxWidth="md" className={classes.banner}>
-        <h1 className={classes.banner__title}>{currentElection.title}</h1>
-        <Button color="secondary" variant="contained">
-          Action button
+        <Typography variant="h4" className={classes.banner__title}>
+          {currentElection.title}
+        </Typography>
+        <Typography variant="h5" className={classes.banner__position}>
+          {currentElection.position}
+        </Typography>
+        <Button color="secondary" variant="contained" onClick={onButtonClick}>
+          {!isAdmin ? 'Vote Now!' : 'End election'}
         </Button>
         {isAdmin && (
           <IconButton onClick={() => dispatch(openDialog())}>
