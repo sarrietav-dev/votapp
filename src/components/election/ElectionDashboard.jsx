@@ -36,6 +36,10 @@ const ElectionDashboard = () => {
     if (Object.keys(currentElection).length === 0) history.push('/');
   });
 
+  const onButtonClick = () => {
+    if (!isAdmin) history.push('/vote');
+  };
+
   return (
     <div className={classes.electionWrapper}>
       <NavBar actionIcon="back" path={{ from: '/' }} />
@@ -43,7 +47,7 @@ const ElectionDashboard = () => {
       <FabButton />
       <Container maxWidth="md" className={classes.banner}>
         <h1 className={classes.banner__title}>{currentElection.title}</h1>
-        <Button color="secondary" variant="contained">
+        <Button color="secondary" variant="contained" onClick={onButtonClick}>
           {!isAdmin ? 'Vote Now!' : 'End election'}
         </Button>
         {isAdmin && (
