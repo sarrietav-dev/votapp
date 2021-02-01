@@ -25,6 +25,9 @@ const VotingPanel = () => {
 
   return (
     <>
+      <IconButton onClick={onBackClick}>
+        <BackIcon />
+      </IconButton>
       <div className={classes.votingPanel}>
         {candidates.map((candidate) => (
           <CandidateCard data={candidate} onClick={onClick} key={generate()} />
