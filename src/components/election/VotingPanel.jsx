@@ -22,6 +22,19 @@ const VotingPanel = () => {
   const classes = useStyles();
   const history = useHistory();
 
+  const onClick = (id) => {
+    console.log(id);
+  };
+
+  const onBackClick = () => {
+    history.push('/election');
+  };
+
+  useEffect(() => {
+    if (candidates.length === 0) {
+      history.push('/');
+    }
+  });
 
   return (
     <>
