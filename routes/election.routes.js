@@ -11,12 +11,18 @@ router.post('/', async (req, res) => {
     const { error } = electionValidation(body);
     if (error) return res.status(400).json({ error: error.details[0].message });
 
+    const candidates = body.candidates.map((candidate) => ({
+      _id: candidate._id,
+      name: candidate.name,
+      code: candidate.code,
+    }));
+
     // TODO: Check if the requester is an admin.
 
     const election = new Election({
       title: body.title,
       position: body.position,
-      candidates: body.candidates,
+      candidates,
     });
 
     await election.save();
