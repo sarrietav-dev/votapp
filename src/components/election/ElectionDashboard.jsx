@@ -44,7 +44,7 @@ const ElectionDashboard = () => {
       <Container maxWidth="md" className={classes.banner}>
         <h1 className={classes.banner__title}>{currentElection.title}</h1>
         <Button color="secondary" variant="contained">
-          Action button
+          {!isAdmin ? 'Vote Now!' : 'End election'}
         </Button>
         {isAdmin && (
           <IconButton onClick={() => dispatch(openDialog())}>
