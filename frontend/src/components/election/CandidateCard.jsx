@@ -13,7 +13,7 @@ import {
 import VoteIcon from '@material-ui/icons/HowToVote';
 
 const CandidateCard = ({ data, onClick }) => (
-  <Card onClick={() => onClick(data._id)} style={{ maxWidth: 500, width: 250 }}>
+  <Card style={{ maxWidth: 500, width: 250 }}>
     <CardHeader avatar={<Avatar>{data.name[0]}</Avatar>} title="Candidate" />
     <CardContent>
       <Typography>{data.name}</Typography>
@@ -26,7 +26,7 @@ const CandidateCard = ({ data, onClick }) => (
         alignItems: 'center',
       }}
     >
-      <IconButton>
+      <IconButton onClick={() => onClick(data._id)}>
         <VoteIcon />
       </IconButton>
     </CardActions>
