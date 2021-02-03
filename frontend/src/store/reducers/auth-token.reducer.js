@@ -15,12 +15,13 @@ const authSlice = createSlice({
     setAuthToken(state, action) {
       state.authToken = action.payload;
     },
-    logOut(state, _action) {
+    logOut(state) {
       state.authToken = '';
       state.isAdmin = false;
+      state._id = '';
     },
     setData(state, action) {
-      state.isAdmin = action.payload.isAdmin;
+      state.isAdmin = action.payload.is_admin;
       state._id = action.payload._id;
     },
   },
