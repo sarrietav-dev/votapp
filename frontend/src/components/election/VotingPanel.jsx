@@ -21,15 +21,13 @@ const useStyles = makeStyles(() => ({
 const VotingPanel = () => {
   const candidates =
     useSelector((state) => state.election.currentElection.candidates) || [];
+  const electionId = useSelector((state) => state.election.currentElection._id);
+  const userId = useSelector((state) => state.auth._id);
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
 
   const onClick = (candidateId) => {
-    const electionId = useSelector(
-      (state) => state.election.currentElection._id,
-    );
-    const userId = useSelector((state) => state.auth._id);
     dispatch(vote({ electionId, userId, candidateId }));
     history.push('/election');
   };
