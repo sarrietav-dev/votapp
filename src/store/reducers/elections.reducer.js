@@ -1,9 +1,11 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
 
 import { createSlice } from '@reduxjs/toolkit';
 import { editElection as edit } from '../../utils/reducer.utils';
+import { vote } from '../thunks/elections.thunk';
 
 const initialState = {
   elections: [],
@@ -41,6 +43,29 @@ const electionSlice = createSlice({
     },
     setCandidates(state, action) {
       state.selectedCandidates = action.payload;
+    },
+  },
+  extraReducers: {
+    [vote.fulfilled]: (state, action) => {
+      const votedCandidate = state.currentElection.candidates.filter(
+        (candidate) => candidate._id === action.payload.candidateId,
+      );
+
+      votedCandidate.votes += 1;
+
+      state.currentElection.candidates.filter(
+        (candidate) => candidate._id !== action.payload.candidateId,
+      );
+
+      state.currentElection.candidates.push(votedCandidate);
+
+      state.currentElection.registeredVotes.push(action.payload.userId);
+
+      state.elections.filter(
+        (election) => election._id !== state.currentElection._id,
+      );
+
+      state.elections.push(state.currentElection);
     },
   },
 });
