@@ -9,7 +9,7 @@ import { raiseAlert } from '../reducers/alerts.reducer';
 import {
   logOut,
   setAuthToken,
-  setIsAdmin,
+  setData,
 } from '../reducers/auth-token.reducer';
 
 export const loginThunk = (data) => async (dispatch) => {
@@ -24,7 +24,7 @@ export const loginThunk = (data) => async (dispatch) => {
       dispatch(setAuthToken(payload));
 
       const decodedToken = verify(payload, process.env.REACT_APP_TOKEN_SECRET);
-      dispatch(setIsAdmin(decodedToken.is_admin));
+      dispatch(setData(decodedToken));
     })
     .catch((err) => {
       dispatch(
