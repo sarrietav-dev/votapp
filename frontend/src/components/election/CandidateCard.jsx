@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -12,7 +13,7 @@ import {
 import VoteIcon from '@material-ui/icons/HowToVote';
 
 const CandidateCard = ({ data, onClick }) => (
-  <Card onClick={onClick} style={{ maxWidth: 500, width: 250 }}>
+  <Card onClick={() => onClick(data._id)} style={{ maxWidth: 500, width: 250 }}>
     <CardHeader avatar={<Avatar>{data.name[0]}</Avatar>} title="Candidate" />
     <CardContent>
       <Typography>{data.name}</Typography>
