@@ -15,6 +15,7 @@ router.post('/', async (req, res) => {
       _id: candidate._id,
       name: candidate.name,
       code: candidate.code,
+      email: candidate.email,
     }));
 
     // TODO: Check if the requester is an admin.
