@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-underscore-dangle */
