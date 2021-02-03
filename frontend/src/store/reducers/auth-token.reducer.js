@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
@@ -8,6 +9,7 @@ const authSlice = createSlice({
   initialState: {
     authToken: localStorage.getItem('AUTH_TOKEN') || '',
     isAdmin: false,
+    _id: '',
   },
   reducers: {
     setAuthToken(state, action) {
@@ -17,11 +19,12 @@ const authSlice = createSlice({
       state.authToken = '';
       state.isAdmin = false;
     },
-    setIsAdmin(state, action) {
-      state.isAdmin = action.payload;
+    setData(state, action) {
+      state.isAdmin = action.payload.isAdmin;
+      state._id = action.payload._id;
     },
   },
 });
 
-export const { logOut, setAuthToken, setIsAdmin } = authSlice.actions;
+export const { logOut, setAuthToken, setData } = authSlice.actions;
 export default authSlice.reducer;

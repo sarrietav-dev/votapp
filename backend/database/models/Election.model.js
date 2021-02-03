@@ -16,19 +16,31 @@ const electionSchema = new mongoose.Schema({
     default: [],
   },
   candidates: {
-    type: Array,
-    default: [],
-  },
-  votes: {
     type: [
       new mongoose.Schema({
-        voter: {
-          type: mongoose.Types.ObjectId,
+        _id: {
+          type: String,
           required: true,
         },
-        campaign: {
-          type: mongoose.Types.ObjectId,
+        name: {
+          type: String,
           required: true,
+          min: 4,
+          max: 255,
+        },
+        email: {
+          type: String,
+          required: true,
+          min: 6,
+          max: 1024,
+        },
+        code: {
+          type: String,
+          required: true,
+        },
+        votes: {
+          type: Number,
+          default: 0,
         },
       }),
     ],
