@@ -13,7 +13,6 @@ const fetchUsers = createAsyncThunk(
       .get(`${serverUrl}/users/`)
       .then((response) => response.data)
       .catch((err) =>
-        // eslint-disable-next-line no-undef
         thunkAPI.dispatch(
           raiseAlert({ message: err.response.data.error, variant: 'error' }),
         ),

@@ -1,4 +1,7 @@
+/* eslint-disable function-paren-newline */
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-underscore-dangle */
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import serverUrl from '../../utils/server-url';
 import { raiseAlert } from '../reducers/alerts.reducer';
@@ -57,3 +60,26 @@ export const deleteElectionThunk = (id) => async (dispatch) => {
       );
     });
 };
+
+export const vote = createAsyncThunk(
+  'elections/voteStatus',
+  async (data, thunkAPI) => {
+    const res = await axios
+      .patch(`${serverUrl}/elections/vote/${data.electionId}`, {
+        userId: data.userId,
+        candidateId: data.candidateId,
+      })
+      .then((response) => {
+        thunkAPI.dispatch(
+          raiseAlert({ message: 'Ballot stored!', variant: 'success' }),
+        );
+        return response;
+      })
+      .catch((err) =>
+        thunkAPI.dispatch(
+          raiseAlert({ message: err.response.data.error, variant: 'error' }),
+        ),
+      );
+    return res;
+  },
+);
