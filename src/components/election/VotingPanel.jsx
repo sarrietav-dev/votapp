@@ -1,11 +1,13 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable operator-linebreak */
 import { IconButton, makeStyles } from '@material-ui/core';
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { generate } from 'shortid';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import { useHistory } from 'react-router';
 import CandidateCard from './CandidateCard';
+import { vote } from '../../store/thunks/elections.thunk';
 
 const useStyles = makeStyles(() => ({
   votingPanel: {
@@ -21,9 +23,14 @@ const VotingPanel = () => {
     useSelector((state) => state.election.currentElection.candidates) || [];
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  const onClick = (id) => {
-    console.log(id);
+  const onClick = (candidateId) => {
+    const electionId = useSelector(
+      (state) => state.election.currentElection._id,
+    );
+    const userId = useSelector((state) => state.auth._id);
+    dispatch(vote({ electionId, userId, candidateId }));
   };
 
   const onBackClick = () => {
