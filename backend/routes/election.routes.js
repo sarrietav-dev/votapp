@@ -33,6 +33,43 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.patch('/vote/:id', async (req, res) => {
+  try {
+    const body = sanitize(req.body);
+
+    const election = await Election.find({
+      _id: req.params.id,
+      'candidates._id': body.candidateId,
+    });
+
+    if (!election)
+      return res.status(400).json({ error: 'Election has not been found' });
+
+    const userVote =
+      election[0].registeredVotes.filter((vote) => vote === body.userId) || [];
+
+    if (userVote.length === 1) {
+      return res.status(400).json({ error: 'User has already voted' });
+    }
+
+    await Election.updateOne(
+      { _id: req.params.id, 'candidates._id': body.candidateId },
+      {
+        $inc: {
+          'candidates.$.votes': 1,
+        },
+        $push: {
+          registeredVotes: body.userId,
+        },
+      }
+    );
+
+    return res.status(200).json({ message: 'Ballot recorded!' });
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
 router.get('/', async (req, res) => {
   try {
     const elections = await Election.find();
