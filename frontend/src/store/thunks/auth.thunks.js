@@ -6,11 +6,7 @@ import axios from 'axios';
 import { verify } from 'jsonwebtoken';
 import serverUrl from '../../utils/server-url';
 import { raiseAlert } from '../reducers/alerts.reducer';
-import {
-  logOut,
-  setAuthToken,
-  setData,
-} from '../reducers/auth-token.reducer';
+import { logOut, setAuthToken, setData } from '../reducers/auth-token.reducer';
 
 export const loginThunk = (data) => async (dispatch) => {
   await axios({
