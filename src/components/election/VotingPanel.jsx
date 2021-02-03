@@ -31,6 +31,7 @@ const VotingPanel = () => {
     );
     const userId = useSelector((state) => state.auth._id);
     dispatch(vote({ electionId, userId, candidateId }));
+    history.push('/election');
   };
 
   const onBackClick = () => {
