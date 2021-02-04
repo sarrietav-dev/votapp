@@ -87,9 +87,10 @@ export const vote = createAsyncThunk(
 
 export const endElection = createAsyncThunk(
   'elections/endElectionStatus',
-  async (electionId, thunkAPI) => {
+  async (thunkAPI) => {
+    const state = thunkAPI.getState();
     const res = await axios
-      .patch(`${serverUrl}/elections/end/${electionId}`)
+      .patch(`${serverUrl}/elections/end/${state.election.currentElection._id}`)
       .then((response) => {
         thunkAPI.dispatch(
           raiseAlert({
