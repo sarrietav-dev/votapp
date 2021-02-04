@@ -7,7 +7,7 @@ import Navbar from '../Navbar';
 import CreateElectionDialog from './CreateElectionDialog';
 import ElectionCard from './ElectionCard';
 import FabButton from '../FabButton';
-import { fetchElectionsThunk } from '../../store/thunks/elections.thunk';
+import { fetchElectionsThunk } from '../../store/thunks/election.thunks';
 import { raiseAlert } from '../../store/reducers/alerts.reducer';
 
 const Dashboard = () => {

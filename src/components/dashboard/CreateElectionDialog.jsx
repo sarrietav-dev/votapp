@@ -14,7 +14,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { Controller, useForm } from 'react-hook-form';
 import { closeDialog } from '../../store/reducers/dialogs.reducer';
-import { saveElectionThunk } from '../../store/thunks/elections.thunk';
+import { saveElectionThunk } from '../../store/thunks/election.thunks';
 import UserSelector from './UserSelector';
 import fetchUsers from '../../store/thunks/user.thunks';
 
