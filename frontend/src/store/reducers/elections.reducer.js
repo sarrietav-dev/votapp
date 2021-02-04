@@ -5,7 +5,7 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 import { editElection as edit } from '../../utils/reducer.utils';
-import { vote } from '../thunks/elections.thunk';
+import { endElection, vote } from '../thunks/election.thunks';
 
 const initialState = {
   elections: [],
@@ -60,6 +60,15 @@ const electionSlice = createSlice({
       state.currentElection.candidates.push(votedCandidate);
 
       state.currentElection.registeredVotes.push(action.payload.userId);
+
+      state.elections.filter(
+        (election) => election._id !== state.currentElection._id,
+      );
+
+      state.elections.push(state.currentElection);
+    },
+    [endElection.fulfilled]: (state) => {
+      state.currentElection.status = 'finished';
 
       state.elections.filter(
         (election) => election._id !== state.currentElection._id,

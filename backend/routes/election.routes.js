@@ -33,6 +33,32 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/', async (req, res) => {
+  try {
+    const elections = await Election.find();
+    return res.status(200).send(elections);
+  } catch (error) {
+    return res.status(400).json({ err: error });
+  }
+});
+
+router.patch('/end/:id', async (req, res) => {
+  try {
+    const election = await Election.findOneAndUpdate(
+      { _id: req.params.id },
+      { status: 'finished' }
+    );
+
+    if (!election) {
+      return res.status(400).json({ error: 'Election has not been found' });
+    }
+
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
 router.patch('/vote/:id', async (req, res) => {
   try {
     const body = sanitize(req.body);
@@ -67,15 +93,6 @@ router.patch('/vote/:id', async (req, res) => {
     return res.status(200).json({ message: 'Ballot recorded!' });
   } catch (error) {
     return res.status(400).json({ error });
-  }
-});
-
-router.get('/', async (req, res) => {
-  try {
-    const elections = await Election.find();
-    return res.status(200).send(elections);
-  } catch (error) {
-    return res.status(400).json({ err: error });
   }
 });
 
