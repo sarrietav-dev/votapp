@@ -84,3 +84,26 @@ export const vote = createAsyncThunk(
     return res;
   },
 );
+
+export const endElection = createAsyncThunk(
+  'elections/endElectionStatus',
+  async (electionId, thunkAPI) => {
+    const res = await axios
+      .patch(`${serverUrl}/elections/end/${electionId}`)
+      .then((response) => {
+        thunkAPI.dispatch(
+          raiseAlert({
+            message: 'The election has ended successfully',
+            variant: 'success',
+          }),
+        );
+        return response;
+      })
+      .catch((err) =>
+        thunkAPI.dispatch(
+          raiseAlert({ message: err.response.data.error, variant: 'error' }),
+        ),
+      );
+    return res;
+  },
+);
