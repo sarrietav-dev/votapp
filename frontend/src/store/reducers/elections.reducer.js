@@ -5,7 +5,7 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 import { editElection as edit } from '../../utils/reducer.utils';
-import { endElection, vote } from '../thunks/elections.thunk';
+import { endElection, vote } from '../thunks/election.thunks';
 
 const initialState = {
   elections: [],

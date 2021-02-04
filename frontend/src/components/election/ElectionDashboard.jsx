@@ -17,7 +17,7 @@ import FabButton from '../FabButton';
 import NavBar from '../Navbar';
 import { openDialog } from '../../store/reducers/dialogs.reducer';
 import ElectionSettings from './ElectionSettings';
-import { endElection } from '../../store/thunks/elections.thunk';
+import { endElection } from '../../store/thunks/election.thunks';
 
 const useStyles = makeStyles(() => ({
   electionWrapper: {
