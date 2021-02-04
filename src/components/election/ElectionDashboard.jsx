@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable no-nested-ternary */
 /* eslint-disable object-curly-newline */
 import {
   Button,
@@ -14,6 +16,7 @@ import FabButton from '../FabButton';
 import NavBar from '../Navbar';
 import { openDialog } from '../../store/reducers/dialogs.reducer';
 import ElectionSettings from './ElectionSettings';
+import { endElection } from '../../store/thunks/elections.thunk';
 
 const useStyles = makeStyles(() => ({
   electionWrapper: {
@@ -47,6 +50,7 @@ const ElectionDashboard = () => {
 
   const onButtonClick = () => {
     if (!isAdmin) history.push('/vote');
+    else dispatch(endElection());
   };
 
   return (
@@ -62,7 +66,11 @@ const ElectionDashboard = () => {
           {currentElection.position}
         </Typography>
         <Button color="secondary" variant="contained" onClick={onButtonClick}>
-          {!isAdmin ? 'Vote Now!' : 'End election'}
+          {currentElection.status === 'finished'
+            ? 'The election has ended'
+            : !isAdmin
+            ? 'Vote Now!'
+            : 'End election'}
         </Button>
         {isAdmin && (
           <IconButton onClick={() => dispatch(openDialog())}>
