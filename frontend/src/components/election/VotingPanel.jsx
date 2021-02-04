@@ -7,7 +7,7 @@ import { generate } from 'shortid';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import { useHistory } from 'react-router';
 import CandidateCard from './CandidateCard';
-import { vote } from '../../store/thunks/elections.thunk';
+import { vote } from '../../store/thunks/election.thunks';
 
 const useStyles = makeStyles(() => ({
   votingPanel: {
