@@ -65,7 +65,12 @@ const ElectionDashboard = () => {
         <Typography variant="h5" className={classes.banner__position}>
           {currentElection.position}
         </Typography>
-        <Button color="secondary" variant="contained" onClick={onButtonClick}>
+        <Button
+          color="secondary"
+          variant="contained"
+          onClick={onButtonClick}
+          disabled={currentElection.status === 'finished'}
+        >
           {currentElection.status === 'finished'
             ? 'The election has ended'
             : !isAdmin
