@@ -87,10 +87,9 @@ export const vote = createAsyncThunk(
 
 export const endElection = createAsyncThunk(
   'elections/endElectionStatus',
-  async (thunkAPI) => {
-    const state = thunkAPI.getState();
+  async (electionId, thunkAPI) => {
     const res = await axios
-      .patch(`${serverUrl}/elections/end/${state.election.currentElection._id}`)
+      .patch(`${serverUrl}/elections/end/${electionId}`)
       .then((response) => {
         thunkAPI.dispatch(
           raiseAlert({
@@ -100,11 +99,11 @@ export const endElection = createAsyncThunk(
         );
         return response;
       })
-      .catch((err) =>
+      .catch((err) => {
         thunkAPI.dispatch(
           raiseAlert({ message: err.response.data.error, variant: 'error' }),
-        ),
-      );
+        );
+      });
     return res;
   },
 );
