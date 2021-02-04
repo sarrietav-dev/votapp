@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable indent */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable object-curly-newline */
@@ -49,8 +50,11 @@ const ElectionDashboard = () => {
   });
 
   const onButtonClick = () => {
-    if (!isAdmin) history.push('/vote');
-    else dispatch(endElection());
+    if (!isAdmin) {
+      history.push('/vote');
+    } else {
+      dispatch(endElection(currentElection._id));
+    }
   };
 
   return (
