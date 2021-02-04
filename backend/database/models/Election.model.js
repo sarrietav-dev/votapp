@@ -15,7 +15,7 @@ const electionSchema = new mongoose.Schema({
     type: Array,
     default: [],
   },
-  state: {
+  status: {
     type: String,
     default: 'vote',
   },
