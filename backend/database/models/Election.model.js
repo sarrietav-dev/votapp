@@ -15,6 +15,10 @@ const electionSchema = new mongoose.Schema({
     type: Array,
     default: [],
   },
+  state: {
+    type: String,
+    default: 'vote',
+  },
   candidates: {
     type: [
       new mongoose.Schema({
