@@ -4,7 +4,7 @@
 /* eslint-disable no-underscore-dangle */
 
 import { createSlice } from '@reduxjs/toolkit';
-import { editElection as edit } from '../../utils/reducer.utils';
+import { editElection as edit } from './utils/reducer.utils';
 import { endElection, vote } from '../thunks/election.thunks';
 
 const initialState = {
