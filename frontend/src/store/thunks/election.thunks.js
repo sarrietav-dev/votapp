@@ -4,7 +4,7 @@
 /* eslint-disable no-underscore-dangle */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import serverUrl from '../../utils/server-url';
+import serverUrl from './utils/server-url';
 import { raiseAlert } from '../reducers/alerts.reducer';
 import {
   deleteElection,
