@@ -18,6 +18,10 @@ router.post('/', async (req, res) => {
       email: candidate.email,
     }));
 
+    candidates.push({
+      name: 'Blank ballot',
+    });
+
     // TODO: Check if the requester is an admin.
 
     const election = new Election({
