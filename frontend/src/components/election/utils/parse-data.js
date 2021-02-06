@@ -2,9 +2,12 @@ export default (data) => {
   const votes = data.map((candidates) => candidates.votes);
   const names = data.map((candidates) => candidates.name);
 
+  console.log(votes);
+  console.log(names);
+
   return {
     labels: names,
-    dates: [
+    datasets: [
       {
         label: 'Number of votes',
         data: votes,
