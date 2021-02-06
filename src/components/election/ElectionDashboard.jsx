@@ -21,6 +21,7 @@ import ElectionSettings from './ElectionSettings';
 import { endElection } from '../../store/thunks/election.thunks';
 import WinnerChart from './WinnerChart';
 import { raiseAlert } from '../../store/reducers/alerts.reducer';
+import Blob from '../Blob';
 
 const useStyles = makeStyles(() => ({
   electionWrapper: {
@@ -100,7 +101,11 @@ const ElectionDashboard = () => {
         )}
       </Container>
       <div className="winner-graph">
-        {currentElection.status === 'finished' && <WinnerChart />}
+        {currentElection.status === 'finished' ? (
+          <WinnerChart />
+        ) : (
+          <Blob text="Please vote" />
+        )}
       </div>
     </div>
   );
