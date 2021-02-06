@@ -9,6 +9,7 @@ import ElectionCard from './ElectionCard';
 import FabButton from '../FabButton';
 import { fetchElectionsThunk } from '../../store/thunks/election.thunks';
 import { raiseAlert } from '../../store/reducers/alerts.reducer';
+import Blob from '../Blob';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const Dashboard = () => {
       {isAdmin && <FabButton />}
       <Navbar />
       <CreateElectionDialog />
+      {elections.length === 0 && <Blob text="There are not elections yet" />}
       <Grid
         container
         spacing={2}
