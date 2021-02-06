@@ -18,6 +18,7 @@ import NavBar from '../Navbar';
 import { openDialog } from '../../store/reducers/dialogs.reducer';
 import ElectionSettings from './ElectionSettings';
 import { endElection } from '../../store/thunks/election.thunks';
+import WinnerChart from './WinnerChart';
 
 const useStyles = makeStyles(() => ({
   electionWrapper: {
@@ -87,6 +88,9 @@ const ElectionDashboard = () => {
           </IconButton>
         )}
       </Container>
+      <div className="winner-graph">
+        {currentElection.status === 'finished' && <WinnerChart />}
+      </div>
     </div>
   );
 };

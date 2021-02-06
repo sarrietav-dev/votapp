@@ -8,7 +8,14 @@ const WinnerChart = () => {
     (state) => state.election.currentElection.candidates,
   );
 
-  return <Bar data={parseData(candidates)} />;
+  return (
+    <Bar
+      data={parseData(candidates)}
+      height={400}
+      width={75}
+      options={{ maintainAspectRatio: false }}
+    />
+  );
 };
 
 export default WinnerChart;
