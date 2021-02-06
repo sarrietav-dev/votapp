@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     candidates.push({
       _id: 'nzw3N5Y57Qv6vw',
       name: 'Blank ballot',
-      code: '',
+      code: ' ',
       email: 'blank@ballot.com',
     });
 
