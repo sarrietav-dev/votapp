@@ -51,7 +51,6 @@ const VotingPanel = () => {
         {candidates.map((candidate) => (
           <CandidateCard data={candidate} onClick={onClick} key={generate()} />
         ))}
-        <CandidateCard data={{ name: 'Blank ballot', code: '' }} />
       </div>
     </>
   );
