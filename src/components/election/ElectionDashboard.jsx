@@ -20,6 +20,7 @@ import { openDialog } from '../../store/reducers/dialogs.reducer';
 import ElectionSettings from './ElectionSettings';
 import { endElection } from '../../store/thunks/election.thunks';
 import WinnerChart from './WinnerChart';
+import { raiseAlert } from '../../store/reducers/alerts.reducer';
 
 const useStyles = makeStyles(() => ({
   electionWrapper: {
@@ -57,6 +58,10 @@ const ElectionDashboard = () => {
   const onButtonClick = () => {
     if (!auth.isAdmin) {
       history.push('/vote');
+    } else if (hasUserVoted) {
+      dispatch(
+        raiseAlert({ message: 'You already voted!', variant: 'warning' }),
+      );
     } else {
       dispatch(endElection(currentElection._id));
     }
