@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable indent */
 /* eslint-disable no-nested-ternary */
@@ -18,6 +19,8 @@ import NavBar from '../Navbar';
 import { openDialog } from '../../store/reducers/dialogs.reducer';
 import ElectionSettings from './ElectionSettings';
 import { endElection } from '../../store/thunks/election.thunks';
+import WinnerChart from './WinnerChart';
+import { raiseAlert } from '../../store/reducers/alerts.reducer';
 
 const useStyles = makeStyles(() => ({
   electionWrapper: {
@@ -39,7 +42,10 @@ const ElectionDashboard = () => {
   const currentElection = useSelector(
     (state) => state.election.currentElection,
   );
-  const isAdmin = useSelector((state) => state.auth.isAdmin);
+  const auth = useSelector((state) => state.auth);
+  const hasUserVoted =
+    currentElection.registeredVotes.filter((vote) => vote === auth._id)
+      .length === 1;
 
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -50,8 +56,12 @@ const ElectionDashboard = () => {
   });
 
   const onButtonClick = () => {
-    if (!isAdmin) {
+    if (!auth.isAdmin) {
       history.push('/vote');
+    } else if (hasUserVoted) {
+      dispatch(
+        raiseAlert({ message: 'You already voted!', variant: 'warning' }),
+      );
     } else {
       dispatch(endElection(currentElection._id));
     }
@@ -61,7 +71,7 @@ const ElectionDashboard = () => {
     <div className={classes.electionWrapper}>
       <NavBar actionIcon="back" path={{ from: '/' }} />
       <ElectionSettings />
-      {isAdmin && <FabButton />}
+      {auth.isAdmin && <FabButton />}
       <Container maxWidth="md" className={classes.banner}>
         <Typography variant="h4" className={classes.banner__title}>
           {currentElection.title}
@@ -73,20 +83,25 @@ const ElectionDashboard = () => {
           color="secondary"
           variant="contained"
           onClick={onButtonClick}
-          disabled={currentElection.status === 'finished'}
+          disabled={currentElection.status === 'finished' || hasUserVoted}
         >
           {currentElection.status === 'finished'
             ? 'The election has ended'
-            : !isAdmin
-            ? 'Vote Now!'
+            : !auth.isAdmin
+            ? hasUserVoted
+              ? 'You already voted'
+              : 'Vote Now!'
             : 'End election'}
         </Button>
-        {isAdmin && (
+        {auth.isAdmin && (
           <IconButton onClick={() => dispatch(openDialog())}>
             <SettingsIcon />
           </IconButton>
         )}
       </Container>
+      <div className="winner-graph">
+        {currentElection.status === 'finished' && <WinnerChart />}
+      </div>
     </div>
   );
 };
