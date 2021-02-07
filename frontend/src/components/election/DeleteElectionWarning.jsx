@@ -19,6 +19,9 @@ const message = "This can't be undone";
 const DeleteElectionWarning = ({ open, setIsWarningOpen }) => {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.election.currentElection._id);
+  const locales = useSelector(
+    (state) => state.locales.locale.deleteElectionWarning,
+  );
   const history = useHistory();
 
   const handleClick = () => {
@@ -34,13 +37,13 @@ const DeleteElectionWarning = ({ open, setIsWarningOpen }) => {
 
   return (
     <Dialog open={open}>
-      <DialogTitle>Are you sure you want to delete this?</DialogTitle>
+      <DialogTitle>{locales.dialogTitle}</DialogTitle>
       <DialogContent>{message}</DialogContent>
       <DialogActions>
         <Button onClick={() => setIsWarningOpen(false)} color="secondary">
-          Cancel
+          {locales.cancel}
         </Button>
-        <Button onClick={handleClick}>Continue</Button>
+        <Button onClick={handleClick}>{locales.continue}</Button>
       </DialogActions>
     </Dialog>
   );
