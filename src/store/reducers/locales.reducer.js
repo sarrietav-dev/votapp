@@ -1,8 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+import en from '../../locales/en';
+import es from '../../locales/es';
 
 const initialState = {
-  locale: 'en',
+  language: 'en',
+  locale: en(),
 };
 
 const locales = createSlice({
@@ -10,7 +13,12 @@ const locales = createSlice({
   initialState,
   reducers: {
     setLocale(state, action) {
-      state.locale = action.payload;
+      state.language = action.payload;
+      if (state.language === 'en') {
+        state.locale = en();
+      } else {
+        state.locale = es();
+      }
     },
   },
 });
