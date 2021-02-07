@@ -44,6 +44,9 @@ const ElectionDashboard = () => {
     (state) => state.election.currentElection,
   );
   const auth = useSelector((state) => state.auth);
+  const locales = useSelector(
+    (state) => state.locales.locale.electionDashboard,
+  );
   const hasUserVoted =
     currentElection.registeredVotes.filter((vote) => vote === auth._id)
       .length === 1;
@@ -61,7 +64,7 @@ const ElectionDashboard = () => {
       history.push('/vote');
     } else if (hasUserVoted) {
       dispatch(
-        raiseAlert({ message: 'You already voted!', variant: 'warning' }),
+        raiseAlert({ message: locales.raiseAlertMessage, variant: 'warning' }),
       );
     } else {
       dispatch(endElection(currentElection._id));
@@ -87,12 +90,12 @@ const ElectionDashboard = () => {
           disabled={currentElection.status === 'finished' || hasUserVoted}
         >
           {currentElection.status === 'finished'
-            ? 'The election has ended'
+            ? locales.electionEnded
             : !auth.isAdmin
             ? hasUserVoted
-              ? 'You already voted'
-              : 'Vote Now!'
-            : 'End election'}
+              ? locales.userVoted
+              : locales.voteNow
+            : locales.endElection}
         </Button>
         {auth.isAdmin && (
           <IconButton onClick={() => dispatch(openDialog())}>
@@ -104,7 +107,7 @@ const ElectionDashboard = () => {
         {currentElection.status === 'finished' ? (
           <WinnerChart />
         ) : (
-          <Blob text="Please vote" />
+          <Blob text={locales.blob} />
         )}
       </div>
     </div>
