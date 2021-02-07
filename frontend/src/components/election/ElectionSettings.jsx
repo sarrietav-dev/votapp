@@ -23,6 +23,7 @@ const ElectionSettings = () => {
   const { handleSubmit, control } = useForm();
   const [isWarningOpen, setIsWarningOpen] = useState(false);
   const isOpen = useSelector((state) => state.dialog.isOpen);
+  const locales = useSelector((state) => state.locales.locale.electionSettings);
   const currentElection = useSelector(
     (state) => state.election.currentElection,
   );
@@ -46,7 +47,7 @@ const ElectionSettings = () => {
       />
       <Dialog open={isOpen} fullWidth maxWidth="xs">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <DialogTitle>Election Title</DialogTitle>
+          <DialogTitle>{locales.dialogTitle}</DialogTitle>
           <DialogContent>
             <Grid container direction="column">
               <Grid item>
@@ -55,7 +56,7 @@ const ElectionSettings = () => {
                   as={
                     <TextField
                       margin="dense"
-                      label="Title"
+                      label={locales.title}
                       type="text"
                       fullWidth
                       variant="filled"
@@ -76,7 +77,7 @@ const ElectionSettings = () => {
                   as={
                     <TextField
                       margin="dense"
-                      label="Position"
+                      label={locales.position}
                       type="text"
                       fullWidth
                       variant="filled"
@@ -106,10 +107,10 @@ const ElectionSettings = () => {
                     color="primary"
                     onClick={() => dispatch(closeDialog())}
                   >
-                    Cancel
+                    {locales.cancel}
                   </Button>
                   <Button color="primary" type="submit">
-                    Accept
+                    {locales.accept}
                   </Button>
                 </div>
               </Grid>

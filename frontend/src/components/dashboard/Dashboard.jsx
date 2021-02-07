@@ -24,13 +24,14 @@ const Dashboard = () => {
 
   const elections = useSelector((state) => state.election.elections);
   const isAdmin = useSelector((state) => state.auth.isAdmin);
+  const locale = useSelector((state) => state.locales.locale.dashboard);
 
   return (
     <div className="dashboard-wrapper">
       {isAdmin && <FabButton />}
       <Navbar />
       <CreateElectionDialog />
-      {elections.length === 0 && <Blob text="There are not elections yet" />}
+      {elections.length === 0 && <Blob text={locale.blob} />}
       <Grid
         container
         spacing={2}

@@ -23,6 +23,9 @@ const CreateElectionDialog = () => {
   const [isChecked] = useState(true);
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.dialog.isOpen);
+  const locales = useSelector(
+    (state) => state.locales.locale.createElectionDialog,
+  );
   const selectedCandidates = useSelector(
     (state) => state.election.selectedCandidates,
   );
@@ -37,7 +40,7 @@ const CreateElectionDialog = () => {
 
   return (
     <Dialog open={isOpen} onClose={handleClose} fullWidth maxWidth="xs">
-      <DialogTitle>Create election</DialogTitle>
+      <DialogTitle>{locales.createElection}</DialogTitle>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <DialogContent>
           <Grid container direction="column">
@@ -49,7 +52,7 @@ const CreateElectionDialog = () => {
                     autoFocus
                     margin="dense"
                     id="election-title"
-                    label="Title"
+                    label={locales.title}
                     type="text"
                     fullWidth
                     variant="filled"
@@ -72,7 +75,7 @@ const CreateElectionDialog = () => {
                     autoFocus
                     margin="dense"
                     id="election-position"
-                    label="Position"
+                    label={locales.position}
                     type="text"
                     fullWidth
                     variant="filled"
@@ -91,7 +94,7 @@ const CreateElectionDialog = () => {
               <FormControlLabel
                 disabled
                 control={<Switch checked={isChecked} />}
-                label="Select candidates beforehand"
+                label={locales.selectCandidates}
               />
             </Grid>
             {isChecked && (
@@ -103,10 +106,10 @@ const CreateElectionDialog = () => {
         </DialogContent>
         <DialogActions>
           <Button color="primary" onClick={handleClose}>
-            Cancel
+            {locales.cancel}
           </Button>
           <Button color="primary" type="submit">
-            Create
+            {locales.create}
           </Button>
         </DialogActions>
       </form>
