@@ -11,6 +11,7 @@ import { setCandidates } from '../../store/reducers/elections.reducer';
 const UserSelector = () => {
   const users = useSelector((state) => state.users.users);
   const dispatch = useDispatch();
+  const locales = useSelector((state) => state.locales.locale.userSelector);
 
   return (
     <Autocomplete
@@ -31,7 +32,7 @@ const UserSelector = () => {
         <TextField
           {...params}
           variant="outlined"
-          placeholder="Select the candidates"
+          placeholder={locales.placeholder}
         />
       )}
     />
