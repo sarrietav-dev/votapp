@@ -28,4 +28,7 @@ export default () => ({
   userSelector: {
     placeholder: 'Select the candidates',
   },
+  adminPanel: {
+    verifyUsers: 'Verify Users',
+  },
 });
