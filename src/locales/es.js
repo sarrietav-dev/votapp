@@ -31,4 +31,7 @@ export default () => ({
   adminPanel: {
     verifyUsers: 'Verificar usuarios',
   },
+  candidateCard: {
+    cardTitle: 'Candidato',
+  },
 });
