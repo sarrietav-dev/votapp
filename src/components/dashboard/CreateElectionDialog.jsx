@@ -24,7 +24,7 @@ const CreateElectionDialog = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.dialog.isOpen);
   const locales = useSelector(
-    (state) => state.locales.locale.CreateElectionDialog,
+    (state) => state.locales.locale.createElectionDialog,
   );
   const selectedCandidates = useSelector(
     (state) => state.election.selectedCandidates,
