@@ -33,5 +33,10 @@ export default () => ({
   },
   candidateCard: {
     cardTitle: 'Candidate',
-  }
+  },
+  deleteElectionWarning: {
+    dialogTitle: 'Are you sure you want to delete this?',
+    cancel: 'Cancel',
+    continue: 'Continue',
+  },
 });
