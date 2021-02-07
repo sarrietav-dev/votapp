@@ -16,7 +16,7 @@ export default () => ({
     send: 'Send',
   },
   dashboard: {
-    blob: 'There are not elections yet',
+    blob: 'There are no elections yet',
   },
   createElectionDialog: {
     createElection: 'Create election',
