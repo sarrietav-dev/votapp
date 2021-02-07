@@ -18,7 +18,7 @@ const AdminPanel = () => {
 
   const dispatch = useDispatch();
   const open = useSelector((state) => state.panel.open);
-  const locales = useSelector((state) => state.locales.locale.AdminPanel);
+  const locales = useSelector((state) => state.locales.locale.adminPanel);
 
   const unverifiedUsersLength = useSelector(
     (state) => state.unverified.unverifiedUsers.length,
