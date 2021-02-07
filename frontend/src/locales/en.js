@@ -40,4 +40,12 @@ export default () => ({
     cancel: 'Cancel',
     continue: 'Continue',
   },
+  electionDashboard: {
+    blob: 'You can vote now!',
+    raiseAlertMessage: 'You already voted!',
+    electionEnded: 'The election has ended',
+    userVoted: 'You already voted',
+    voteNow: 'Vote now!',
+    endElection: 'End Election',
+  },
 });
