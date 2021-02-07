@@ -22,6 +22,7 @@ import registerThunk from '../../store/thunks/register.thunks';
 
 const RegisterDialog = () => {
   const isOpen = useSelector((state) => state.dialog.isOpen);
+  const locales = useSelector((state) => state.locales.locale.registerDialog);
   const { handleSubmit, control } = useForm();
   const dispatch = useDispatch();
 
@@ -33,14 +34,14 @@ const RegisterDialog = () => {
 
   return (
     <Dialog open={isOpen} maxWidth="xs" fullWidth>
-      <DialogTitle>Fill request</DialogTitle>
+      <DialogTitle>{locales.dialogTitle}</DialogTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         <DialogContent>
           <Grid container spacing={3} direction="column">
             <Grid item xs={12}>
               <Controller
                 name="name"
-                as={<TextField name="name" label="Your name" fullWidth />}
+                as={<TextField name="name" label={locales.yourNae} fullWidth />}
                 control={control}
                 defaultValue=""
                 rules={{
@@ -52,7 +53,12 @@ const RegisterDialog = () => {
               <Controller
                 name="code"
                 as={
-                  <TextField type="number" name="code" label="Code" fullWidth />
+                  <TextField
+                    type="number"
+                    name="code"
+                    label={locales.code}
+                    fullWidth
+                  />
                 }
                 control={control}
                 defaultValue=""
@@ -85,7 +91,7 @@ const RegisterDialog = () => {
                   <TextField
                     type="password"
                     name="password"
-                    label="Password"
+                    label={locales.password}
                     fullWidth
                   />
                 }
@@ -99,16 +105,16 @@ const RegisterDialog = () => {
                 name="gender"
                 as={
                   <FormControl component="fieldset" fullWidth>
-                    <FormLabel component="legend">Gender</FormLabel>
+                    <FormLabel component="legend">{locales.gender}</FormLabel>
                     <RadioGroup aria-label="gender" name="gender">
                       <FormControlLabel
                         value="female"
-                        label="Female"
+                        label={locales.female}
                         control={<Radio />}
                       />
                       <FormControlLabel
                         value="male"
-                        label="Male"
+                        label={locales.male}
                         control={<Radio />}
                       />
                     </RadioGroup>
@@ -123,10 +129,10 @@ const RegisterDialog = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCancel} color="secondary" variant="outlined">
-            Cancel
+            {locales.cancel}
           </Button>
           <Button type="submit" color="primary" variant="contained">
-            Send
+            {locales.send}
           </Button>
         </DialogActions>
       </form>
