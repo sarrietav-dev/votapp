@@ -4,7 +4,7 @@ import { InputLabel, MenuItem, Select } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { setLocale } from '../../store/reducers/locales.reducer';
 
-const LocaleMenu = () => {
+const LocaleSelect = () => {
   const dispatch = useDispatch();
   const onChangeHandler = (e) => {
     dispatch(setLocale(e.target.value));
@@ -20,4 +20,4 @@ const LocaleMenu = () => {
   );
 };
 
-export default LocaleMenu;
+export default LocaleSelect;
