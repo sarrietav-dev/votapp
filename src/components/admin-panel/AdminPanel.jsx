@@ -18,6 +18,7 @@ const AdminPanel = () => {
 
   const dispatch = useDispatch();
   const open = useSelector((state) => state.panel.open);
+  const locales = useSelector((state) => state.locales.locale.AdminPanel);
 
   const unverifiedUsersLength = useSelector(
     (state) => state.unverified.unverifiedUsers.length,
@@ -44,7 +45,7 @@ const AdminPanel = () => {
             <ListItemIcon>
               <AddUser />
             </ListItemIcon>
-            <ListItemText primary="Verify users" />
+            <ListItemText primary={locales.verifyUsers} />
           </ListItem>
         </List>
         <LocaleSelect />
