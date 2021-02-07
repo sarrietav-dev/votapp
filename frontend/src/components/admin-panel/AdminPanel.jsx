@@ -8,6 +8,7 @@ import {
 import AddUser from '@material-ui/icons/GroupAdd';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import LanguageIcon from '@material-ui/icons/Language';
 import { raiseAlert } from '../../store/reducers/alerts.reducer';
 import { closePanel } from '../../store/reducers/panel.reducer';
 import VerifyUsersDialog from './VerifyUsersDialog';
@@ -47,8 +48,13 @@ const AdminPanel = () => {
             </ListItemIcon>
             <ListItemText primary={locales.verifyUsers} />
           </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <LanguageIcon />
+            </ListItemIcon>
+            <LocaleSelect />
+          </ListItem>
         </List>
-        <LocaleSelect />
       </Drawer>
       <VerifyUsersDialog
         isOpen={openDialog}
