@@ -6,6 +6,7 @@ import alert from './alerts.reducer';
 import panel from './panel.reducer';
 import unverified from './unverified-users.reducer';
 import users from './users.reducer';
+import locales from './locales.reducer';
 
 const rootReducer = combineReducers({
   auth,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   panel,
   unverified,
   users,
+  locales,
 });
 
 export default rootReducer;
