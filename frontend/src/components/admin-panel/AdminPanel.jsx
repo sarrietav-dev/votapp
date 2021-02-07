@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { raiseAlert } from '../../store/reducers/alerts.reducer';
 import { closePanel } from '../../store/reducers/panel.reducer';
 import VerifyUsersDialog from './VerifyUsersDialog';
+import LocaleSelect from './LocaleSelect';
 
 const AdminPanel = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -46,6 +47,7 @@ const AdminPanel = () => {
             <ListItemText primary="Verify users" />
           </ListItem>
         </List>
+        <LocaleSelect />
       </Drawer>
       <VerifyUsersDialog
         isOpen={openDialog}
