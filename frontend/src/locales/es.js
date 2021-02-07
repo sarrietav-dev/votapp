@@ -34,4 +34,9 @@ export default () => ({
   candidateCard: {
     cardTitle: 'Candidato',
   },
+  deleteElectionWarning: {
+    dialogTitle: 'Está seguro que quiere eliminar esta elección?',
+    cancel: 'Cancelar',
+    continue: 'Continuar',
+  },
 });
