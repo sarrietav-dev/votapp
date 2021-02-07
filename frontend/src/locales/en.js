@@ -5,6 +5,7 @@ export default () => ({
     requestAccess: 'Request access',
   },
   registerDialog: {
+    dialogTitle: 'Fill request',
     yourName: 'Your Name',
     code: 'Code',
     password: 'Password',
