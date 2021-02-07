@@ -10,7 +10,7 @@ const LocaleSelect = () => {
     dispatch(setLocale(e.target.value));
   };
   return (
-    <FormControl>
+    <FormControl style={{ padding: 10 }}>
       <InputLabel>Language</InputLabel>
       <Select onChange={onChangeHandler}>
         <MenuItem value="en">English</MenuItem>
