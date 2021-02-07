@@ -31,6 +31,7 @@ function Login() {
 
   const dispatch = useDispatch();
   const authToken = useSelector((state) => state.auth.authToken);
+  const locales = useSelector((state) => state.locales.locale.login);
 
   useEffect(() => {
     if (authToken !== '') {
@@ -86,7 +87,7 @@ function Login() {
                     name="password"
                     as={
                       <TextField
-                        label="Password"
+                        label={locales.password}
                         name="password"
                         type="password"
                         variant="outlined"
@@ -105,7 +106,7 @@ function Login() {
               <Grid container spacing={2}>
                 <Grid item>
                   <Button color="primary" type="submit" variant="contained">
-                    Log In
+                    {locales.logIn}
                   </Button>
                 </Grid>
                 <Grid item>
@@ -114,7 +115,7 @@ function Login() {
                     variant="outlined"
                     onClick={handleRegisterClick}
                   >
-                    Request access
+                    {locales.requestAccess}
                   </Button>
                 </Grid>
               </Grid>
