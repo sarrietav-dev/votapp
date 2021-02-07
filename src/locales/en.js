@@ -36,6 +36,7 @@ export default () => ({
   },
   deleteElectionWarning: {
     dialogTitle: 'Are you sure you want to delete this?',
+    dialogContent: "This can't be undone",
     cancel: 'Cancel',
     continue: 'Continue',
   },
