@@ -36,6 +36,7 @@ export default () => ({
   },
   deleteElectionWarning: {
     dialogTitle: 'Está seguro que quiere eliminar esta elección?',
+    dialogContent: 'Esto no puede deshacerse',
     cancel: 'Cancelar',
     continue: 'Continuar',
   },
