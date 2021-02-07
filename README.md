@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# votapp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to deploy on your machine
 
-## Available Scripts
+1. Clone this repo.
+2. Install **Node.js**.
+3. Run `npm install` on both backend and frontend folders. (Recommended: Install `nodemon`)
+4. Ask me for the .env file, It's up to me if you're trust-worthy or not.
+5. Run `nodemon backend/server.js` on backend and `npm start` on frontend.
+6. Enjoy.
 
-In the project directory, you can run:
+## Structure
 
-### `npm start`
+### Backend
+#### Packages used
+- Express: To handle routing and general server operations.
+- Mongoose: To handle communications with the database.
+- Bcrypt: To encrypt passwords.
+- JWT (JSONWebToken): To ensure security on API requests.
+- Joi: To validate data from requests.
+- CORS: ?
+- Dotenv: To allow `.env` file.
+- mongodb-memory-server: To mock a mongodb database for testing purposes.
+- mocha/chai: Testing library for asserting.
+- supertest: Testing library that helps with requests to the same server.
+- mongo-sanitize: To avoid things like Query Injection.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Workspace structure
+**server.js**  
+Contains every configuration related to the server. All from express, database connection and cors. Also handles the routing middleware.  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**database/**  
+Folder that contains every database mongo model and configuration, using Mongoose.  
 
-### `npm test`
+**routes/**  
+Folder that contains every API route that the frontend can access, using Express Router.  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**validation/**  
+Folder that contains files that help with the validatiion of incoming request data using Joi and other packages.  
 
-### `npm run build`
+**tests/**
+Folder that contains every test about api resquesting, using Mocha/Chai, supertest andd mongodb-memory-server.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### API Routes
+- `/api/login`: Handles login authentication for the app.
+  - `/`: Only acepts POST requests. Requieres an username and password and validates the credentials.
+- `/api/users`: Handles requests related to user data.
+  - `/`:  
+    POST: Takes an User's required data, encrypts the password and save it to the database.  
+    GET: Returns all users.  
+  - `/unverified`:  
+    GET: Returns all unverified users.  
+  - `/verify/:id`:  
+    PATCH: Verifies the requested user with that id.  
+  - `/deny/:id`:  
+    DELETE: Denies access to that requested user and deletes it from the database.  
+  - `/:id`:  
+    GET: Returns the information about an user with that id.  
+- `/api/elections`: Handles requests related to election data.  
+  - `/`:  
+    POST: Takes an Election's data, returns the election data.  
+    GET: Returns all elections.  
+  - `/:id`:  
+    PATCH: Updates the information about the election.  
+    DELETE: Deletes the election.  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Frontend
+#### Packages used
+- axios: To make request to the API.
+- material-ui: To style components.
+- prop-types: To ensure coding style.
+- react/react-dom: Main framework.
+- react-router/react-router-dom: To orginize component access and redirection.
+- redux-toolkit: To manage state between components.
+- shortid: To ensure random ids when mapping.
+- react-hook-form: To have better performance when dealing with forms.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Workspace structure
+- **src/App.js**: Main component.  
+- **src/components/\***: Contains every `.jsx` file.  
+- **src/store**: Contains everything related to Redux.  
+  - **src/store/store.js**: Contains every configuration about the store, redux-devtools and middlewares.  
+  - **src/store/thunks**: Contains the state management logic on thunks that are dispatched on components.  
+  - **src/store/reducers**: Contains every Redux Slice.  
+    - **src/store/reducers/reducer.js**: Exports the combineReducers object.  
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Note:** In projects there's the roadmap oh this app
