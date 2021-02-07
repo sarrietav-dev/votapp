@@ -48,4 +48,11 @@ export default () => ({
     voteNow: 'Vote now!',
     endElection: 'End Election',
   },
+  electionSettings: {
+    dialogTitle: 'Election settings',
+    title: 'Title',
+    position: 'Position',
+    cancel: 'Cancel',
+    accept: 'Accept',
+  },
 });

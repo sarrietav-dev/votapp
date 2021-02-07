@@ -48,4 +48,11 @@ export default () => ({
     voteNow: 'Vota ahora!',
     endElection: 'Terminar elección',
   },
+  electionSettings: {
+    dialogTitle: 'Ajustes de elección',
+    title: 'Título',
+    position: 'Posición',
+    cancel: 'Cancelar',
+    accept: 'Aceptar',
+  },
 });
