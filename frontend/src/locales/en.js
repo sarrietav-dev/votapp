@@ -25,4 +25,7 @@ export default () => ({
     cancel: 'Cancel',
     create: 'Create',
   },
+  userSelector: {
+    placeholder: 'Select the candidates',
+  },
 });
