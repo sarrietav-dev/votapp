@@ -6,6 +6,7 @@ import { generate } from 'shortid';
 import UnverifiedUser from './UnverifiedUser';
 import { fetchUnverifiedUsersThunk } from '../../store/thunks/verify.thunks';
 
+// TODO: Close when unverifiedUsers.length === 0
 const VerifyUsersDialog = ({ isOpen, onClose }) => {
   const unverifiedUsers = useSelector(
     (state) => state.unverified.unverifiedUsers,
