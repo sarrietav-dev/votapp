@@ -12,7 +12,7 @@ const LocaleSelect = () => {
   return (
     <FormControl style={{ padding: 10 }}>
       <InputLabel>Language</InputLabel>
-      <Select onChange={onChangeHandler}>
+      <Select onChange={onChangeHandler} defaultValue="en">
         <MenuItem value="en">English</MenuItem>
         <MenuItem value="es">Español</MenuItem>
       </Select>
