@@ -14,8 +14,6 @@ import { closeDialog } from '../../store/reducers/dialogs.reducer';
 import { deleteElectionThunk } from '../../store/thunks/election.thunks';
 import { raiseAlert } from '../../store/reducers/alerts.reducer';
 
-const message = "This can't be undone";
-
 const DeleteElectionWarning = ({ open, setIsWarningOpen }) => {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.election.currentElection._id);
@@ -38,7 +36,7 @@ const DeleteElectionWarning = ({ open, setIsWarningOpen }) => {
   return (
     <Dialog open={open}>
       <DialogTitle>{locales.dialogTitle}</DialogTitle>
-      <DialogContent>{message}</DialogContent>
+      <DialogContent>{locales.dialogContent}</DialogContent>
       <DialogActions>
         <Button onClick={() => setIsWarningOpen(false)} color="secondary">
           {locales.cancel}
