@@ -41,7 +41,7 @@ const RegisterDialog = () => {
             <Grid item xs={12}>
               <Controller
                 name="name"
-                as={<TextField name="name" label={locales.yourNae} fullWidth />}
+                as={<TextField name="name" label={locales.yourName} fullWidth />}
                 control={control}
                 defaultValue=""
                 rules={{
