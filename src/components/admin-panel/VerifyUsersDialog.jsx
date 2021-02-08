@@ -1,17 +1,17 @@
 import { Dialog, DialogContent } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { generate } from 'shortid';
 import UnverifiedUser from './UnverifiedUser';
 import { fetchUnverifiedUsersThunk } from '../../store/thunks/verify.thunks';
 
-// TODO: Close when unverifiedUsers.length === 0
-const VerifyUsersDialog = ({ isOpen, onClose }) => {
-  const unverifiedUsers = useSelector(
-    (state) => state.unverified.unverifiedUsers,
-  );
+const VerifyUsersDialog = ({ isOpen, onClose, unverifiedUsers }) => {
   const dispatch = useDispatch();
+
+  if (unverifiedUsers.length === 0) {
+    onClose();
+  }
 
   useEffect(() => {
     dispatch(fetchUnverifiedUsersThunk());
@@ -31,6 +31,15 @@ const VerifyUsersDialog = ({ isOpen, onClose }) => {
 VerifyUsersDialog.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  unverifiedUsers: PropTypes.arrayOf(
+    PropTypes.shape({
+      gender: PropTypes.string,
+      _id: PropTypes.string,
+      name: PropTypes.string,
+      email: PropTypes.string,
+      code: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 export default VerifyUsersDialog;

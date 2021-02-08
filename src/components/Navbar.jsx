@@ -10,7 +10,7 @@ import {
 import HowToVoteIcon from '@material-ui/icons/HowToVote';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import PropTypes from 'prop-types';
@@ -32,8 +32,6 @@ const Navbar = ({ actionIcon, path }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const isAdmin = useSelector((state) => state.auth.isAdmin);
-
   const handleLogout = () => {
     dispatch(logoutThunk());
     history.push('/login');
@@ -49,9 +47,7 @@ const Navbar = ({ actionIcon, path }) => {
   };
 
   const openPanelHandler = () => {
-    if (isAdmin) {
-      dispatch(openPanel());
-    }
+    dispatch(openPanel());
   };
 
   return (
