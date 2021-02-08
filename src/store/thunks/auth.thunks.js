@@ -16,7 +16,6 @@ export const loginThunk = (data) => async (dispatch) => {
   })
     .then((response) => {
       const payload = response.data.token;
-      localStorage.setItem('AUTH_TOKEN', payload);
       dispatch(setAuthToken(payload));
 
       dispatch(
