@@ -9,10 +9,20 @@ import AddUser from '@material-ui/icons/GroupAdd';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import LanguageIcon from '@material-ui/icons/Language';
+import PropTypes from 'prop-types';
 import { raiseAlert } from '../../store/reducers/alerts.reducer';
 import { closePanel } from '../../store/reducers/panel.reducer';
 import VerifyUsersDialog from './VerifyUsersDialog';
 import LocaleSelect from './LocaleSelect';
+
+const VerifyUsersButton = ({ handleAddUserClick, itemText }) => (
+  <ListItem button onClick={handleAddUserClick}>
+    <ListItemIcon>
+      <AddUser />
+    </ListItemIcon>
+    <ListItemText primary={itemText} />
+  </ListItem>
+);
 
 const AdminPanel = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -42,12 +52,10 @@ const AdminPanel = () => {
     <>
       <Drawer open={open} anchor="right" onClose={() => dispatch(closePanel())}>
         <List>
-          <ListItem button onClick={handleAddUserClick}>
-            <ListItemIcon>
-              <AddUser />
-            </ListItemIcon>
-            <ListItemText primary={locales.verifyUsers} />
-          </ListItem>
+          <VerifyUsersButton
+            handleAddUserClick={handleAddUserClick}
+            itemText={locales}
+          />
           <ListItem>
             <ListItemIcon>
               <LanguageIcon />
@@ -62,6 +70,11 @@ const AdminPanel = () => {
       />
     </>
   );
+};
+
+VerifyUsersButton.propTypes = {
+  handleAddUserClick: PropTypes.func.isRequired,
+  itemText: PropTypes.string.isRequired,
 };
 
 export default AdminPanel;
