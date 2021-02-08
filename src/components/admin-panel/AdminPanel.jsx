@@ -56,10 +56,9 @@ const AdminPanel = () => {
           {isAdmin && (
             <VerifyUsersButton
               handleAddUserClick={handleAddUserClick}
-              itemText={locales}
+              itemText={locales.verifyUsers}
             />
           )}
-
           <ListItem>
             <ListItemIcon>
               <LanguageIcon />
