@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
   );
   res.header('auth-token', token);
 
-  return res.send({ message: 'Logged In', token });
+  return res.send({ message: 'Logged In', token, _id: user._id, is_admin: user.is_admin });
 });
 
 module.exports = router;
