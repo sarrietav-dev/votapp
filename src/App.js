@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import './App.css';
 import { Route, Switch } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import Login from './components/login/Login';
@@ -27,7 +27,7 @@ function App() {
     <div className={classes.app}>
       {isAdmin && <AdminPanel />}
       <AlertMessage />
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route path="/login">
             <Login />
@@ -42,7 +42,7 @@ function App() {
             <Dashboard />
           </AuthRoute>
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
