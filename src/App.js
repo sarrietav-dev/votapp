@@ -5,7 +5,6 @@ import './App.css';
 import { Route, Switch } from 'react-router';
 import { HashRouter } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core';
-import { useSelector } from 'react-redux';
 import Login from './components/login/Login';
 import Dashboard from './components/dashboard/Dashboard';
 import AuthRoute from './components/AuthRoute';
@@ -22,10 +21,9 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
-  const isAdmin = useSelector((state) => state.auth.isAdmin);
   return (
     <div className={classes.app}>
-      {isAdmin && <AdminPanel />}
+      <AdminPanel />
       <AlertMessage />
       <HashRouter>
         <Switch>
