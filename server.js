@@ -34,7 +34,11 @@ app.use('/api/login', loginRoute);
 app.use('/api/users', userRoute);
 app.use('/api/elections', electionRoute);
 
+app.get('/', (req, res) => res.send('⭐'));
+
 if (process.env.NODE_ENV !== 'test') db.connect();
-app.listen(5000, () => log(chalk.blue('\nServer running!')));
+app.listen(process.env.PORT || 5000, () =>
+  log(chalk.blue('\nServer running!'))
+);
 
 module.exports = app;
