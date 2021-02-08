@@ -30,6 +30,7 @@ const AdminPanel = () => {
   const dispatch = useDispatch();
   const open = useSelector((state) => state.panel.open);
   const locales = useSelector((state) => state.locales.locale.adminPanel);
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
 
   const unverifiedUsersLength = useSelector(
     (state) => state.unverified.unverifiedUsers.length,
@@ -52,10 +53,13 @@ const AdminPanel = () => {
     <>
       <Drawer open={open} anchor="right" onClose={() => dispatch(closePanel())}>
         <List>
-          <VerifyUsersButton
-            handleAddUserClick={handleAddUserClick}
-            itemText={locales}
-          />
+          {isAdmin && (
+            <VerifyUsersButton
+              handleAddUserClick={handleAddUserClick}
+              itemText={locales}
+            />
+          )}
+
           <ListItem>
             <ListItemIcon>
               <LanguageIcon />
