@@ -28,10 +28,16 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "postinstall": "husky install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "husky": {
+    "scripts": {
+      "pre-push": "if [[ $(git branch --show-current) == 'master' ]]; then echo '[Husky] pre-commit'; npm run deploy; fi"
+    }
   },
   "eslintConfig": {
     "extends": [
