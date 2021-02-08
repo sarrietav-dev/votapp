@@ -1,9 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-undef */
 import axios from 'axios';
-import { verify } from 'jsonwebtoken';
 import serverUrl from './utils/server-url';
 import { raiseAlert } from '../reducers/alerts.reducer';
 import { logOut, setAuthToken, setData } from '../reducers/auth-token.reducer';
@@ -16,11 +16,11 @@ export const loginThunk = (data) => async (dispatch) => {
   })
     .then((response) => {
       const payload = response.data.token;
-      localStorage.setItem('AUTH_TOKEN', payload);
       dispatch(setAuthToken(payload));
 
-      const decodedToken = verify(payload, process.env.REACT_APP_TOKEN_SECRET);
-      dispatch(setData(decodedToken));
+      dispatch(
+        setData({ _id: response.data._id, is_admin: response.data.is_admin }),
+      );
     })
     .catch((err) => {
       dispatch(
