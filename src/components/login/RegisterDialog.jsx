@@ -132,7 +132,7 @@ const RegisterDialog = () => {
               />
             </Grid>
             <Grid item xs>
-              <FormControl style={{ minWidth: 120 }}>
+              <FormControl fullWidth>
                 <InputLabel>Career</InputLabel>
                 <Controller
                   name="career"
