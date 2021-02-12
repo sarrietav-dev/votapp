@@ -58,6 +58,8 @@ router.post('/', async (req, res) => {
       gender: body.gender,
       is_admin: Boolean(body.is_admin),
       code: body.code,
+      career: body.career,
+      semester: Number(body.semester),
     });
 
     const savedUser = await user.save();
