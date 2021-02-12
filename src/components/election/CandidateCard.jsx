@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -7,6 +8,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  Grid,
   IconButton,
   Typography,
 } from '@material-ui/core';
@@ -25,6 +27,16 @@ const CandidateCard = ({ data, onClick }) => {
       <CardContent>
         <Typography>{data.name}</Typography>
         <Typography>{data.code}</Typography>
+        <Grid container justify="space-evenly" style={{ marginTop: 10 }}>
+          <Grid item>
+            <Typography>{data.career}</Typography>
+          </Grid>
+          <Grid item>
+            <Typography>
+              {data.semester !== ' ' ? `Semester: ${data.semester}` : ''}
+            </Typography>
+          </Grid>
+        </Grid>
       </CardContent>
       <CardActions
         style={{
@@ -46,6 +58,8 @@ CandidateCard.propTypes = {
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     code: PropTypes.string.isRequired,
+    career: PropTypes.string,
+    semester: PropTypes.number,
   }).isRequired,
   onClick: PropTypes.func.isRequired,
 };
