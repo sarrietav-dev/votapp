@@ -132,29 +132,44 @@ const RegisterDialog = () => {
               />
             </Grid>
             <Grid item xs>
-              <Controller
-                name="career"
-                as={
-                  <FormControl style={{ minWidth: 120 }}>
-                    <InputLabel>Career</InputLabel>
+              <FormControl style={{ minWidth: 120 }}>
+                <InputLabel>Career</InputLabel>
+                <Controller
+                  name="career"
+                  as={
                     <Select fullWidth>
-                      <MenuItem value={locales.careers.computerScience}>
+                      <MenuItem value="computerScience">
                         {locales.careers.computerScience}
                       </MenuItem>
-                      <MenuItem value={locales.careers.chemistryEngineering}>
+                      <MenuItem value="chemistryEngineering">
                         {locales.careers.chemistryEngineering}
                       </MenuItem>
-                      <MenuItem value={locales.careers.civilEngineering}>
+                      <MenuItem value="civilEngineering">
                         {locales.careers.civilEngineering}
                       </MenuItem>
-                      <MenuItem value={locales.careers.medicine}>
+                      <MenuItem value="medicine">
                         {locales.careers.medicine}
                       </MenuItem>
                     </Select>
-                  </FormControl>
+                  }
+                  control={control}
+                  rules={{ required: true }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs>
+              <Controller
+                name="semester"
+                as={
+                  <TextField
+                    type="number"
+                    InputProps={{ inputProps: { min: 1, max: 10 } }}
+                    label="Semester"
+                    fullWidth
+                  />
                 }
                 control={control}
-                defaultValue=""
+                defaultValue={1}
                 rules={{ required: true }}
               />
             </Grid>
