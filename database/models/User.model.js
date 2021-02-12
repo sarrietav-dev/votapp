@@ -43,6 +43,16 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  career: {
+    type: String,
+    required: true,
+  },
+  semester: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 10,
+  },
 });
 
 module.exports = mongoose.model('User', userSchema);
