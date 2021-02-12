@@ -45,6 +45,7 @@ Folder that contains files that help with the validatiion of incoming request da
 Folder that contains every test about api resquesting, using Mocha/Chai, supertest andd mongodb-memory-server.
 
 #### API Routes
+
 - `/api/login`: Handles login authentication for the app.
   - `/`: Only acepts POST requests. Requieres an username and password and validates the credentials.
 - `/api/users`: Handles requests related to user data.
