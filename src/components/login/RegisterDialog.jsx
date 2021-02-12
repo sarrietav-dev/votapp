@@ -189,5 +189,3 @@ const RegisterDialog = () => {
 };
 
 export default RegisterDialog;
-
-// TODO: Create semester input
