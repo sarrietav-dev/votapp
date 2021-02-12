@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// FIXME: This rotes has a unknown bug
 router.get('/unverified', async (req, res) => {
   try {
     const unverifiedUsers = await User.find(
@@ -58,6 +57,8 @@ router.post('/', async (req, res) => {
       gender: body.gender,
       is_admin: Boolean(body.is_admin),
       code: body.code,
+      career: body.career,
+      semester: Number(body.semester),
     });
 
     const savedUser = await user.save();

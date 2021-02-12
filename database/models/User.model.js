@@ -43,6 +43,14 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  career: {
+    type: String,
+  },
+  semester: {
+    type: Number,
+    min: 1,
+    max: 10,
+  },
 });
 
 module.exports = mongoose.model('User', userSchema);
