@@ -14,6 +14,12 @@ export default () => ({
     female: 'Mujer',
     cancel: 'Cancelar',
     send: 'Enviar',
+    careers: {
+      computerScience: 'Ingeniería de Sistemas',
+      chemistryEngineering: 'Ingeniería Química',
+      civilEngineering: 'Ingeniería Civil',
+      medicine: 'Medicina',
+    },
   },
   dashboard: {
     blob: 'No hay elecciones.',
