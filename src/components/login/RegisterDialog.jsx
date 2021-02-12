@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-wrap-multilines */
 import {
@@ -10,8 +11,11 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
+  InputLabel,
+  MenuItem,
   Radio,
   RadioGroup,
+  Select,
   TextField,
 } from '@material-ui/core';
 import React from 'react';
@@ -41,7 +45,9 @@ const RegisterDialog = () => {
             <Grid item xs={12}>
               <Controller
                 name="name"
-                as={<TextField name="name" label={locales.yourName} fullWidth />}
+                as={
+                  <TextField name="name" label={locales.yourName} fullWidth />
+                }
                 control={control}
                 defaultValue=""
                 rules={{
@@ -122,6 +128,48 @@ const RegisterDialog = () => {
                 }
                 control={control}
                 defaultValue=""
+                rules={{ required: true }}
+              />
+            </Grid>
+            <Grid item xs>
+              <FormControl fullWidth>
+                <InputLabel>Career</InputLabel>
+                <Controller
+                  name="career"
+                  as={
+                    <Select fullWidth>
+                      <MenuItem value="computerScience">
+                        {locales.careers.computerScience}
+                      </MenuItem>
+                      <MenuItem value="chemistryEngineering">
+                        {locales.careers.chemistryEngineering}
+                      </MenuItem>
+                      <MenuItem value="civilEngineering">
+                        {locales.careers.civilEngineering}
+                      </MenuItem>
+                      <MenuItem value="medicine">
+                        {locales.careers.medicine}
+                      </MenuItem>
+                    </Select>
+                  }
+                  control={control}
+                  rules={{ required: true }}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item xs>
+              <Controller
+                name="semester"
+                as={
+                  <TextField
+                    type="number"
+                    InputProps={{ inputProps: { min: 1, max: 10 } }}
+                    label="Semester"
+                    fullWidth
+                  />
+                }
+                control={control}
+                defaultValue={1}
                 rules={{ required: true }}
               />
             </Grid>
