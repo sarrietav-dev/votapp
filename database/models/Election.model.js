@@ -46,6 +46,12 @@ const electionSchema = new mongoose.Schema({
           type: Number,
           default: 0,
         },
+        career: {
+          type: String,
+        },
+        semester: {
+          type: String,
+        },
       }),
     ],
     default: [],
