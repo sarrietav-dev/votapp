@@ -10,8 +10,8 @@ const registerValidation = (data) => {
     birthdate: Joi.date(),
     is_admin: Joi.boolean(),
     code: Joi.string().min(6).max(10).required(),
-    career: Joi.string().required(),
-    semester: Joi.number().min(1).max(10).required(),
+    career: Joi.string(),
+    semester: Joi.number().min(1).max(10),
   });
 
   return schema.validate(data);
