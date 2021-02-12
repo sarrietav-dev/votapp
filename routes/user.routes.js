@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// FIXME: This rotes has a unknown bug
 router.get('/unverified', async (req, res) => {
   try {
     const unverifiedUsers = await User.find(
