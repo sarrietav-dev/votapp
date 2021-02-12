@@ -138,16 +138,18 @@ const RegisterDialog = () => {
                   <FormControl style={{ minWidth: 120 }}>
                     <InputLabel>Career</InputLabel>
                     <Select fullWidth>
-                      <MenuItem value="Computer Science">
-                        Computer Science
+                      <MenuItem value={locales.careers.computerScience}>
+                        {locales.careers.computerScience}
                       </MenuItem>
-                      <MenuItem value="Chemistry Engineering">
-                        Chemistry Engineering
+                      <MenuItem value={locales.careers.chemistryEngineering}>
+                        {locales.careers.chemistryEngineering}
                       </MenuItem>
-                      <MenuItem value="Civil Engineering">
-                        Civil Engineering
+                      <MenuItem value={locales.careers.civilEngineering}>
+                        {locales.careers.civilEngineering}
                       </MenuItem>
-                      <MenuItem value="Medicine">Medicine</MenuItem>
+                      <MenuItem value={locales.careers.medicine}>
+                        {locales.careers.medicine}
+                      </MenuItem>
                     </Select>
                   </FormControl>
                 }
