@@ -16,6 +16,8 @@ router.post('/', async (req, res) => {
       name: candidate.name,
       code: candidate.code,
       email: candidate.email,
+      semester: candidate.semester,
+      career: candidate.career,
     }));
 
     candidates.push({
@@ -23,6 +25,8 @@ router.post('/', async (req, res) => {
       name: 'Blank ballot',
       code: ' ',
       email: 'blank@ballot.com',
+      semester: ' ',
+      career: ' ',
     });
 
     // TODO: Check if the requester is an admin.
