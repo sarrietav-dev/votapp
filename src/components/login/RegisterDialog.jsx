@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-wrap-multilines */
 import {
@@ -10,8 +11,11 @@ import {
   FormControlLabel,
   FormLabel,
   Grid,
+  InputLabel,
+  MenuItem,
   Radio,
   RadioGroup,
+  Select,
   TextField,
 } from '@material-ui/core';
 import React from 'react';
@@ -120,6 +124,31 @@ const RegisterDialog = () => {
                         control={<Radio />}
                       />
                     </RadioGroup>
+                  </FormControl>
+                }
+                control={control}
+                defaultValue=""
+                rules={{ required: true }}
+              />
+            </Grid>
+            <Grid item xs>
+              <Controller
+                name="career"
+                as={
+                  <FormControl style={{ minWidth: 120 }}>
+                    <InputLabel>Career</InputLabel>
+                    <Select fullWidth>
+                      <MenuItem value="Computer Science">
+                        Computer Science
+                      </MenuItem>
+                      <MenuItem value="Chemistry Engineering">
+                        Chemistry Engineering
+                      </MenuItem>
+                      <MenuItem value="Civil Engineering">
+                        Civil Engineering
+                      </MenuItem>
+                      <MenuItem value="Medicine">Medicine</MenuItem>
+                    </Select>
                   </FormControl>
                 }
                 control={control}
