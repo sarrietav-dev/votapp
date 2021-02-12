@@ -13,6 +13,7 @@ import {
 import VoteIcon from '@material-ui/icons/HowToVote';
 import { useSelector } from 'react-redux';
 
+// TODO: Add career and semester to this card.
 const CandidateCard = ({ data, onClick }) => {
   const locales = useSelector((state) => state.locales.locale.candidateCard);
   return (
