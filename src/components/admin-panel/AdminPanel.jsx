@@ -32,7 +32,7 @@ const AdminPanel = () => {
   const locales = useSelector((state) => state.locales.locale.adminPanel);
   const isAdmin = useSelector((state) => state.auth.isAdmin);
   const unverifiedUsers = useSelector(
-    (state) => state.unverified.unverifiedUsers,
+    (state) => state.unverified.unverifiedUsers
   );
 
   const handleAddUserClick = () => {
@@ -41,7 +41,7 @@ const AdminPanel = () => {
         raiseAlert({
           message: 'There are no users left to check',
           variant: 'warning',
-        }),
+        })
       );
     } else {
       setOpenDialog(true);
