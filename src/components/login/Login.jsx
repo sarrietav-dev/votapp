@@ -1,7 +1,3 @@
-/* eslint-disable react/jsx-wrap-multilines */
-import React, { useEffect } from 'react';
-import TextField from '@material-ui/core/TextField';
-// eslint-disable-next-line object-curly-newline
 import {
   Button,
   Container,
@@ -9,12 +5,14 @@ import {
   Grid,
   makeStyles,
 } from '@material-ui/core';
-import { useHistory } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import React, { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { loginThunk } from '../../store/thunks/auth.thunks';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import { openDialog } from '../../store/reducers/dialogs.reducer';
+import { loginThunk } from '../../store/thunks/auth.thunks';
+import LocaleSelect from '../LocaleSelect';
 import RegisterDialog from './RegisterDialog';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,80 +48,89 @@ function Login() {
 
   return (
     <Container className={classes.container} maxWidth="md">
-      <form action="" onSubmit={handleSubmit(onSubmit)}>
-        <Grid
-          container
-          spacing={2}
-          alignItems="center"
-          justify="center"
-          style={{ minHeight: '100vh' }}
-        >
-          <Grid item>
-            <Grid container spacing={3} direction="column" alignItems="center">
-              <Grid item>
-                <FormControl>
-                  <Controller
-                    name="email"
-                    as={
-                      <TextField
-                        variant="outlined"
-                        name="email"
-                        label="Email"
-                      />
-                    }
-                    control={control}
-                    defaultValue=""
-                    rules={{
-                      required: true,
-                      min: 6,
-                      max: 1024,
-                    }}
-                  />
-                </FormControl>
-              </Grid>
-              <Grid item>
-                <FormControl>
-                  <Controller
-                    name="password"
-                    as={
-                      <TextField
-                        label={locales.password}
-                        name="password"
-                        type="password"
-                        variant="outlined"
-                      />
-                    }
-                    control={control}
-                    defaultValue=""
-                    rules={{
-                      required: true,
-                      min: 6,
-                      max: 1024,
-                    }}
-                  />
-                </FormControl>
-              </Grid>
-              <Grid container spacing={2}>
+      <Grid container justify="flex-end">
+        <Grid item>
+          <LocaleSelect />
+        </Grid>
+      </Grid>
+      <Grid>
+        <RegisterDialog />
+        <form action="" onSubmit={handleSubmit(onSubmit)}>
+          <Grid
+            container
+            spacing={2}
+            alignItems="center"
+            justify="center"
+            style={{ minHeight: '100vh' }}>
+            <Grid item>
+              <Grid
+                container
+                spacing={3}
+                direction="column"
+                alignItems="center">
                 <Grid item>
-                  <Button color="primary" type="submit" variant="contained">
-                    {locales.logIn}
-                  </Button>
+                  <FormControl>
+                    <Controller
+                      name="email"
+                      as={
+                        <TextField
+                          variant="outlined"
+                          name="email"
+                          label="Email"
+                        />
+                      }
+                      control={control}
+                      defaultValue=""
+                      rules={{
+                        required: true,
+                        min: 6,
+                        max: 1024,
+                      }}
+                    />
+                  </FormControl>
                 </Grid>
                 <Grid item>
-                  <Button
-                    color="primary"
-                    variant="outlined"
-                    onClick={handleRegisterClick}
-                  >
-                    {locales.requestAccess}
-                  </Button>
+                  <FormControl>
+                    <Controller
+                      name="password"
+                      as={
+                        <TextField
+                          label={locales.password}
+                          name="password"
+                          type="password"
+                          variant="outlined"
+                        />
+                      }
+                      control={control}
+                      defaultValue=""
+                      rules={{
+                        required: true,
+                        min: 6,
+                        max: 1024,
+                      }}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid container spacing={2}>
+                  <Grid item>
+                    <Button color="primary" type="submit" variant="contained">
+                      {locales.logIn}
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button
+                      color="primary"
+                      variant="outlined"
+                      onClick={handleRegisterClick}>
+                      {locales.requestAccess}
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </form>
-      <RegisterDialog />
+        </form>
+      </Grid>
     </Container>
   );
 }
