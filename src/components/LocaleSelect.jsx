@@ -2,7 +2,7 @@ import React from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import { InputLabel, MenuItem, Select } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { setLocale } from '../../store/reducers/locales.reducer';
+import { setLocale } from '../store/reducers/locales.reducer';
 
 const LocaleSelect = () => {
   const dispatch = useDispatch();
