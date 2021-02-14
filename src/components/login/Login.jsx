@@ -16,6 +16,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { loginThunk } from '../../store/thunks/auth.thunks';
 import { openDialog } from '../../store/reducers/dialogs.reducer';
 import RegisterDialog from './RegisterDialog';
+import LocaleSelect from '../LocaleSelect';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -50,6 +51,7 @@ function Login() {
 
   return (
     <Container className={classes.container} maxWidth="md">
+      <LocaleSelect />
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <Grid
           container
