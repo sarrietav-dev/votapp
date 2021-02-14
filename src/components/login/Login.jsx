@@ -51,7 +51,11 @@ function Login() {
 
   return (
     <Container className={classes.container} maxWidth="md">
-      <LocaleSelect />
+      <Grid container justify="flex-end">
+        <Grid item>
+          <LocaleSelect />
+        </Grid>
+      </Grid>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <Grid
           container
