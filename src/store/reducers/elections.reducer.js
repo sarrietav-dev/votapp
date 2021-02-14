@@ -25,7 +25,7 @@ const electionSlice = createSlice({
     },
     setCurrentElection(state, action) {
       state.currentElection = state.elections.filter(
-        (election) => election._id === action.payload,
+        (election) => election._id === action.payload
       )[0];
     },
     emptyCurrentElection(state) {
@@ -33,7 +33,7 @@ const electionSlice = createSlice({
     },
     deleteElection(state, action) {
       state.elections = state.elections.filter(
-        (election) => election._id !== action.payload,
+        (election) => election._id !== action.payload
       );
       state.currentElection = {};
     },
@@ -48,13 +48,13 @@ const electionSlice = createSlice({
   extraReducers: {
     [vote.fulfilled]: (state, action) => {
       const votedCandidate = state.currentElection.candidates.filter(
-        (candidate) => candidate._id === action.payload.candidateId,
+        (candidate) => candidate._id === action.payload.candidateId
       );
 
       votedCandidate.votes += 1;
 
       state.currentElection.candidates.filter(
-        (candidate) => candidate._id !== action.payload.candidateId,
+        (candidate) => candidate._id !== action.payload.candidateId
       );
 
       state.currentElection.candidates.push(votedCandidate);
@@ -62,7 +62,7 @@ const electionSlice = createSlice({
       state.currentElection.registeredVotes.push(action.payload.userId);
 
       state.elections.filter(
-        (election) => election._id !== state.currentElection._id,
+        (election) => election._id !== state.currentElection._id
       );
 
       state.elections.push(state.currentElection);
@@ -71,7 +71,7 @@ const electionSlice = createSlice({
       state.currentElection.status = 'finished';
 
       state.elections.filter(
-        (election) => election._id !== state.currentElection._id,
+        (election) => election._id !== state.currentElection._id
       );
 
       state.elections.push(state.currentElection);

@@ -23,8 +23,8 @@ export const fetchUnverifiedUsersThunk = () => async (dispatch) => {
         raiseAlert({
           message: error.response.data.error,
           variant: 'error',
-        }),
-      ),
+        })
+      )
     );
 };
 
@@ -47,7 +47,7 @@ export const verifyUserThunk = (id) => async (dispatch) => {
         raiseAlert({
           message: error.response.data.error,
           variant: 'error',
-        }),
+        })
       );
     });
 };
@@ -71,7 +71,7 @@ export const denyUserThunk = (id) => async (dispatch) => {
         raiseAlert({
           message: error.response.data.error,
           variant: 'error',
-        }),
+        })
       );
     });
 };

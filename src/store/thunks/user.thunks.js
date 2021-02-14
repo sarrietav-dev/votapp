@@ -14,11 +14,11 @@ const fetchUsers = createAsyncThunk(
       .then((response) => response.data)
       .catch((err) =>
         thunkAPI.dispatch(
-          raiseAlert({ message: err.response.data.error, variant: 'error' }),
-        ),
+          raiseAlert({ message: err.response.data.error, variant: 'error' })
+        )
       );
     return res;
-  },
+  }
 );
 
 export default fetchUsers;

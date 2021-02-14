@@ -25,7 +25,7 @@ const ElectionSettings = () => {
   const isOpen = useSelector((state) => state.dialog.isOpen);
   const locales = useSelector((state) => state.locales.locale.electionSettings);
   const currentElection = useSelector(
-    (state) => state.election.currentElection,
+    (state) => state.election.currentElection
   );
 
   const dispatch = useDispatch();
@@ -105,8 +105,7 @@ const ElectionSettings = () => {
                 <div>
                   <Button
                     color="primary"
-                    onClick={() => dispatch(closeDialog())}
-                  >
+                    onClick={() => dispatch(closeDialog())}>
                     {locales.cancel}
                   </Button>
                   <Button color="primary" type="submit">

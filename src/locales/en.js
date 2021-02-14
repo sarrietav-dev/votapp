@@ -1,4 +1,4 @@
-export default () => ({
+const en = () => ({
   login: {
     password: 'Password',
     logIn: 'Log In',
@@ -63,3 +63,5 @@ export default () => ({
     accept: 'Accept',
   },
 });
+
+export default en;

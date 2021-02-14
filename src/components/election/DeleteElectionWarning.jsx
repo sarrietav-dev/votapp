@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import {
   Button,
   Dialog,
@@ -18,7 +17,7 @@ const DeleteElectionWarning = ({ open, setIsWarningOpen }) => {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.election.currentElection._id);
   const locales = useSelector(
-    (state) => state.locales.locale.deleteElectionWarning,
+    (state) => state.locales.locale.deleteElectionWarning
   );
   const history = useHistory();
 

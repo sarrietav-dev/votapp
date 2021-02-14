@@ -19,12 +19,12 @@ export const loginThunk = (data) => async (dispatch) => {
       dispatch(setAuthToken(payload));
 
       dispatch(
-        setData({ _id: response.data._id, is_admin: response.data.is_admin }),
+        setData({ _id: response.data._id, is_admin: response.data.is_admin })
       );
     })
     .catch((err) => {
       dispatch(
-        raiseAlert({ variant: 'error', message: err.response.data.error }),
+        raiseAlert({ variant: 'error', message: err.response.data.error })
       );
     });
 };
