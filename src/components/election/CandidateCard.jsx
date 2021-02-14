@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -42,8 +40,7 @@ const CandidateCard = ({ data, onClick }) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-        }}
-      >
+        }}>
         <IconButton onClick={() => onClick(data._id)}>
           <VoteIcon />
         </IconButton>

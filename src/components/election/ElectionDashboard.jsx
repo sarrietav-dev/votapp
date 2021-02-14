@@ -1,8 +1,4 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable indent */
 /* eslint-disable no-nested-ternary */
-/* eslint-disable object-curly-newline */
 import {
   Button,
   Container,
@@ -41,11 +37,11 @@ const useStyles = makeStyles(() => ({
 
 const ElectionDashboard = () => {
   const currentElection = useSelector(
-    (state) => state.election.currentElection,
+    (state) => state.election.currentElection
   );
   const auth = useSelector((state) => state.auth);
   const locales = useSelector(
-    (state) => state.locales.locale.electionDashboard,
+    (state) => state.locales.locale.electionDashboard
   );
   const hasUserVoted =
     currentElection.registeredVotes.filter((vote) => vote === auth._id)
@@ -64,7 +60,7 @@ const ElectionDashboard = () => {
       history.push('/vote');
     } else if (hasUserVoted) {
       dispatch(
-        raiseAlert({ message: locales.raiseAlertMessage, variant: 'warning' }),
+        raiseAlert({ message: locales.raiseAlertMessage, variant: 'warning' })
       );
     } else {
       dispatch(endElection(currentElection._id));
@@ -87,8 +83,7 @@ const ElectionDashboard = () => {
           color="secondary"
           variant="contained"
           onClick={onButtonClick}
-          disabled={currentElection.status === 'finished' || hasUserVoted}
-        >
+          disabled={currentElection.status === 'finished' || hasUserVoted}>
           {currentElection.status === 'finished'
             ? locales.electionEnded
             : !auth.isAdmin

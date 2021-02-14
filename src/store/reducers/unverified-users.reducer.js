@@ -15,12 +15,12 @@ const unverifiedUsersSlice = createSlice({
     },
     verifyUser(state, action) {
       state.unverifiedUsers = state.unverifiedUsers.filter(
-        (user) => user._id !== action.payload,
+        (user) => user._id !== action.payload
       );
     },
     denyUser(state, action) {
       state.unverifiedUsers = state.unverifiedUsers.filter(
-        (user) => user._id !== action.payload,
+        (user) => user._id !== action.payload
       );
     },
   },

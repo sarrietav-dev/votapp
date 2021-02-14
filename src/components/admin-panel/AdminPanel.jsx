@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import { raiseAlert } from '../../store/reducers/alerts.reducer';
 import { closePanel } from '../../store/reducers/panel.reducer';
 import VerifyUsersDialog from './VerifyUsersDialog';
-import LocaleSelect from './LocaleSelect';
+import LocaleSelect from '../LocaleSelect';
 
 const VerifyUsersButton = ({ handleAddUserClick, itemText }) => (
   <ListItem button onClick={handleAddUserClick}>

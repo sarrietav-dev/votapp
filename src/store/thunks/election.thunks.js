@@ -30,7 +30,7 @@ export const saveElectionThunk = (data) => async (dispatch) => {
     })
     .catch((err) => {
       dispatch(
-        raiseAlert({ variant: 'error', message: err.response.data.error }),
+        raiseAlert({ variant: 'error', message: err.response.data.error })
       );
     });
 };
@@ -44,7 +44,7 @@ export const editElectionThunk = (data) => async (dispatch) => {
     .then(() => dispatch(editElection(data)))
     .catch((err) => {
       dispatch(
-        raiseAlert({ variant: 'error', message: err.response.data.error }),
+        raiseAlert({ variant: 'error', message: err.response.data.error })
       );
     });
 };
@@ -57,7 +57,7 @@ export const deleteElectionThunk = (id) => async (dispatch) => {
     .then(() => dispatch(deleteElection(id)))
     .catch((err) => {
       dispatch(
-        raiseAlert({ variant: 'error', message: err.response.data.error }),
+        raiseAlert({ variant: 'error', message: err.response.data.error })
       );
     });
 };
@@ -72,17 +72,17 @@ export const vote = createAsyncThunk(
       })
       .then((response) => {
         thunkAPI.dispatch(
-          raiseAlert({ message: 'Ballot stored!', variant: 'success' }),
+          raiseAlert({ message: 'Ballot stored!', variant: 'success' })
         );
         return response;
       })
       .catch((err) =>
         thunkAPI.dispatch(
-          raiseAlert({ message: err.response.data.error, variant: 'error' }),
-        ),
+          raiseAlert({ message: err.response.data.error, variant: 'error' })
+        )
       );
     return res;
-  },
+  }
 );
 
 export const endElection = createAsyncThunk(
@@ -95,15 +95,15 @@ export const endElection = createAsyncThunk(
           raiseAlert({
             message: 'The election has ended successfully',
             variant: 'success',
-          }),
+          })
         );
         return response;
       })
       .catch((err) => {
         thunkAPI.dispatch(
-          raiseAlert({ message: err.response.data.error, variant: 'error' }),
+          raiseAlert({ message: err.response.data.error, variant: 'error' })
         );
       });
     return res;
-  },
+  }
 );

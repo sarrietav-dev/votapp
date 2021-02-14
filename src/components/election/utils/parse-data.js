@@ -1,4 +1,4 @@
-export default (data) => {
+const parseData = (data) => {
   const votes = data.map((candidates) => candidates.votes);
   const names = data.map((candidates) => candidates.name);
 
@@ -29,3 +29,5 @@ export default (data) => {
     ],
   };
 };
+
+export default parseData;
