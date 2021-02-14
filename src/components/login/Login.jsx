@@ -1,6 +1,4 @@
 /* eslint-disable react/jsx-wrap-multilines */
-import React, { useEffect } from 'react';
-import TextField from '@material-ui/core/TextField';
 // eslint-disable-next-line object-curly-newline
 import {
   Button,
@@ -9,14 +7,16 @@ import {
   Grid,
   makeStyles,
 } from '@material-ui/core';
-import { useHistory } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import React, { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { openDialog } from '../../store/reducers/dialogs.reducer';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { loginThunk } from '../../store/thunks/auth.thunks';
-import { openDialog } from '../../store/reducers/dialogs.reducer';
-import RegisterDialog from './RegisterDialog';
 import LocaleSelect from '../LocaleSelect';
+import RegisterDialog from './RegisterDialog';
 
 const useStyles = makeStyles((theme) => ({
   container: {
