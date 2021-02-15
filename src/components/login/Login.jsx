@@ -3,26 +3,48 @@ import {
   Container,
   FormControl,
   Grid,
+  IconButton,
   makeStyles,
+  Popover,
 } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import LanguageIcon from '@material-ui/icons/Language';
 import { openDialog } from '../../store/reducers/dialogs.reducer';
 import { loginThunk } from '../../store/thunks/auth.thunks';
 import LocaleSelect from '../LocaleSelect';
 import RegisterDialog from './RegisterDialog';
+import logo from '../../assets/Votapp.png';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
+  },
+  image: {
+    maxWidth: '100%',
+    height: 'auto',
+    margin: 0,
+    [theme.breakpoints.up(800)]: {
+      marginRight: 100,
+    },
+  },
+  mainContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    minHeight: '75vh',
+    alignItems: 'center',
+    [theme.breakpoints.down(600)]: {
+      alignItems: 'flex-start',
+    },
   },
 }));
 
 function Login() {
   const { handleSubmit, control } = useForm();
+  const [anchor, setAnchor] = useState(null);
 
   const classes = useStyles();
   const history = useHistory();
@@ -50,22 +72,34 @@ function Login() {
     <Container className={classes.container} maxWidth="md">
       <Grid container justify="flex-end">
         <Grid item>
-          <LocaleSelect />
+          <IconButton onClick={(e) => setAnchor(e.currentTarget)}>
+            <LanguageIcon />
+          </IconButton>
+          <Popover
+            open={Boolean(anchor)}
+            onClose={() => setAnchor(null)}
+            anchorEl={anchor}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}>
+            <LocaleSelect />
+          </Popover>
         </Grid>
       </Grid>
       <Grid>
         <RegisterDialog />
-        <form action="" onSubmit={handleSubmit(onSubmit)}>
-          <Grid
-            container
-            spacing={2}
-            alignItems="center"
-            justify="center"
-            style={{ minHeight: '100vh' }}>
+        <Grid container spacing={2} className={classes.mainContainer}>
+          <img src={logo} alt="Logo of the app" className={classes.image} />
+          <form action="" onSubmit={handleSubmit(onSubmit)}>
             <Grid item>
               <Grid
                 container
-                spacing={3}
+                spacing={2}
                 direction="column"
                 alignItems="center">
                 <Grid item>
@@ -128,8 +162,8 @@ function Login() {
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </form>
+          </form>
+        </Grid>
       </Grid>
     </Container>
   );
