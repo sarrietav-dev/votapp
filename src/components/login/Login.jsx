@@ -24,16 +24,16 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '100%',
     height: 'auto',
     margin: 0,
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up(800)]: {
       marginRight: 100,
     },
   },
   mainContainer: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
     minHeight: '75vh',
-    [theme.breakpoints.down('sm')]: {
+    alignItems: 'center',
+    [theme.breakpoints.down(600)]: {
       alignItems: 'flex-start',
     },
   },
