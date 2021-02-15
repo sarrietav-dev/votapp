@@ -14,10 +14,28 @@ import { openDialog } from '../../store/reducers/dialogs.reducer';
 import { loginThunk } from '../../store/thunks/auth.thunks';
 import LocaleSelect from '../LocaleSelect';
 import RegisterDialog from './RegisterDialog';
+import logo from '../../assets/Votapp.png';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
+  },
+  image: {
+    maxWidth: '100%',
+    height: 'auto',
+    margin: 0,
+    [theme.breakpoints.up('md')]: {
+      marginRight: 100,
+    },
+  },
+  mainContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '75vh',
+    [theme.breakpoints.down('sm')]: {
+      alignItems: 'flex-start',
+    },
   },
 }));
 
@@ -55,17 +73,13 @@ function Login() {
       </Grid>
       <Grid>
         <RegisterDialog />
-        <form action="" onSubmit={handleSubmit(onSubmit)}>
-          <Grid
-            container
-            spacing={2}
-            alignItems="center"
-            justify="center"
-            style={{ minHeight: '100vh' }}>
+        <Grid container spacing={2} className={classes.mainContainer}>
+          <img src={logo} alt="Logo of the app" className={classes.image} />
+          <form action="" onSubmit={handleSubmit(onSubmit)}>
             <Grid item>
               <Grid
                 container
-                spacing={3}
+                spacing={2}
                 direction="column"
                 alignItems="center">
                 <Grid item>
@@ -128,8 +142,8 @@ function Login() {
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </form>
+          </form>
+        </Grid>
       </Grid>
     </Container>
   );
