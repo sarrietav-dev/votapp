@@ -24,10 +24,10 @@ const CreateElectionDialog = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.dialog.isOpen);
   const locales = useSelector(
-    (state) => state.locales.locale.createElectionDialog,
+    (state) => state.locales.locale.createElectionDialog
   );
   const selectedCandidates = useSelector(
-    (state) => state.election.selectedCandidates,
+    (state) => state.election.selectedCandidates
   );
 
   const handleClose = () => dispatch(closeDialog());

@@ -38,8 +38,7 @@ const Dashboard = () => {
         justify="center"
         alignItems="center"
         style={{ margin: 0 }}
-        xs={12}
-      >
+        xs={12}>
         {elections.map((election) => (
           <Grid item key={shortid.generate()}>
             <ElectionCard

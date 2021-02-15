@@ -5,7 +5,7 @@ import parseData from './utils/parse-data';
 
 const WinnerChart = () => {
   const candidates = useSelector(
-    (state) => state.election.currentElection.candidates,
+    (state) => state.election.currentElection.candidates
   );
 
   return (

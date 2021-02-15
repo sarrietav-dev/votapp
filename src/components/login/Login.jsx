@@ -35,7 +35,7 @@ function Login() {
     if (authToken !== '') {
       history.push('/');
     }
-  }, [authToken]);
+  }, [authToken, history]);
 
   const onSubmit = (data) => {
     dispatch(loginThunk(data));

@@ -52,8 +52,7 @@ const UnverifiedUser = ({ data }) => {
     <Accordion className={classes.root}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
-        className={classes.summary}
-      >
+        className={classes.summary}>
         <Typography variant="h5">{data.name}</Typography>
       </AccordionSummary>
       <AccordionDetails className={classes.details}>
@@ -80,8 +79,7 @@ const UnverifiedUser = ({ data }) => {
           type="submit"
           color="primary"
           variant="contained"
-          onClick={handleAccept}
-        >
+          onClick={handleAccept}>
           Accept
         </Button>
       </AccordionActions>

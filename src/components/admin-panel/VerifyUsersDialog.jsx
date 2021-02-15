@@ -38,7 +38,7 @@ VerifyUsersDialog.propTypes = {
       name: PropTypes.string,
       email: PropTypes.string,
       code: PropTypes.string,
-    }),
+    })
   ).isRequired,
 };
 

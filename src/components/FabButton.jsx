@@ -25,8 +25,7 @@ const FabButton = () => {
         color="secondary"
         aria-label="add"
         className={classes.fab}
-        onClick={() => dispatch(openDialog())}
-      >
+        onClick={() => dispatch(openDialog())}>
         <AddIcon />
       </Fab>
     </div>

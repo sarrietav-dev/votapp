@@ -18,8 +18,7 @@ const AlertMessage = () => {
         elevation={6}
         variant="filled"
         severity={variant}
-        onClose={handleClose}
-      >
+        onClose={handleClose}>
         {message}
       </Alert>
     </Snackbar>
