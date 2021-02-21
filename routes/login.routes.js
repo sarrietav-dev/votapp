@@ -21,7 +21,6 @@ router.post('/', async (req, res) => {
   if (!user.is_admin && !user.is_verified)
     return res.status(400).json({ error: 'The user is not verified' });
 
-
   // Check if password is valid.
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword)
@@ -34,7 +33,12 @@ router.post('/', async (req, res) => {
   );
   res.header('auth-token', token);
 
-  return res.send({ message: 'Logged In', token, _id: user._id, is_admin: user.is_admin });
+  return res.send({
+    message: 'Logged In',
+    token,
+    _id: user._id,
+    is_admin: user.is_admin,
+  });
 });
 
 module.exports = router;
